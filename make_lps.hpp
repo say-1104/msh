@@ -18,10 +18,16 @@ typedef struct _Function {
 } Function;
 
 enum Shape {
-	Po,
-	Li,
-	Surf,
+	Poi,
+	Lin,
+	Sur,
 	Vol
+};
+
+enum Axis {
+	X,
+	Y,
+	Z
 };
 
 vector<int> Atovec(const char* text){
@@ -130,6 +136,14 @@ void Surface(const char* text, Function *func){
 	ofs << endl;
 }
 
+void Surface(vector<int> v, Function *func){
+	Start_End(func, 3);
+	for (int i=0; i<v.size(); i++) {
+		ofs << v[i] << ' ';
+	}
+	ofs << endl;
+}
+
 void Volume(const char* text, Function *func){
 	vector<int> v = Atovec(text);
 	Start_End(func, 4);
@@ -139,10 +153,145 @@ void Volume(const char* text, Function *func){
 	ofs << endl;
 }
 
-void Copy(Shape shape, double x, double y, double z, const char* text, Function *func){
+void Volume(vector<int> v, Function *func){
 	Start_End(func, 4);
-	for (int i=0; i<s.size(); i++) {
-		ofs << s[i] << ' ';
+	for (int i=0; i<v.size(); i++) {
+		ofs << v[i] << ' ';
+	}
+	ofs << endl;
+}
+
+void Copy(Shape shape, double x, double y, double z, const char* text, Function *func){
+	vector<int> v = Atovec(text);
+	Start_End(func, 5);
+	int tmp = shape;
+
+	ofs << tmp << ' ' << tmp+1 << " 0" << endl;
+	ofs << "0.000\t0.000\t0.000\t ";
+	ofs << x << '\t' << y << '\t' << z << endl;
+	
+	for (int i=0; i<v.size(); i++) {
+		ofs << v[i] << ' ';
+	}
+	ofs << endl;
+}
+
+void Copy(Shape shape, double x, double y, double z, vector<int> v, Function *func){
+	Start_End(func, 5);
+	int tmp = shape;
+
+	ofs << tmp << ' ' << tmp+1 << " 0" << endl;
+	ofs << "0.000\t0.000\t0.000\t ";
+	ofs << x << '\t' << y << '\t' << z << endl;
+	
+	for (int i=0; i<v.size(); i++) {
+		ofs << v[i] << ' ';
+	}
+	ofs << endl;
+}
+
+void Rotate(Shape shape, Axis axis, double x, double y, double z, double angle, const char* text, Function *func){
+	vector<int> v = Atovec(text);
+	Start_End(func, 6);
+	int tmp = shape;
+
+	ofs << tmp << ' ' << tmp+1 << " 0" << endl;
+	ofs << (int)axis << "\t ";
+	ofs << x << '\t' << y << '\t' << z << "\t ";
+	ofs << angle << endl;
+	
+	for (int i=0; i<v.size(); i++) {
+		ofs << v[i] << ' ';
+	}
+	ofs << endl;
+}
+
+void Rotate(Shape shape, Axis axis, double x, double y, double z, double angle, vector<int> v, Function *func){
+	Start_End(func, 6);
+	int tmp = shape;
+	
+	ofs << tmp << ' ' << tmp+1 << " 0" << endl;
+	ofs << (int)axis << "\t ";
+	ofs << x << '\t' << y << '\t' << z << "\t ";
+	ofs << angle << endl;
+	
+	for (int i=0; i<v.size(); i++) {
+		ofs << v[i] << ' ';
+	}
+	ofs << endl;
+}
+
+void Mat2D(int mat, const char* text, Function *func){
+	vector<int> v = Atovec(text);
+	Start_End(func, 7);
+	int D = 2;
+
+	ofs << dim << mat << endl;
+
+	for (int i=0; i<v.size(); i++) {
+		ofs << v[i] << ' ';
+	}
+	ofs << endl;
+}
+
+void Mat2D(int mat, vector<int> v, Function *func){
+	Start_End(func, 7);
+	int D = 2;
+
+	ofs << dim << mat << endl;
+
+	for (int i=0; i<v.size(); i++) {
+		ofs << v[i] << ' ';
+	}
+	ofs << endl;
+}
+
+void Mat3D(int mat, const char* text, Function *func){
+	vector<int> v = Atovec(text);
+	Start_End(func, 7);
+	int D = 3;
+
+	ofs << dim << mat << endl;
+
+	for (int i=0; i<v.size(); i++) {
+		ofs << v[i] << ' ';
+	}
+	ofs << endl;
+}
+
+void Mat3D(int mat, vector<int> v, Function *func){
+	Start_End(func, 7);
+	int D = 3;
+
+	ofs << dim << mat << endl;
+
+	for (int i=0; i<v.size(); i++) {
+		ofs << v[i] << ' ';
+	}
+	ofs << endl;
+}
+
+void Unstr(Shape shape, double unstr, const char* text, Function *func){
+	vector<int> v = Atovec(text);
+	Start_End(func, 8);
+	int tmp = shape;
+	
+	ofs << tmp << ' ' << unstr << endl;
+	
+	for (int i=0; i<v.size(); i++) {
+		ofs << v[i] << ' ';
+	}
+	ofs << endl;
+}
+
+void Unstr(Shape shape, double unstr, vector<int> v, Function *func){
+	Start_End(func, 8);
+	int tmp = shape;
+	
+	ofs << tmp << ' ' << unstr << endl;
+	
+	for (int i=0; i<v.size(); i++) {
+		ofs << v[i] << ' ';
 	}
 	ofs << endl;
 }
