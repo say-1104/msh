@@ -3,6 +3,7 @@
 #include <vector>
 #include <fstream>
 #include <cstdlib>
+#include <iomanip>
 using namespace std;
 
 ofstream ofs;
@@ -84,7 +85,30 @@ void Start_End(Function *func, int num){
 
 void Point(double x, double y, double z, Function *func){
 	Start_End(func, 1);
-	ofs << x << " " << y << " " << z << endl;
+	ofs << x << '\t' << y << '\t' << z << endl;
+}
+
+void Line(double x1, double y1, double z1, double x2, double y2, double z2, Function *func){
+	Start_End(func, 2);
+	ofs << "0\t ";
+	ofs << x1 << '\t' << y1 << '\t' << z1 << "\t ";
+	ofs << x2 << '\t' << y2 << '\t' << z2 << endl;
+}
+
+void Curve(double x1, double y1, double z1, double x2, double y2, double z2, double x3, double y3, double z3, Function *func){
+	Start_End(func, 2);
+	ofs << "1\t ";
+	ofs << x1 << '\t' << y1 << '\t' << z1 << "\t ";
+	ofs << x2 << '\t' << y2 << '\t' << z2 << "\t ";
+	ofs << x3 << '\t' << y3 << '\t' << z3 << endl;
+}
+
+void Surface(vector<int> s, Function *func){
+	Start_End(func, 3);
+	for (int i=0; i<s.size(); i++) {
+		ofs << s[i] << '\t';
+	}
+	ofs << endl;
 }
 
 void Trans_Gene(double trans, double gene, Function *func){

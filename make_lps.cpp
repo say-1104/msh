@@ -10,9 +10,13 @@ int main(int argc, char *argv[]){
 		cerr << "File open error !" << endl;
 		exit(1);
 	}
+	ofs << fixed << setprecision(4);
 	cout << "writing " << lpsname << "..." << endl;
 
 	Point(0.0, 0.0, 0.0, &func);
+
+	vector<int> s = {1, 2, 3, 4, 5};
+	Surface(s, &func); 
 
 	Trans_Gene(trans, gene, &func);
 
