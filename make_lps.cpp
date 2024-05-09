@@ -3,7 +3,8 @@
 int main(int argc, char *argv[]){
 	double trans = 0.4, gene = 0.4;
 	string lpsname = "pcmDC";
-	Function func; 
+	Function func;
+	func.flag = 0; 
 
 	ofs.open("pcmDC.lps");
 	if(! ofs) {

@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <sstream>
 #include <cstdlib>
 #include <iomanip>
 using namespace std;
@@ -15,6 +16,24 @@ ofstream ofs;
 typedef struct _Function {
     int flag;
 } Function;
+
+enum Shape {
+	Po,
+	Li,
+	Surf,
+	Vol
+};
+
+vector<int> Atovec(const char* text){
+	string text_str = text;
+	stringstream ss(text_str);
+	string buf;
+	vector<int> v;
+	while (std::getline(ss, buf, ' ')) {
+		v.push_back(std::stoi(buf));
+	}
+	return v;
+}
 
 void Start_End(Function *func, int num){
 	if(func->flag == num) return;
@@ -82,7 +101,6 @@ void Start_End(Function *func, int num){
 	}
 }
 
-
 void Point(double x, double y, double z, Function *func){
 	Start_End(func, 1);
 	ofs << x << '\t' << y << '\t' << z << endl;
@@ -103,10 +121,28 @@ void Curve(double x1, double y1, double z1, double x2, double y2, double z2, dou
 	ofs << x3 << '\t' << y3 << '\t' << z3 << endl;
 }
 
-void Surface(vector<int> s, Function *func){
+void Surface(const char* text, Function *func){
+	vector<int> v = Atovec(text);
 	Start_End(func, 3);
+	for (int i=0; i<v.size(); i++) {
+		ofs << v[i] << ' ';
+	}
+	ofs << endl;
+}
+
+void Volume(const char* text, Function *func){
+	vector<int> v = Atovec(text);
+	Start_End(func, 4);
+	for (int i=0; i<v.size(); i++) {
+		ofs << v[i] << ' ';
+	}
+	ofs << endl;
+}
+
+void Copy(Shape shape, double x, double y, double z, const char* text, Function *func){
+	Start_End(func, 4);
 	for (int i=0; i<s.size(); i++) {
-		ofs << s[i] << '\t';
+		ofs << s[i] << ' ';
 	}
 	ofs << endl;
 }
