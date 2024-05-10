@@ -224,7 +224,7 @@ void Rotate(Shape shape, Axis axis, double x, double y, double z, double angle, 
 void Mat2D(int mat, const char* text, Function *func){
 	vector<int> v = Atovec(text);
 	Start_End(func, 7);
-	int D = 2;
+	int dim = 2;
 
 	ofs << dim << mat << endl;
 
@@ -236,7 +236,7 @@ void Mat2D(int mat, const char* text, Function *func){
 
 void Mat2D(int mat, vector<int> v, Function *func){
 	Start_End(func, 7);
-	int D = 2;
+	int dim = 2;
 
 	ofs << dim << mat << endl;
 
@@ -249,7 +249,7 @@ void Mat2D(int mat, vector<int> v, Function *func){
 void Mat3D(int mat, const char* text, Function *func){
 	vector<int> v = Atovec(text);
 	Start_End(func, 7);
-	int D = 3;
+	int dim = 3;
 
 	ofs << dim << mat << endl;
 
@@ -261,7 +261,7 @@ void Mat3D(int mat, const char* text, Function *func){
 
 void Mat3D(int mat, vector<int> v, Function *func){
 	Start_End(func, 7);
-	int D = 3;
+	int dim = 3;
 
 	ofs << dim << mat << endl;
 
