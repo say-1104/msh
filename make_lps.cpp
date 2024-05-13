@@ -2,7 +2,8 @@
 
 int main(int argc, char *argv[]){
 	Function func;
-	func.flag = 0; 
+	func.flag = 0;
+	func.tp_num = 0;
 
 	ofs.open("pcmDC.lps");
 	if(! ofs) {
@@ -38,17 +39,34 @@ int main(int argc, char *argv[]){
 	cout << "writing " << lpsname << "..." << endl;
 
 	//1
+
 	Line(0.0, 0.0, 0.0, 0.0, 0.0, Wpml, &func);
 	Line(0.0, 0.0, Wpml, 0.0, 0.0, L-Wpml, &func);
 	Line(0.0, 0.0, L-Wpml, 0.0, 0.0, L, &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "1 2 3", &func);
 	Copy(Lin, W-2*Wpml, 0.0, 0.0, "4 5 6", &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "11 12 13", &func);
+	func.Tppush(0, 9, 24, 16);
 
 	//2
 	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
+	func.Tppush(9, 24, 16, 0);
 
 	//3
+	Line(0.0, H-Wpml, 0.0, 0.0, H-Wpml, Wpml, &func);
+	Line(0.0, H-Wpml, Wpml, 0.0, H-Wpml, L-Wpml, &func);
+	Line(0.0, H-Wpml, L-Wpml, 0.0, H-Wpml, L, &func);
+	func.tp_num = 2;
+	Copy(Lin, Wpml, 0.0, 0.0, "1 2 3", &func);
+	Copy(Lin, W-2*Wpml, 0.0, 0.0, "4 5 6", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "11 12 13", &func);
+	func.Tppush(0, 9, 24, 16);
+
+	//4
+	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
+	func.Tppush(0, 9, 24, 16);
+
+	//5
 	Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "1", &func);
 	Copy(Lin, Wm+Wr+g, 0.0, 0.0, "2", &func);
@@ -62,6 +80,24 @@ int main(int argc, char *argv[]){
 	Copy(Lin, Wr, 0.0, 0.0, "21", &func);
 	Copy(Lin, g+R+Wh/2, 0.0, 0.0, "24", &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "27", &func);
+	
+	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4", &func);
+	Copy(Lin, 0.0, 0.0, L-2*Wpml-Wm-Wh, "16", &func);
+	Copy(Lin, 0.0, 0.0, Wh, "35", &func);
+	Copy(Lin, 0.0, 0.0, Wm, "38", &func);
+	
+	Copy(Lin, 0.0, 0.0, -(L-2*Wpml-Wm), "25", &func);
+
+	Copy(Poi, 0.0, 0.0, Wm, "6 8", &func);
+	Copy(Poi, Wh, 0.0, 0.0, "31", &func);
+	Surface("10 46 48 47", &func);
+	Copy(Lin, 0.0, 0.0, Lc, "48", &func);
+	Rotate(Lin, Y, W-Wpml, Wpml+Hsio2, Wpml+Wm+Lc, 90, "49", &func);
+
+	Surface("7 34 22 44 43 45 28 41 52 50 46", &func);
+	Surface("13 36 53 51 47", &func);
+
+
 
 
 	//Trans_Gene(trans, gene, &func);

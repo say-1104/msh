@@ -11,11 +11,19 @@ ofstream ofs;
 
 #define PI		    3.141592653589793
 
-#define ZERO -1.0e-6
-
 typedef struct _Function {
     int flag;
+	int tp_num;
+	vector<vector<int> > tp = vector<vector<int> >(4, vector<int>(1,0));
+
+	void Tppush(int v, int s, int l, int p) {
+		this->tp[0].push_back(v);
+		this->tp[1].push_back(s);
+		this->tp[2].push_back(l);
+		this->tp[3].push_back(p);
+	}
 } Function;
+
 
 enum Shape {
 	Poi,
@@ -171,7 +179,7 @@ void Copy(Shape shape, double x, double y, double z, const char* text, Function 
 	ofs << x << '\t' << y << '\t' << z << endl;
 	
 	for (int i=0; i<v.size(); i++) {
-		ofs << v[i] << ' ';
+		ofs << v[i] + func->tp[tmp][func->tp_num] << ' ';
 	}
 	ofs << endl;
 }
