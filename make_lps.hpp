@@ -18,13 +18,15 @@ typedef struct _Function {
 } Function;
 
 
-void Tppush(int v, int s, int l, int p, vector<vector<int> > *tp) {
-	cout << tp[0].size() << endl;
-	cout << v  << endl;
-	tp[0].push_back(v+this->tp[0][this->tp[0].size()]);
-	tp[1].push_back(s+this->tp[1][this->tp[1].size()]);
-	tp[2].push_back(l+this->tp[2][this->tp[2].size()]);
-	tp[3].push_back(p+this->tp[3][this->tp[3].size()]);
+void Tppush(int v, int s, int l, int p, Function *func) {
+	int tpv = v + func->tp[0][func->tp[0].size()];
+	int tps = v + func->tp[1][func->tp[1].size()];
+	int tpl = v + func->tp[2][func->tp[2].size()];
+	int tpp = v + func->tp[3][func->tp[3].size()];
+	func->tp[0].push_back(tpv);
+	func->tp[1].push_back(tps);
+	func->tp[2].push_back(tpl);
+	func->tp[3].push_back(tpp);
 }
 enum Shape {
 	Poi,

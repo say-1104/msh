@@ -1,6 +1,6 @@
 #include "make_lps.hpp"
 
-void Printvec(vector<vector<int> > a){
+void Printvv(vector<vector<int> > a){
 	for(int i=0; i<a.size(); i++){
 		for(int j=0; j<a[i].size(); j++){
 			cout << a[i][j] << " " ;
@@ -14,9 +14,7 @@ int main(int argc, char *argv[]){
 	Function func;
 	func.flag = 0;
 	func.tp_num = 0;
-	func.Tppush(0, 9, 24, 16);
-	Printvec(func.tp);
-	func.Tppush(0, 9, 24, 16);
+	
 	ofs.open("pcmDC.lps");
 	if(! ofs) {
 		cerr << "File open error !" << endl;
@@ -51,20 +49,19 @@ int main(int argc, char *argv[]){
 	cout << "writing " << lpsname << "..." << endl;
 
 	//1
-
 	Line(0.0, 0.0, 0.0, 0.0, 0.0, Wpml, &func);
 	Line(0.0, 0.0, Wpml, 0.0, 0.0, L-Wpml, &func);
 	Line(0.0, 0.0, L-Wpml, 0.0, 0.0, L, &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "1 2 3", &func);
 	Copy(Lin, W-2*Wpml, 0.0, 0.0, "4 5 6", &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "11 12 13", &func);
-	
+	Tppush(0, 9, 24, 16, &func);
+
 	//2, 3
 	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
+	Tppush(0, 9, 24, 16, &func);
+	Tppush(9, 24, 16, 0, &func);
 
-	Printvec(func.tp);
-	func.Tppush(9, 24, 16, 0);
-	Printvec(func.tp);
 	//4
 	Line(0.0, H-Wpml, 0.0, 0.0, H-Wpml, Wpml, &func);
 	Line(0.0, H-Wpml, Wpml, 0.0, H-Wpml, L-Wpml, &func);
@@ -73,15 +70,14 @@ int main(int argc, char *argv[]){
 	Copy(Lin, Wpml, 0.0, 0.0, "1 2 3", &func);
 	Copy(Lin, W-2*Wpml, 0.0, 0.0, "4 5 6", &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "11 12 13", &func);
-	func.Tppush(0, 9, 24, 16);
-	Printvec(func.tp);
-	//5, 16
-	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
-	func.Tppush(0, 9, 24, 16);
-	Printvec(func.tp);
-	func.Tppush(9, 24, 16, 0);
+	Tppush(0, 9, 24, 16, &func);
 
-	Printvec(func.tp);
+	//5, 6
+	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
+	Tppush(0, 9, 24, 16, &func);
+	Tppush(9, 24, 16, 0, &func);
+
+	Printvv(func.tp);
 
 	//5
 	/*Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
