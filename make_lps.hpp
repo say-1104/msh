@@ -20,9 +20,9 @@ typedef struct _Function {
 
 void Tppush(int v, int s, int l, int p, Function *func) {
 	int tpv = v + func->tp[0][func->tp[0].size()];
-	int tps = v + func->tp[1][func->tp[1].size()];
-	int tpl = v + func->tp[2][func->tp[2].size()];
-	int tpp = v + func->tp[3][func->tp[3].size()];
+	int tps = s + func->tp[1][func->tp[1].size()];
+	int tpl = l + func->tp[2][func->tp[2].size()];
+	int tpp = p + func->tp[3][func->tp[3].size()];
 	func->tp[0].push_back(tpv);
 	func->tp[1].push_back(tps);
 	func->tp[2].push_back(tpl);
