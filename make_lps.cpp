@@ -77,10 +77,9 @@ int main(int argc, char *argv[]){
 	Tppush(0, 9, 24, 16, &func);
 	Tppush(9, 24, 16, 0, &func);
 
-	Printvv(func.tp);
-
-	//5
-	/*Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
+	//7
+	func.tp_num = 6;
+	Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "1", &func);
 	Copy(Lin, Wm+Wr+g, 0.0, 0.0, "2", &func);
 	Copy(Lin, Wh, 0.0, 0.0, "5", &func);
@@ -108,7 +107,7 @@ int main(int argc, char *argv[]){
 	Rotate(Lin, Y, W-Wpml, Wpml+Hsio2, Wpml+Wm+Lc, 90, "49", &func);
 
 	Surface("7 34 22 44 43 45 28 41 52 50 46", &func);
-	Surface("13 36 53 51 47", &func);*/
+	Surface("13 36 53 51 47", &func);
 
 
 

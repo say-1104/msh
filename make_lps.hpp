@@ -150,7 +150,7 @@ void Surface(const char* text, Function *func){
 void Surface(vector<int> v, Function *func){
 	Start_End(func, 3);
 	for (int i=0; i<v.size(); i++) {
-		ofs << v[i] << ' ';
+		ofs << v[i] + func->tp[1][func->tp_num] << ' ';
 	}
 	ofs << endl;
 }
@@ -196,7 +196,7 @@ void Copy(Shape shape, double x, double y, double z, vector<int> v, Function *fu
 	ofs << x << '\t' << y << '\t' << z << endl;
 	
 	for (int i=0; i<v.size(); i++) {
-		ofs << v[i] << ' ';
+		ofs << v[i] + func->tp[3-tmp][func->tp_num] << ' ';
 	}
 	ofs << endl;
 }
@@ -212,7 +212,7 @@ void Rotate(Shape shape, Axis axis, double x, double y, double z, double angle, 
 	ofs << angle << endl;
 	
 	for (int i=0; i<v.size(); i++) {
-		ofs << v[i] << ' ';
+		ofs << v[i] + func->tp[3-tmp][func->tp_num] << ' ';
 	}
 	ofs << endl;
 }
@@ -227,7 +227,7 @@ void Rotate(Shape shape, Axis axis, double x, double y, double z, double angle, 
 	ofs << angle << endl;
 	
 	for (int i=0; i<v.size(); i++) {
-		ofs << v[i] << ' ';
+		ofs << v[i] + func->tp[3-tmp][func->tp_num] << ' ';
 	}
 	ofs << endl;
 }
