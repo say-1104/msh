@@ -1,5 +1,15 @@
 #include "make_lps.hpp"
 
+void Printvec(vector<vector<int> > a){
+	for(int i=0; i<a.size(); i++){
+		for(int j=0; j<a[i].size(); j++){
+			cout << a[i][j] << " " ;
+		}
+		cout << endl;
+	}
+	cout << endl;
+}
+
 int main(int argc, char *argv[]){
 	Function func;
 	func.flag = 0;
@@ -67,6 +77,8 @@ int main(int argc, char *argv[]){
 	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
 	func.Tppush(0, 9, 24, 16);
 	func.Tppush(9, 24, 16, 0);
+
+	Printvec(func.tp)
 
 	//5
 	/*Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
