@@ -120,12 +120,12 @@ int main(int argc, char *argv[]){
 	v4={17+func.tp[2][1], 8+func.tp[2][2], 12+func.tp[2][2], 23+func.tp[2][5], 26+func.tp[2][5], 29+func.tp[2][5]};
 	v5={12+func.tp[2][1], 10+func.tp[2][2], 11+func.tp[2][2], 36+func.tp[2][5], 39+func.tp[2][5], 41+func.tp[2][5]};
 	v6={19+func.tp[2][1], 14+func.tp[2][2], 15+func.tp[2][2], 37+func.tp[2][5], 40+func.tp[2][5], 42+func.tp[2][5]};
-	Surface(v1, &func);
+	/*Surface(v1, &func);
 	Surface(v2, &func);
 	Surface(v3, &func);
 	Surface(v4, &func);
 	Surface(v5, &func);
-	Surface(v6, &func);
+	Surface(v6, &func);*/
 
 
 	//Trans_Gene(trans, gene, &func);
