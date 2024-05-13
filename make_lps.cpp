@@ -108,8 +108,24 @@ int main(int argc, char *argv[]){
 
 	Surface("7 34 22 44 43 45 28 41 52 50 46", &func);
 	Surface("13 36 53 51 47", &func);
+	Tppush(0, 20, 53, 24, &func);
 
-
+	//8
+	func.tp_num = 1;
+	Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 7 9", &func);
+	vector<int> v1, v2, v3, v4, v5, v6;
+	v1={14+func.tp[2][1], 5+func.tp[2][2], 9+func.tp[2][2], 6+func.tp[2][5], 9+func.tp[2][5], 12+func.tp[2][5]};
+	v2={15+func.tp[2][1], 6+func.tp[2][2], 10+func.tp[2][2], 7+func.tp[2][5], 10+func.tp[2][5], 13+func.tp[2][5]};
+	v3={16+func.tp[2][1], 7+func.tp[2][2], 11+func.tp[2][2], 22+func.tp[2][5], 25+func.tp[2][5], 28+func.tp[2][5]};
+	v4={17+func.tp[2][1], 8+func.tp[2][2], 12+func.tp[2][2], 23+func.tp[2][5], 26+func.tp[2][5], 29+func.tp[2][5]};
+	v5={12+func.tp[2][1], 10+func.tp[2][2], 11+func.tp[2][2], 36+func.tp[2][5], 39+func.tp[2][5], 41+func.tp[2][5]};
+	v6={19+func.tp[2][1], 14+func.tp[2][2], 15+func.tp[2][2], 37+func.tp[2][5], 40+func.tp[2][5], 42+func.tp[2][5]};
+	Surface(v1, &func);
+	Surface(v2, &func);
+	Surface(v3, &func);
+	Surface(v4, &func);
+	Surface(v5, &func);
+	Surface(v6, &func);
 
 
 	//Trans_Gene(trans, gene, &func);
