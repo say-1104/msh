@@ -14,7 +14,9 @@ int main(int argc, char *argv[]){
 	Function func;
 	func.flag = 0;
 	func.tp_num = 0;
-
+	func.Tppush(0, 9, 24, 16);
+	Printvec(func.tp);
+	func.Tppush(0, 9, 24, 16);
 	ofs.open("pcmDC.lps");
 	if(! ofs) {
 		cerr << "File open error !" << endl;
@@ -56,14 +58,14 @@ int main(int argc, char *argv[]){
 	Copy(Lin, Wpml, 0.0, 0.0, "1 2 3", &func);
 	Copy(Lin, W-2*Wpml, 0.0, 0.0, "4 5 6", &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "11 12 13", &func);
-	func.Tppush(0, 9, 24, 16);
-
+	
 	//2, 3
 	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
-	func.Tppush(0, 9, 24, 16);
-	func.Tppush(9, 24, 16, 0);
 
-	//3
+	Printvec(func.tp);
+	func.Tppush(9, 24, 16, 0);
+	Printvec(func.tp);
+	//4
 	Line(0.0, H-Wpml, 0.0, 0.0, H-Wpml, Wpml, &func);
 	Line(0.0, H-Wpml, Wpml, 0.0, H-Wpml, L-Wpml, &func);
 	Line(0.0, H-Wpml, L-Wpml, 0.0, H-Wpml, L, &func);
@@ -72,10 +74,11 @@ int main(int argc, char *argv[]){
 	Copy(Lin, W-2*Wpml, 0.0, 0.0, "4 5 6", &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "11 12 13", &func);
 	func.Tppush(0, 9, 24, 16);
-
-	//4, 5
+	Printvec(func.tp);
+	//5, 16
 	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
 	func.Tppush(0, 9, 24, 16);
+	Printvec(func.tp);
 	func.Tppush(9, 24, 16, 0);
 
 	Printvec(func.tp);
