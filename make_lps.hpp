@@ -17,10 +17,10 @@ typedef struct _Function {
 	vector<vector<int> > tp = vector<vector<int> >(4, vector<int>(1,0));
 
 	void Tppush(int v, int s, int l, int p) {
-		this->tp[0].push_back(v+tp[tp.size(tp[0]));
-		this->tp[1].push_back(s);
-		this->tp[2].push_back(l);
-		this->tp[3].push_back(p);
+		this->tp[0].push_back(v+this->tp[0][this->tp.size()]);
+		this->tp[1].push_back(s+this->tp[1][this->tp.size()]);
+		this->tp[2].push_back(l+this->tp[2][this->tp.size()]);
+		this->tp[3].push_back(p+this->tp[3][this->tp.size()]);
 	}
 } Function;
 
