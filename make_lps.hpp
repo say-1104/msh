@@ -182,7 +182,7 @@ void Copy(Shape shape, double x, double y, double z, const char* text, Function 
 	ofs << x << '\t' << y << '\t' << z << endl;
 	
 	for (int i=0; i<v.size(); i++) {
-		ofs << v[i] + func->tp[tmp][func->tp_num] << ' ';
+		ofs << v[i] + func->tp[3-tmp][func->tp_num] << ' ';
 	}
 	ofs << endl;
 }
