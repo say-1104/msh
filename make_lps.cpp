@@ -78,7 +78,7 @@ int main(int argc, char *argv[]){
 	func.Tppush(0, 9, 24, 16);
 	func.Tppush(9, 24, 16, 0);
 
-	Printvec(func.tp)
+	Printvec(func.tp);
 
 	//5
 	/*Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
