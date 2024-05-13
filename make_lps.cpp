@@ -59,8 +59,9 @@ int main(int argc, char *argv[]){
 
 	//2, 3
 	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
-	Tppush(0, 9, 24, 16, &func);
 	Tppush(9, 24, 16, 0, &func);
+	Tppush(0, 9, 24, 16, &func);
+	
 
 	//4
 	Line(0.0, H-Wpml, 0.0, 0.0, H-Wpml, Wpml, &func);
@@ -74,8 +75,9 @@ int main(int argc, char *argv[]){
 
 	//5, 6
 	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
-	Tppush(0, 9, 24, 16, &func);
 	Tppush(9, 24, 16, 0, &func);
+	Tppush(0, 9, 24, 16, &func);
+	
 
 	//7
 	func.tp_num = 6;
@@ -111,15 +113,15 @@ int main(int argc, char *argv[]){
 	Tppush(0, 20, 53, 24, &func);
 
 	//8
-	func.tp_num = 1;
+	func.tp_num = 2;
 	Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 7 9", &func);
 	vector<int> v1, v2, v3, v4, v5, v6;
-	v1={14+func.tp[2][1], 5+func.tp[2][2], 9+func.tp[2][2], 6+func.tp[2][5], 9+func.tp[2][5], 12+func.tp[2][5]};
-	v2={15+func.tp[2][1], 6+func.tp[2][2], 10+func.tp[2][2], 7+func.tp[2][5], 10+func.tp[2][5], 13+func.tp[2][5]};
-	v3={16+func.tp[2][1], 7+func.tp[2][2], 11+func.tp[2][2], 22+func.tp[2][5], 25+func.tp[2][5], 28+func.tp[2][5]};
-	v4={17+func.tp[2][1], 8+func.tp[2][2], 12+func.tp[2][2], 23+func.tp[2][5], 26+func.tp[2][5], 29+func.tp[2][5]};
-	v5={12+func.tp[2][1], 10+func.tp[2][2], 11+func.tp[2][2], 36+func.tp[2][5], 39+func.tp[2][5], 41+func.tp[2][5]};
-	v6={19+func.tp[2][1], 14+func.tp[2][2], 15+func.tp[2][2], 37+func.tp[2][5], 40+func.tp[2][5], 42+func.tp[2][5]};
+	v1={14+func.tp[2][2], 5+func.tp[2][7], 9+func.tp[2][7], 6+func.tp[2][6], 9+func.tp[2][6], 12+func.tp[2][6]};
+	v2={15+func.tp[2][2], 6+func.tp[2][7], 10+func.tp[2][7], 7+func.tp[2][6], 10+func.tp[2][6], 13+func.tp[2][6]};
+	v3={16+func.tp[2][2], 7+func.tp[2][7], 11+func.tp[2][7], 22+func.tp[2][6], 25+func.tp[2][6], 28+func.tp[2][6]};
+	v4={17+func.tp[2][2], 8+func.tp[2][7], 12+func.tp[2][7], 23+func.tp[2][6], 26+func.tp[2][6], 29+func.tp[2][6]};
+	v5={12+func.tp[2][2], 10+func.tp[2][7], 11+func.tp[2][7], 36+func.tp[2][6], 39+func.tp[2][6], 41+func.tp[2][6]};
+	v6={19+func.tp[2][2], 14+func.tp[2][7], 15+func.tp[2][7], 37+func.tp[2][6], 40+func.tp[2][6], 42+func.tp[2][6]};
 	/*Surface(v1, &func);
 	Surface(v2, &func);
 	Surface(v3, &func);
