@@ -48,6 +48,22 @@ int main(int argc, char *argv[]){
 	//2
 	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
 
+	//3
+	Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "1", &func);
+	Copy(Lin, Wm+Wr+g, 0.0, 0.0, "2", &func);
+	Copy(Lin, Wh, 0.0, 0.0, "5", &func);
+	Copy(Lin, R-Wh/2, 0.0, 0.0, "8", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "11", &func);
+	
+	Line(0.0, Wpml+Hsio2, L-Wpml, 0.0, Wpml+Hsio2, L, &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "17", &func);
+	Copy(Lin, Wm, 0.0, 0.0, "18", &func);
+	Copy(Lin, Wr, 0.0, 0.0, "21", &func);
+	Copy(Lin, g+R+Wh/2, 0.0, 0.0, "24", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "27", &func);
+
+
 	//Trans_Gene(trans, gene, &func);
 
 	Filename(lpsname, &func);
