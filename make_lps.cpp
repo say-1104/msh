@@ -48,15 +48,16 @@ int main(int argc, char *argv[]){
 	Copy(Lin, Wpml, 0.0, 0.0, "11 12 13", &func);
 	func.Tppush(0, 9, 24, 16);
 
-	//2
+	//2, 3
 	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
+	func.Tppush(0, 9, 24, 16);
 	func.Tppush(9, 24, 16, 0);
 
 	//3
 	Line(0.0, H-Wpml, 0.0, 0.0, H-Wpml, Wpml, &func);
 	Line(0.0, H-Wpml, Wpml, 0.0, H-Wpml, L-Wpml, &func);
 	Line(0.0, H-Wpml, L-Wpml, 0.0, H-Wpml, L, &func);
-	func.tp_num = 2;
+	func.tp_num = 3;
 	Copy(Lin, Wpml, 0.0, 0.0, "1 2 3", &func);
 	Copy(Lin, W-2*Wpml, 0.0, 0.0, "4 5 6", &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "11 12 13", &func);
