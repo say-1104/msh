@@ -122,12 +122,20 @@ int main(int argc, char *argv[]){
 	v4={17+func.tp[2][2], 8+func.tp[2][7], 12+func.tp[2][7], 23+func.tp[2][6], 26+func.tp[2][6], 29+func.tp[2][6]};
 	v5={12+func.tp[2][2], 10+func.tp[2][7], 11+func.tp[2][7], 36+func.tp[2][6], 39+func.tp[2][6], 41+func.tp[2][6]};
 	v6={19+func.tp[2][2], 14+func.tp[2][7], 15+func.tp[2][7], 37+func.tp[2][6], 40+func.tp[2][6], 42+func.tp[2][6]};
-	/*Surface(v1, &func);
+	Surface(v1, &func);
 	Surface(v2, &func);
 	Surface(v3, &func);
 	Surface(v4, &func);
 	Surface(v5, &func);
-	Surface(v6, &func);*/
+	Surface(v6, &func);
+	v1={4+func.tp[1][2], 4+func.tp[1][7], 11+func.tp[1][7], 19+func.tp[1][7], 20+func.tp[1][7], 2+func.tp[1][6], 3+func.tp[1][6], 4+func.tp[1][6]};
+	v2={6+func.tp[1][2], 6+func.tp[1][7], 12+func.tp[1][7], 21+func.tp[1][7], 22+func.tp[1][7], 7+func.tp[1][6], 8+func.tp[1][6], 9+func.tp[1][6]};
+	v3={8+func.tp[1][2], 16+func.tp[1][7], 17+func.tp[1][7], 23+func.tp[1][7], 24+func.tp[1][7], 12+func.tp[1][6], 13+func.tp[1][6], 14+func.tp[1][6]};
+	v4={5+func.tp[1][2], 5+func.tp[1][7], 23+func.tp[1][7], 20+func.tp[1][7], 21+func.tp[1][7], 15+func.tp[1][6], 16+func.tp[1][6], 17+func.tp[1][6], 18+func.tp[1][6], 19+func.tp[1][6], 20+func.tp[1][6]};
+	Volume(v1, &func);
+	Volume(v2, &func);
+	Volume(v3, &func);
+	Volume(v4, &func);
 
 
 	//Trans_Gene(trans, gene, &func);
