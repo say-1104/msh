@@ -142,7 +142,7 @@ void Surface(const char* text, Function *func){
 	vector<int> v = Atovec(text);
 	Start_End(func, 3);
 	for (int i=0; i<v.size(); i++) {
-		ofs << v[i] << ' ';
+		ofs << v[i] + func->tp[1][func->tp_num] << ' ';
 	}
 	ofs << endl;
 }
