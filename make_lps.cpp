@@ -203,7 +203,7 @@ int main(int argc, char *argv[]){
 
 	//10
 	func.tp_num = 6;
-	Copy(Sur, 0.0, Hsi, 0.0, "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 19", &func);
+	Copy(Sur, 0.0, Hsi, 0.0, "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 18", &func);
 	Copy(Lin, 0.0, Hsi, 0.0, "46 47 55 56", &func);
 	v1={48+func.tp[2][6], 33+func.tp[2][9], 34+func.tp[2][9], 48+func.tp[2][8], 49+func.tp[2][8], 50+func.tp[2][8]};
 	v2={49+func.tp[2][6], 35+func.tp[2][9], 36+func.tp[2][9], 58+func.tp[2][8], 59+func.tp[2][8], 60+func.tp[2][8]};
@@ -213,9 +213,9 @@ int main(int argc, char *argv[]){
 	Surface(v2, &func);
 	Surface(v3, &func);
 	Surface(v4, &func);
-	/*v1={16+func.tp[1][6], 10+func.tp[1][9], 49+func.tp[1][9], 50+func.tp[1][9], 53+func.tp[1][9], 16+func.tp[1][8]};
+	v1={16+func.tp[1][6], 10+func.tp[1][9], 49+func.tp[1][9], 50+func.tp[1][9], 53+func.tp[1][9], 16+func.tp[1][8]};
 	v2={17+func.tp[1][6], 53+func.tp[1][9], 54+func.tp[1][9], 55+func.tp[1][9], 56+func.tp[1][9], 17+func.tp[1][8], 18+func.tp[1][8], 19+func.tp[1][8], 20+func.tp[1][8], 21+func.tp[1][8], 22+func.tp[1][8]};
-	v3={18+func.tp[1][6], 46+func.tp[1][9], 51+func.tp[1][9], 52+func.tp[1][9], 54+func.tp[1][9], 23+func.tp[1][8]};
+	v3={19+func.tp[1][6], 46+func.tp[1][9], 51+func.tp[1][9], 52+func.tp[1][9], 54+func.tp[1][9], 24+func.tp[1][8]};
 	v4={20+func.tp[1][6], 7+func.tp[1][9], 40+func.tp[1][9], 22+func.tp[1][9], 44+func.tp[1][9], 43+func.tp[1][9], 45+func.tp[1][9], 28+func.tp[1][9], 47+func.tp[1][9], 51+func.tp[1][9], 55+func.tp[1][9], 49+func.tp[1][9], 25+func.tp[1][8]};
 	v5={21+func.tp[1][6], 13+func.tp[1][9], 41+func.tp[1][9], 34+func.tp[1][9], 48+func.tp[1][9], 52+func.tp[1][9], 56+func.tp[1][9], 50+func.tp[1][9], 26+func.tp[1][8]};
 	Volume(v1, &func);
