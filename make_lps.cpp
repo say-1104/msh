@@ -154,7 +154,46 @@ int main(int argc, char *argv[]){
 	Volume(v2, &func);
 	Volume(v3, &func);
 	Volume(v4, &func);
+	Tppush(9, 24, 16, 0, &func);
 
+	//9
+	func.tp_num = 8;
+	Line(0.0, Wpml+Hsio2+Hsi, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "1", &func);
+	Copy(Lin, Wm+Wr+g, 0.0, 0.0, "2", &func);
+	Copy(Lin, Wh, 0.0, 0.0, "5", &func);
+	Copy(Lin, R-Wh/2, 0.0, 0.0, "8", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "11", &func);
+	
+	Line(0.0, Wpml+Hsio2+Hsi, L-Wpml, 0.0, Wpml+Hsio2, L, &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "17", &func);
+	Copy(Lin, Wm, 0.0, 0.0, "18", &func);
+	Copy(Lin, Wr, 0.0, 0.0, "21", &func);
+	Copy(Lin, g+R+Wh/2, 0.0, 0.0, "24", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "27", &func);
+	
+	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4", &func);
+	Copy(Lin, 0.0, 0.0, L-2*Wpml-Wm-Wh, "16", &func);
+	Copy(Lin, 0.0, 0.0, Wh, "35", &func);
+	Copy(Lin, 0.0, 0.0, Wm, "38", &func);
+	
+	Copy(Lin, 0.0, 0.0, -(L-2*Wpml-Wm), "25", &func);
+
+	Copy(Poi, 0.0, 0.0, Wm, "6 8", &func);
+	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, "31", &func);
+	Copy(Poi, Wpcm, 0.0, 0.0, "33", &func);
+	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, "34", &func);
+	Surface("10 46 48 49 50 47", &func);
+	int Leff1;
+	if(Leff == 0 || Leff == Lc) Leff1 = Lc/2;
+	else Leff1 == Leff;
+	Copy(Lin, 0.0, 0.0, Leff1, "48 49 50", &func);
+	Copy(Lin, 0.0, 0.0, Lc-Leff1, "51 52 53", &func);
+	/*Rotate(Poi, Y, W-Wpml, Wpml+Hsio2, Wpml+Wm+Lc, 90, "", &func);
+
+	Surface("7 34 22 44 43 45 28 41 52 50 46", &func);
+	Surface("13 36 53 51 47", &func);
+	Tppush(0, 20, 53, 24, &func);*/
 
 	//Trans_Gene(trans, gene, &func);
 
