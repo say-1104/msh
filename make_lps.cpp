@@ -49,36 +49,54 @@ int main(int argc, char *argv[]){
 	cout << "writing " << lpsname << "..." << endl;
 
 	//1
-	Line(0.0, 0.0, 0.0, 0.0, 0.0, Wpml, &func);
-	Line(0.0, 0.0, Wpml, 0.0, 0.0, L-Wpml, &func);
-	Line(0.0, 0.0, L-Wpml, 0.0, 0.0, L, &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "1 2 3", &func);
-	Copy(Lin, W-2*Wpml, 0.0, 0.0, "4 5 6", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "11 12 13", &func);
+	Line(0.0, 0.0, 0.0, 	0.0, 0.0, Wpml, &func);
+	Line(0.0, 0.0, Wpml, 	0.0, 0.0, L-Wpml, &func);
+	Line(0.0, 0.0, L-Wpml, 	0.0, 0.0, L, &func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"1 2 3", &func);
+	Copy(Lin, W-2*Wpml, 0.0, 0.0, 	"4 5 6", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"11 12 13", &func);
 	Tppush(0, 9, 24, 16, &func);
 
-	//2, 3
-	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
+	//2
+	func.tp_num = 1;
+	Line(0.0, Wpml, 0.0, 	0.0, Wpml, Wpml, &func);
+	Line(0.0, Wpml, Wpml, 	0.0, Wpml, L-Wpml, &func);
+	Line(0.0, Wpml, L-Wpml, 0.0, Wpml, L, &func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"1 2 3", &func);
+	Copy(Lin, W-2*Wpml, 0.0, 0.0, 	"4 5 6", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"11 12 13", &func);
+	Tppush(0, 9, 24, 16, &func);
+
+	//3
+	func.tp_num = 0;
+	Copy(Sur, 0.0, Wpml, 0.0, 		"1 2 3 4 5 6 7 8 9", &func);
 	Tppush(9, 24, 16, 0, &func);
-	Tppush(0, 9, 24, 16, &func);
 	
-
 	//4
-	Line(0.0, H-Wpml, 0.0, 0.0, H-Wpml, Wpml, &func);
-	Line(0.0, H-Wpml, Wpml, 0.0, H-Wpml, L-Wpml, &func);
-	Line(0.0, H-Wpml, L-Wpml, 0.0, H-Wpml, L, &func);
 	func.tp_num = 3;
-	Copy(Lin, Wpml, 0.0, 0.0, "1 2 3", &func);
-	Copy(Lin, W-2*Wpml, 0.0, 0.0, "4 5 6", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "11 12 13", &func);
+	Line(0.0, H-Wpml, 0.0, 		0.0, H-Wpml, Wpml, &func);
+	Line(0.0, H-Wpml, Wpml, 	0.0, H-Wpml, L-Wpml, &func);
+	Line(0.0, H-Wpml, L-Wpml, 	0.0, H-Wpml, L, &func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"1 2 3", &func);
+	Copy(Lin, W-2*Wpml, 0.0, 0.0, 	"4 5 6", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"11 12 13", &func);
 	Tppush(0, 9, 24, 16, &func);
 
-	//5, 6
+	//5
+	func.tp_num = 4;
+	Line(0.0, H-Wpml, 0.0, 		0.0, H-Wpml, Wpml, &func);
+	Line(0.0, H-Wpml, Wpml, 	0.0, H-Wpml, L-Wpml, &func);
+	Line(0.0, H-Wpml, L-Wpml, 	0.0, H-Wpml, L, &func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"1 2 3", &func);
+	Copy(Lin, W-2*Wpml, 0.0, 0.0, 	"4 5 6", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"11 12 13", &func);
+	Tppush(0, 9, 24, 16, &func);
+
+	//6
+	func.tp_num = 3;
 	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
 	Tppush(9, 24, 16, 0, &func);
-	Tppush(0, 9, 24, 16, &func);
 	
-
 	//7
 	func.tp_num = 6;
 	Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
@@ -113,25 +131,25 @@ int main(int argc, char *argv[]){
 	Tppush(0, 20, 53, 24, &func);
 
 	//8
-	func.tp_num = 2;
+	func.tp_num = 1;
 	Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 7 9", &func);
 	vector<int> v1, v2, v3, v4, v5, v6;
-	v1={14+func.tp[2][2], 5+func.tp[2][7], 9+func.tp[2][7], 6+func.tp[2][6], 9+func.tp[2][6], 12+func.tp[2][6]};
-	v2={15+func.tp[2][2], 6+func.tp[2][7], 10+func.tp[2][7], 7+func.tp[2][6], 10+func.tp[2][6], 13+func.tp[2][6]};
-	v3={16+func.tp[2][2], 7+func.tp[2][7], 11+func.tp[2][7], 22+func.tp[2][6], 25+func.tp[2][6], 28+func.tp[2][6]};
-	v4={17+func.tp[2][2], 8+func.tp[2][7], 12+func.tp[2][7], 23+func.tp[2][6], 26+func.tp[2][6], 29+func.tp[2][6]};
-	v5={12+func.tp[2][2], 10+func.tp[2][7], 11+func.tp[2][7], 36+func.tp[2][6], 39+func.tp[2][6], 41+func.tp[2][6]};
-	v6={19+func.tp[2][2], 14+func.tp[2][7], 15+func.tp[2][7], 37+func.tp[2][6], 40+func.tp[2][6], 42+func.tp[2][6]};
+	v1={14+func.tp[2][1], 5+func.tp[2][7], 9+func.tp[2][7], 6+func.tp[2][6], 9+func.tp[2][6], 12+func.tp[2][6]};
+	v2={15+func.tp[2][1], 6+func.tp[2][7], 10+func.tp[2][7], 7+func.tp[2][6], 10+func.tp[2][6], 13+func.tp[2][6]};
+	v3={16+func.tp[2][1], 7+func.tp[2][7], 11+func.tp[2][7], 22+func.tp[2][6], 25+func.tp[2][6], 28+func.tp[2][6]};
+	v4={17+func.tp[2][1], 8+func.tp[2][7], 12+func.tp[2][7], 23+func.tp[2][6], 26+func.tp[2][6], 29+func.tp[2][6]};
+	v5={12+func.tp[2][1], 10+func.tp[2][7], 11+func.tp[2][7], 36+func.tp[2][6], 39+func.tp[2][6], 41+func.tp[2][6]};
+	v6={19+func.tp[2][1], 14+func.tp[2][7], 15+func.tp[2][7], 37+func.tp[2][6], 40+func.tp[2][6], 42+func.tp[2][6]};
 	Surface(v1, &func);
 	Surface(v2, &func);
 	Surface(v3, &func);
 	Surface(v4, &func);
 	Surface(v5, &func);
 	Surface(v6, &func);
-	v1={4+func.tp[1][2], 4+func.tp[1][7], 11+func.tp[1][7], 19+func.tp[1][7], 20+func.tp[1][7], 2+func.tp[1][6], 3+func.tp[1][6], 4+func.tp[1][6]};
-	v2={6+func.tp[1][2], 6+func.tp[1][7], 12+func.tp[1][7], 21+func.tp[1][7], 22+func.tp[1][7], 7+func.tp[1][6], 8+func.tp[1][6], 9+func.tp[1][6]};
-	v3={8+func.tp[1][2], 16+func.tp[1][7], 17+func.tp[1][7], 23+func.tp[1][7], 24+func.tp[1][7], 12+func.tp[1][6], 13+func.tp[1][6], 14+func.tp[1][6]};
-	v4={5+func.tp[1][2], 5+func.tp[1][7], 23+func.tp[1][7], 20+func.tp[1][7], 21+func.tp[1][7], 15+func.tp[1][6], 16+func.tp[1][6], 17+func.tp[1][6], 18+func.tp[1][6], 19+func.tp[1][6], 20+func.tp[1][6]};
+	v1={4+func.tp[1][1], 4+func.tp[1][7], 11+func.tp[1][7], 19+func.tp[1][7], 20+func.tp[1][7], 2+func.tp[1][6], 3+func.tp[1][6], 4+func.tp[1][6]};
+	v2={6+func.tp[1][1], 6+func.tp[1][7], 12+func.tp[1][7], 21+func.tp[1][7], 22+func.tp[1][7], 7+func.tp[1][6], 8+func.tp[1][6], 9+func.tp[1][6]};
+	v3={8+func.tp[1][1], 16+func.tp[1][7], 17+func.tp[1][7], 23+func.tp[1][7], 24+func.tp[1][7], 12+func.tp[1][6], 13+func.tp[1][6], 14+func.tp[1][6]};
+	v4={5+func.tp[1][1], 5+func.tp[1][7], 23+func.tp[1][7], 20+func.tp[1][7], 21+func.tp[1][7], 15+func.tp[1][6], 16+func.tp[1][6], 17+func.tp[1][6], 18+func.tp[1][6], 19+func.tp[1][6], 20+func.tp[1][6]};
 	Volume(v1, &func);
 	Volume(v2, &func);
 	Volume(v3, &func);
