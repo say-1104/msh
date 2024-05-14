@@ -213,7 +213,7 @@ int main(int argc, char *argv[]){
 	Surface(v2, &func);
 	Surface(v3, &func);
 	Surface(v4, &func);
-	v1={16+func.tp[1][6], 10+func.tp[1][9], 49+func.tp[1][9], 50+func.tp[1][9], 53+func.tp[1][9], 16+func.tp[1][8]};
+	/*v1={16+func.tp[1][6], 10+func.tp[1][9], 49+func.tp[1][9], 50+func.tp[1][9], 53+func.tp[1][9], 16+func.tp[1][8]};
 	v2={17+func.tp[1][6], 53+func.tp[1][9], 54+func.tp[1][9], 55+func.tp[1][9], 56+func.tp[1][9], 17+func.tp[1][8], 18+func.tp[1][8], 19+func.tp[1][8], 20+func.tp[1][8], 21+func.tp[1][8], 22+func.tp[1][8]};
 	v3={18+func.tp[1][6], 46+func.tp[1][9], 51+func.tp[1][9], 52+func.tp[1][9], 54+func.tp[1][9], 23+func.tp[1][8]};
 	v4={20+func.tp[1][6], 7+func.tp[1][9], 40+func.tp[1][9], 22+func.tp[1][9], 44+func.tp[1][9], 43+func.tp[1][9], 45+func.tp[1][9], 28+func.tp[1][9], 47+func.tp[1][9], 51+func.tp[1][9], 55+func.tp[1][9], 49+func.tp[1][9], 25+func.tp[1][8]};
@@ -225,7 +225,7 @@ int main(int argc, char *argv[]){
 	Volume(v5, &func);
 	Tppush(21, 56, 36, 0, &func);
 
-	/*//11
+	//11
 	func.tp_num = 10;
 	Line(Wpml+Wm+Wr+g+(Wh-Wpcm)/2, Wpml+Hsio2+Hsi+Hpcm, Wpml+Wm, Wpml+Wm+Wr+g+(Wh+Wpcm)/2, Wpml+Hsio2+Hsi+Hpcm, Wpml+Wm, &func);
 	Copy(Lin, 0.0, 0.0, Leff1, "1", &func);
