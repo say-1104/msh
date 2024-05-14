@@ -237,7 +237,7 @@ void Mat2D(int mat, const char* text, Function *func){
 	Start_End(func, 7);
 	int dim = 2;
 
-	ofs << dim << mat << endl;
+	ofs << dim << ' ' << mat << endl;
 
 	for (int i=0; i<v.size(); i++) {
 		ofs << v[i] << ' ';
@@ -249,7 +249,7 @@ void Mat2D(int mat, vector<int> v, Function *func){
 	Start_End(func, 7);
 	int dim = 2;
 
-	ofs << dim << mat << endl;
+	ofs << dim << ' ' << mat << endl;
 
 	for (int i=0; i<v.size(); i++) {
 		ofs << v[i] << ' ';
@@ -262,7 +262,7 @@ void Mat3D(int mat, const char* text, Function *func){
 	Start_End(func, 7);
 	int dim = 3;
 
-	ofs << dim << mat << endl;
+	ofs << dim << ' ' << mat << endl;
 
 	for (int i=0; i<v.size(); i++) {
 		ofs << v[i] << ' ';
@@ -274,7 +274,7 @@ void Mat3D(int mat, vector<int> v, Function *func){
 	Start_End(func, 7);
 	int dim = 3;
 
-	ofs << dim << mat << endl;
+	ofs << dim << ' ' << mat << endl;
 
 	for (int i=0; i<v.size(); i++) {
 		ofs << v[i] << ' ';

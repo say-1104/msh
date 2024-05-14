@@ -43,7 +43,7 @@ int main(int argc, char *argv[]){
 	double H = 2 * Wpml + Hsio2 + Hsi + Hpcm + Wm;
 
 	//メッシュのパラメータ
-	double unstr = 0.06, trans = 0.5, gene = 0.5;
+	double unstr = 0.05, trans = 0.5, gene = 0.5;
 	string lpsname = "pcmDC";
 
 	cout << "writing " << lpsname << "..." << endl;
@@ -186,7 +186,7 @@ int main(int argc, char *argv[]){
 	Surface("10 46 48 49 50 47", &func);
 	int Leff1;
 	if(Leff == 0 || Leff == Lc) Leff1 = Lc/2;
-	else Leff1 == Leff;
+	else Leff1 = Leff;
 	Copy(Lin, 0.0, 0.0, Leff1, "48 49 50", &func);
 	Copy(Lin, 0.0, 0.0, Lc-Leff1, "51 52 53", &func);
 	Rotate(Poi, Y, W-Wpml, Wpml+Hsio2+Hsi, Wpml+Wm+Lc, 90, "39 40", &func);
@@ -269,17 +269,23 @@ int main(int argc, char *argv[]){
 	Mat3D(11, "43", &func);
 	Mat3D(12, "44", &func);
 	Mat3D(13, "45", &func);
-	Mat3D(14, "2 5 8 20 27", &func);
-	Mat3D(15, "11 14 17 38 46 47 51 58", &func);
+	Mat3D(14, "2 5 20 27", &func);
+	Mat3D(15, "11 14 38 46 47 51 58", &func);
 	if(Leff == 0 || Leff == Lc) Mat3D(16, "48 49", &func);
 	else {
 		Mat3D(16, "48", &func);
 		Mat3D(17, "49", &func);
 	};
+	v1={3+func.tp[1][6], 8+func.tp[1][6], 13+func.tp[1][6], 15+func.tp[1][6], 16+func.tp[1][6], 17+func.tp[1][6], 18+func.tp[1][6]};
+	v2={5+func.tp[1][9], 8+func.tp[1][9], 9+func.tp[1][9], 10+func.tp[1][9], 21+func.tp[1][9], 24+func.tp[1][9], 25+func.tp[1][9], 26+func.tp[1][9], 43+func.tp[1][9], 44+func.tp[1][9], 45+func.tp[1][9], 46+func.tp[1][9], 47+func.tp[1][9], 48+func.tp[1][9], 49+func.tp[1][9], 50+func.tp[1][9], 51+func.tp[1][9], 52+func.tp[1][9], 53+func.tp[1][9], 35+func.tp[1][9], 38+func.tp[1][9], 39+func.tp[1][9], 40+func.tp[1][9]};
+	v3={3+func.tp[1][8], 8+func.tp[1][8], 13+func.tp[1][8], 15+func.tp[1][8], 16+func.tp[1][8], 17+func.tp[1][8], 18+func.tp[1][8], 19+func.tp[1][8], 20+func.tp[1][8], 21+func.tp[1][8], 22+func.tp[1][8], 23+func.tp[1][8]};
+	v4={1+func.tp[1][11], 3+func.tp[1][11], 4+func.tp[1][11], 5+func.tp[1][11], 6+func.tp[1][11], 7+func.tp[1][11], 1+func.tp[1][10], 2+func.tp[1][10]};
+	copy(v2.begin(),v2.end(), back_inserter(v1));
+	copy(v3.begin(),v3.end(), back_inserter(v1));
+	copy(v4.begin(),v4.end(), back_inserter(v1));
+	Unstr(Sur, unstr, v1, &func);
 	
-	//Unstr(Sur)
-	
-	//Trans_Gene(trans, gene, &func);
+	Trans_Gene(trans, gene, &func);
 	Printvv(func.tp);
 
 	Filename(lpsname, &func);
