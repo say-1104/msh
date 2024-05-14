@@ -20,7 +20,7 @@ int main(int argc, char *argv[]){
 		cerr << "File open error !" << endl;
 		exit(1);
 	}
-	ofs << fixed << setprecision(4);
+	ofs << fixed << setprecision(10);
 	
 	//DCのパラメータ(外部入力)
 	double Wh = atof(argv[1]);		//導波路幅(PCM有)
@@ -36,10 +36,16 @@ int main(int argc, char *argv[]){
 	double Hsio2 = 2.0;				//SiO2層の厚さ
 	double Wm = 2.0;				//導波路とPML間の距離
 	double Wpml = 1.0;				//PML幅
+
+	double Lcur = 20;				//曲げ導波路部分の全長
+	double Wcur = 8;				//曲げ導波路部分の幅
+	Curv curv;
+	curv = calcCurv(Lcur, Wcur);
+
 	double R = 14.5;				//曲げ半径
 
-	double L = 2 * Wpml + 2 * Wm + Lc + R + Wh / 2;
-	double W = 2 * Wpml + Wm + Wr + g + Wh / 2 + R;
+	double L = 2 * Wpml + Wm + Lc + Lcur;
+	double W = 2 * Wpml + 2 * Wm + Wr + g + Wh + Wcur;
 	double H = 2 * Wpml + Hsio2 + Hsi + Hpcm + Wm;
 
 	//メッシュのパラメータ
@@ -103,20 +109,19 @@ int main(int argc, char *argv[]){
 	Copy(Lin, Wpml, 0.0, 0.0, "1", &func);
 	Copy(Lin, Wm+Wr+g, 0.0, 0.0, "2", &func);
 	Copy(Lin, Wh, 0.0, 0.0, "5", &func);
-	Copy(Lin, R-Wh/2, 0.0, 0.0, "8", &func);
+	Copy(Lin, Wm+Wcur, 0.0, 0.0, "8", &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "11", &func);
 	
 	Line(0.0, Wpml+Hsio2, L-Wpml, 0.0, Wpml+Hsio2, L, &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "17", &func);
 	Copy(Lin, Wm, 0.0, 0.0, "18", &func);
 	Copy(Lin, Wr, 0.0, 0.0, "21", &func);
-	Copy(Lin, g+R+Wh/2, 0.0, 0.0, "24", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "27", &func);
+	Copy(Lin, g+Wcur, 0.0, 0.0, "24", &func);
+	Copy(Lin, Wh, 0.0, 0.0, "27", &func);
+	Copy(Lin, Wm, 0.0, 0.0, "30", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "33", &func);
 	
-	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4", &func);
-	Copy(Lin, 0.0, 0.0, L-2*Wpml-Wm-Wh, "16", &func);
-	Copy(Lin, 0.0, 0.0, Wh, "35", &func);
-	Copy(Lin, 0.0, 0.0, Wm, "38", &func);
+	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4 16", &func);
 	
 	Copy(Lin, 0.0, 0.0, -(L-2*Wpml-Wm), "25", &func);
 
@@ -124,9 +129,10 @@ int main(int argc, char *argv[]){
 	Copy(Poi, Wh, 0.0, 0.0, "31", &func);
 	Surface("10 46 48 47", &func);
 	Copy(Lin, 0.0, 0.0, Lc, "48", &func);
-	Rotate(Lin, Y, W-Wpml, Wpml+Hsio2, Wpml+Wm+Lc, 90, "49", &func);
+	Rotate(Lin, Y, Wpml+Wm+Wr+g+Wh/2+curv.R, Wpml+Hsio2, Wpml+Wm+Lc, curv.angle, "49", &func);
+	Rotate(Lin, Y, Wpml+Wm+Wr+g+Wh/2+Wcur-curv.R, Wpml+Hsio2, L-Wpml, curv.angle, "49", &func);
 
-	Surface("7 34 22 44 43 45 28 41 52 50 46", &func);
+	/*Surface("7 34 22 44 43 45 28 41 52 50 46", &func);
 	Surface("13 36 53 51 47", &func);
 	Tppush(0, 20, 53, 34, &func);
 
@@ -285,7 +291,7 @@ int main(int argc, char *argv[]){
 	copy(v4.begin(),v4.end(), back_inserter(v1));
 	Unstr(Sur, unstr, v1, &func);
 	
-	Trans_Gene(trans, gene, &func);
+	Trans_Gene(trans, gene, &func);*/
 	Printvv(func.tp);
 
 	Filename(lpsname, &func);

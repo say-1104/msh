@@ -5,6 +5,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <iomanip>
+#include <cmath>
 using namespace std;
 
 ofstream ofs;
@@ -16,6 +17,18 @@ typedef struct _Function {
 	int tp_num;
 	vector<vector<int> > tp = vector<vector<int> >(4, vector<int>(1,0));
 } Function;
+
+typedef struct _Curv {
+	double R;
+	double angle;
+} Curv;
+
+Curv calcCurv(double Lcur, double Wcur){
+	Curv curv;
+	curv.R = (Lcur * Lcur + Wcur * Wcur)/(4 * Wcur);
+	curv.angle = asin((2 * Wcur * Lcur)/(Lcur * Lcur + Wcur * Wcur)) * 180 / M_PI;
+	return curv;
+}
 
 
 void Tppush(int v, int s, int l, int p, Function *func) {
