@@ -222,6 +222,7 @@ int main(int argc, char *argv[]){
 	
 	
 	
+	
 	//Trans_Gene(trans, gene, &func);
 	Printvv(func.tp);
 
