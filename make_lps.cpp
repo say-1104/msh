@@ -98,7 +98,7 @@ int main(int argc, char *argv[]){
 	Tppush(9, 24, 16, 0, &func);
 	
 	//7
-	func.tp_num = 6;
+	/*func.tp_num = 6;
 	Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "1", &func);
 	Copy(Lin, Wm+Wr+g, 0.0, 0.0, "2", &func);
