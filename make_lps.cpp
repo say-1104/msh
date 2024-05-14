@@ -132,7 +132,7 @@ int main(int argc, char *argv[]){
 
 	//8
 	func.tp_num = 1;
-	Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 7 9", &func);
+	/*Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 7 9", &func);
 	vector<int> v1, v2, v3, v4, v5, v6;
 	v1={14+func.tp[2][1], 5+func.tp[2][7], 9+func.tp[2][7], 6+func.tp[2][6], 9+func.tp[2][6], 12+func.tp[2][6]};
 	v2={15+func.tp[2][1], 6+func.tp[2][7], 10+func.tp[2][7], 7+func.tp[2][6], 10+func.tp[2][6], 13+func.tp[2][6]};
@@ -153,7 +153,7 @@ int main(int argc, char *argv[]){
 	Volume(v1, &func);
 	Volume(v2, &func);
 	Volume(v3, &func);
-	Volume(v4, &func);
+	Volume(v4, &func);*/
 
 
 	//Trans_Gene(trans, gene, &func);
