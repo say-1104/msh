@@ -3,7 +3,7 @@
 void Printvv(vector<vector<int> > a){
 	for(int i=0; i<a.size(); i++){
 		for(int j=0; j<a[i].size(); j++){
-			cout << a[i][j] << " " ;
+			cout << a[i][j] << "\t" ;
 		}
 		cout << endl;
 	}
@@ -43,7 +43,7 @@ int main(int argc, char *argv[]){
 	double H = 2 * Wpml + Hsio2 + Hsi + Hpcm + Wm;
 
 	//メッシュのパラメータ
-	double trans = 0.4, gene = 0.4;
+	double unstr = 0.06, trans = 0.5, gene = 0.5;
 	string lpsname = "pcmDC";
 
 	cout << "writing " << lpsname << "..." << endl;
@@ -189,7 +189,7 @@ int main(int argc, char *argv[]){
 	else Leff1 == Leff;
 	Copy(Lin, 0.0, 0.0, Leff1, "48 49 50", &func);
 	Copy(Lin, 0.0, 0.0, Lc-Leff1, "51 52 53", &func);
-	Rotate(Poi, Y, W-Wpml, Wpml+Hsio2, Wpml+Wm+Lc, 90, "39 40", &func);
+	Rotate(Poi, Y, W-Wpml, Wpml+Hsio2+Hsi, Wpml+Wm+Lc, 90, "39 40", &func);
 	Surface("58 59 60 66 39 65", &func);
 	Surface("7 34 22 44 43 45 28 41 65 61 54 46", &func);
 	Surface("13 36 66 62 55 47", &func);
@@ -197,8 +197,8 @@ int main(int argc, char *argv[]){
 
 	//10
 	func.tp_num = 6;
-	Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15", &func);
-	Copy(Lin, 0.0, Hsio2, 0.0, "46 47 52 53", &func);
+	Copy(Sur, 0.0, Hsi, 0.0, "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15", &func);
+	Copy(Lin, 0.0, Hsi, 0.0, "46 47 52 53", &func);
 	v1={48+func.tp[2][6], 31+func.tp[2][9], 32+func.tp[2][9], 48+func.tp[2][8], 49+func.tp[2][8], 50+func.tp[2][8]};
 	v2={49+func.tp[2][6], 33+func.tp[2][9], 34+func.tp[2][9], 58+func.tp[2][8], 59+func.tp[2][8], 60+func.tp[2][8]};
 	v3={50+func.tp[2][6], 31+func.tp[2][9], 33+func.tp[2][9], 54+func.tp[2][8], 61+func.tp[2][8]};
@@ -207,21 +207,77 @@ int main(int argc, char *argv[]){
 	Surface(v2, &func);
 	Surface(v3, &func);
 	Surface(v4, &func);
-	v1={16+func.tp[1][1], 4+func.tp[1][7], 11+func.tp[1][7], 19+func.tp[1][7], 20+func.tp[1][7], 2+func.tp[1][6], 3+func.tp[1][6], 4+func.tp[1][6]};
-	v2={17+func.tp[1][1], 6+func.tp[1][7], 12+func.tp[1][7], 21+func.tp[1][7], 22+func.tp[1][7], 7+func.tp[1][6], 8+func.tp[1][6], 9+func.tp[1][6]};
-	v3={18+func.tp[1][1], 16+func.tp[1][7], 17+func.tp[1][7], 23+func.tp[1][7], 24+func.tp[1][7], 12+func.tp[1][6], 13+func.tp[1][6], 14+func.tp[1][6]};
-	v4={19+func.tp[1][1], 5+func.tp[1][7], 23+func.tp[1][7], 20+func.tp[1][7], 21+func.tp[1][7], 15+func.tp[1][6], 16+func.tp[1][6], 17+func.tp[1][6], 18+func.tp[1][6], 19+func.tp[1][6], 20+func.tp[1][6]};
-	v5={20+func.tp[1][1], 5+func.tp[1][7], 23+func.tp[1][7], 20+func.tp[1][7], 21+func.tp[1][7], 15+func.tp[1][6], 16+func.tp[1][6], 17+func.tp[1][6], 18+func.tp[1][6], 19+func.tp[1][6], 20+func.tp[1][6]};
+	v1={16+func.tp[1][6], 10+func.tp[1][9], 46+func.tp[1][9], 47+func.tp[1][9], 50+func.tp[1][9], 16+func.tp[1][8]};
+	v2={17+func.tp[1][6], 50+func.tp[1][9], 51+func.tp[1][9], 52+func.tp[1][9], 53+func.tp[1][9], 17+func.tp[1][8], 18+func.tp[1][8], 19+func.tp[1][8], 20+func.tp[1][8], 21+func.tp[1][8], 22+func.tp[1][8]};
+	v3={18+func.tp[1][6], 39+func.tp[1][9], 48+func.tp[1][9], 49+func.tp[1][9], 51+func.tp[1][9], 23+func.tp[1][8]};
+	v4={19+func.tp[1][6], 7+func.tp[1][9], 34+func.tp[1][9], 22+func.tp[1][9], 44+func.tp[1][9], 43+func.tp[1][9], 45+func.tp[1][9], 28+func.tp[1][9], 41+func.tp[1][9], 48+func.tp[1][9], 52+func.tp[1][9], 46+func.tp[1][9], 24+func.tp[1][8]};
+	v5={20+func.tp[1][6], 13+func.tp[1][9], 36+func.tp[1][9], 49+func.tp[1][9], 53+func.tp[1][9], 47+func.tp[1][9], 25+func.tp[1][8]};
 	Volume(v1, &func);
 	Volume(v2, &func);
 	Volume(v3, &func);
 	Volume(v4, &func);		
 	Volume(v5, &func);
 	Tppush(20, 53, 34, 0, &func);
+
+	//11
+	func.tp_num = 10;
+	Line(Wpml+Wm+Wr+g+(Wh-Wpcm)/2, Wpml+Hsio2+Hsi+Hpcm, Wpml+Wm, Wpml+Wm+Wr+g+(Wh+Wpcm)/2, Wpml+Hsio2+Hsi+Hpcm, Wpml+Wm, &func);
+	Copy(Lin, 0.0, 0.0, Leff1, "1", &func);
+	Copy(Lin, 0.0, 0.0, Lc-Leff1, "2", &func);
+	Tppush(0, 2, 7, 6, &func);
+
+	//12
+	func.tp_num = 8;
+	Copy(Sur, 0.0, Hpcm, 0.0, "18 21", &func);
+	Tppush(2, 7, 6, 0, &func);
+
+	//13
+	func.tp_num = 3;
+	Copy(Sur, 0.0, -(Wm+Hpcm), 0.0, "1 2 3 7 9", &func);
+	v1={14+func.tp[2][3], 5+func.tp[2][12], 9+func.tp[2][12], 6+func.tp[2][8], 9+func.tp[2][8], 12+func.tp[2][8]};
+	v2={15+func.tp[2][3], 6+func.tp[2][12], 10+func.tp[2][12], 7+func.tp[2][8], 10+func.tp[2][8], 13+func.tp[2][8]};
+	v3={16+func.tp[2][3], 7+func.tp[2][12], 11+func.tp[2][12], 22+func.tp[2][8], 25+func.tp[2][8], 28+func.tp[2][8]};
+	v4={17+func.tp[2][3], 8+func.tp[2][12], 12+func.tp[2][12], 23+func.tp[2][8], 26+func.tp[2][8], 29+func.tp[2][8]};
+	v5={12+func.tp[2][3], 10+func.tp[2][12], 11+func.tp[2][12], 36+func.tp[2][8], 39+func.tp[2][8], 41+func.tp[2][8]};
+	v6={19+func.tp[2][3], 14+func.tp[2][12], 15+func.tp[2][12], 37+func.tp[2][8], 40+func.tp[2][8], 42+func.tp[2][8]};
+	Surface(v1, &func);
+	Surface(v2, &func);
+	Surface(v3, &func);
+	Surface(v4, &func);
+	Surface(v5, &func);
+	Surface(v6, &func);
+	v1={4+func.tp[1][3], 4+func.tp[1][12], 11+func.tp[1][12], 19+func.tp[1][12], 20+func.tp[1][12], 2+func.tp[1][8], 3+func.tp[1][8], 4+func.tp[1][8]};
+	v2={6+func.tp[1][3], 6+func.tp[1][12], 12+func.tp[1][12], 21+func.tp[1][12], 22+func.tp[1][12], 7+func.tp[1][8], 8+func.tp[1][8], 9+func.tp[1][8]};
+	v3={8+func.tp[1][3], 16+func.tp[1][12], 17+func.tp[1][12], 23+func.tp[1][12], 24+func.tp[1][12], 12+func.tp[1][8], 13+func.tp[1][8], 14+func.tp[1][8]};
+	v4={5+func.tp[1][3], 5+func.tp[1][12], 23+func.tp[1][12], 20+func.tp[1][12], 21+func.tp[1][12], 15+func.tp[1][8], 16+func.tp[1][8], 17+func.tp[1][8], 19+func.tp[1][8], 20+func.tp[1][8], 22+func.tp[1][8], 23+func.tp[1][8], 24+func.tp[1][8], 25+func.tp[1][8], 1+func.tp[1][10], 2+func.tp[1][10], 1+func.tp[1][11], 3+func.tp[1][11], 4+func.tp[1][11], 5+func.tp[1][11], 6+func.tp[1][11], 7+func.tp[1][11]};
+	Volume(v1, &func);
+	Volume(v2, &func);
+	Volume(v3, &func);
+	Volume(v4, &func);
+	Tppush(9, 24, 16, 0, &func);	
 	
+	Mat3D(1, "1 4 7 19 22 24", &func);
+	Mat3D(2, "10 13 16 28 29 31 32 50 53 55", &func);
+	Mat3D(3, "3 6 9 21 23 25", &func);
+	Mat3D(4, "12 15 18 33 34 36 37 52 54 56", &func);
+	Mat3D(5, "8 26", &func);
+	Mat3D(6, "17 39 41 57", &func);
+	Mat3D(7, "30", &func);
+	Mat3D(8, "35", &func);
+	Mat3D(9, "40", &func);
+	Mat3D(10, "42", &func);
+	Mat3D(11, "43", &func);
+	Mat3D(12, "44", &func);
+	Mat3D(13, "45", &func);
+	Mat3D(14, "2 5 8 20 27", &func);
+	Mat3D(15, "11 14 17 38 46 47 51 58", &func);
+	if(Leff == 0 || Leff == Lc) Mat3D(16, "48 49", &func);
+	else {
+		Mat3D(16, "48", &func);
+		Mat3D(17, "49", &func);
+	};
 	
-	
-	
+	//Unstr(Sur)
 	
 	//Trans_Gene(trans, gene, &func);
 	Printvv(func.tp);
