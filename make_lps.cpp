@@ -196,6 +196,7 @@ int main(int argc, char *argv[]){
 	Tppush(0, 20, 53, 24, &func);*/
 
 	//Trans_Gene(trans, gene, &func);
+	Printvv(func.tp);
 
 	Filename(lpsname, &func);
 
