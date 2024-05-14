@@ -84,9 +84,9 @@ int main(int argc, char *argv[]){
 
 	//5
 	func.tp_num = 4;
-	Line(0.0, H-Wpml, 0.0, 		0.0, H-Wpml, Wpml, &func);
-	Line(0.0, H-Wpml, Wpml, 	0.0, H-Wpml, L-Wpml, &func);
-	Line(0.0, H-Wpml, L-Wpml, 	0.0, H-Wpml, L, &func);
+	Line(0.0, H, 0.0, 		0.0, H, Wpml, &func);
+	Line(0.0, H, Wpml, 		0.0, H, L-Wpml, &func);
+	Line(0.0, H, L-Wpml, 	0.0, H, L, &func);
 	Copy(Lin, Wpml, 0.0, 0.0, 		"1 2 3", &func);
 	Copy(Lin, W-2*Wpml, 0.0, 0.0, 	"4 5 6", &func);
 	Copy(Lin, Wpml, 0.0, 0.0, 		"11 12 13", &func);
@@ -98,7 +98,7 @@ int main(int argc, char *argv[]){
 	Tppush(9, 24, 16, 0, &func);
 	
 	//7
-	/*func.tp_num = 6;
+	func.tp_num = 6;
 	Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "1", &func);
 	Copy(Lin, Wm+Wr+g, 0.0, 0.0, "2", &func);
@@ -132,7 +132,7 @@ int main(int argc, char *argv[]){
 
 	//8
 	func.tp_num = 1;
-	/*Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 7 9", &func);
+	Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 7 9", &func);
 	vector<int> v1, v2, v3, v4, v5, v6;
 	v1={14+func.tp[2][1], 5+func.tp[2][7], 9+func.tp[2][7], 6+func.tp[2][6], 9+func.tp[2][6], 12+func.tp[2][6]};
 	v2={15+func.tp[2][1], 6+func.tp[2][7], 10+func.tp[2][7], 7+func.tp[2][6], 10+func.tp[2][6], 13+func.tp[2][6]};
@@ -153,7 +153,7 @@ int main(int argc, char *argv[]){
 	Volume(v1, &func);
 	Volume(v2, &func);
 	Volume(v3, &func);
-	Volume(v4, &func);*/
+	Volume(v4, &func);
 
 
 	//Trans_Gene(trans, gene, &func);
