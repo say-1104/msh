@@ -132,9 +132,9 @@ int main(int argc, char *argv[]){
 	Rotate(Lin, Y, Wpml+Wm+Wr+g+Wh/2+curv.R, Wpml+Hsio2, Wpml+Wm+Lc, curv.angle, "49", &func);
 	Rotate(Lin, Y, Wpml+Wm+Wr+g+Wh/2+Wcur-curv.R, Wpml+Hsio2, L-Wpml, curv.angle, "31", &func);
 
-	/*Surface("7 34 22 44 43 45 28 41 52 50 46", &func);
+	Surface("7 34 22 44 43 45 28 41 52 50 46", &func);
 	Surface("13 36 53 51 47", &func);
-	Tppush(0, 20, 53, 34, &func);
+	Tppush(0, 21, 53, 34, &func);
 
 	//8
 	func.tp_num = 1;
