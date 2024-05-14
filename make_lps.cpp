@@ -265,8 +265,8 @@ int main(int argc, char *argv[]){
 	Mat3D(7, "37", &func);
 	Mat3D(8, "42", &func);
 	Mat3D(9, "44", &func);
-	Mat3D(10, "45 46", &func);
-	Mat3D(11, "43", &func);
+	Mat3D(10, "45", &func);
+	Mat3D(11, "43 46", &func);
 	Mat3D(12, "2 5 8 20 23 27", &func);
 	Mat3D(13, "11 14 17 40 41 47 48 52 55 59", &func);
 	if(Leff == 0 || Leff == Lc) Mat3D(14, "49 50", &func);
