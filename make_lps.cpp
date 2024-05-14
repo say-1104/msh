@@ -130,7 +130,7 @@ int main(int argc, char *argv[]){
 	Surface("10 46 48 47", &func);
 	Copy(Lin, 0.0, 0.0, Lc, "48", &func);
 	Rotate(Lin, Y, Wpml+Wm+Wr+g+Wh/2+curv.R, Wpml+Hsio2, Wpml+Wm+Lc, curv.angle, "49", &func);
-	Rotate(Lin, Y, Wpml+Wm+Wr+g+Wh/2+Wcur-curv.R, Wpml+Hsio2, L-Wpml, curv.angle, "49", &func);
+	Rotate(Lin, Y, Wpml+Wm+Wr+g+Wh/2+Wcur-curv.R, Wpml+Hsio2, L-Wpml, curv.angle, "31", &func);
 
 	/*Surface("7 34 22 44 43 45 28 41 52 50 46", &func);
 	Surface("13 36 53 51 47", &func);
