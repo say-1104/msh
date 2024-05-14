@@ -225,7 +225,7 @@ int main(int argc, char *argv[]){
 	Volume(v5, &func);
 	Tppush(21, 56, 36, 0, &func);
 
-	//11
+	/*//11
 	func.tp_num = 10;
 	Line(Wpml+Wm+Wr+g+(Wh-Wpcm)/2, Wpml+Hsio2+Hsi+Hpcm, Wpml+Wm, Wpml+Wm+Wr+g+(Wh+Wpcm)/2, Wpml+Hsio2+Hsi+Hpcm, Wpml+Wm, &func);
 	Copy(Lin, 0.0, 0.0, Leff1, "1", &func);
