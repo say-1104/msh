@@ -189,12 +189,39 @@ int main(int argc, char *argv[]){
 	else Leff1 == Leff;
 	Copy(Lin, 0.0, 0.0, Leff1, "48 49 50", &func);
 	Copy(Lin, 0.0, 0.0, Lc-Leff1, "51 52 53", &func);
-	/*Rotate(Poi, Y, W-Wpml, Wpml+Hsio2, Wpml+Wm+Lc, 90, "", &func);
+	Rotate(Poi, Y, W-Wpml, Wpml+Hsio2, Wpml+Wm+Lc, 90, "39 40", &func);
+	Surface("58 59 60 66 39 65", &func);
+	Surface("7 34 22 44 43 45 28 41 65 61 54 46", &func);
+	Surface("13 36 66 62 55 47", &func);
+	Tppush(0, 25, 66, 42, &func);
 
-	Surface("7 34 22 44 43 45 28 41 52 50 46", &func);
-	Surface("13 36 53 51 47", &func);
-	Tppush(0, 20, 53, 24, &func);*/
-
+	//10
+	func.tp_num = 6;
+	Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15", &func);
+	Copy(Lin, 0.0, Hsio2, 0.0, "46 47 52 53", &func);
+	v1={48+func.tp[2][6], 31+func.tp[2][9], 32+func.tp[2][9], 48+func.tp[2][8], 49+func.tp[2][8], 50+func.tp[2][8]};
+	v2={49+func.tp[2][6], 33+func.tp[2][9], 34+func.tp[2][9], 58+func.tp[2][8], 59+func.tp[2][8], 60+func.tp[2][8]};
+	v3={50+func.tp[2][6], 31+func.tp[2][9], 33+func.tp[2][9], 54+func.tp[2][8], 61+func.tp[2][8]};
+	v4={51+func.tp[2][6], 32+func.tp[2][9], 34+func.tp[2][9], 55+func.tp[2][8], 62+func.tp[2][8]};
+	Surface(v1, &func);
+	Surface(v2, &func);
+	Surface(v3, &func);
+	Surface(v4, &func);
+	v1={16+func.tp[1][1], 4+func.tp[1][7], 11+func.tp[1][7], 19+func.tp[1][7], 20+func.tp[1][7], 2+func.tp[1][6], 3+func.tp[1][6], 4+func.tp[1][6]};
+	v2={17+func.tp[1][1], 6+func.tp[1][7], 12+func.tp[1][7], 21+func.tp[1][7], 22+func.tp[1][7], 7+func.tp[1][6], 8+func.tp[1][6], 9+func.tp[1][6]};
+	v3={18+func.tp[1][1], 16+func.tp[1][7], 17+func.tp[1][7], 23+func.tp[1][7], 24+func.tp[1][7], 12+func.tp[1][6], 13+func.tp[1][6], 14+func.tp[1][6]};
+	v4={19+func.tp[1][1], 5+func.tp[1][7], 23+func.tp[1][7], 20+func.tp[1][7], 21+func.tp[1][7], 15+func.tp[1][6], 16+func.tp[1][6], 17+func.tp[1][6], 18+func.tp[1][6], 19+func.tp[1][6], 20+func.tp[1][6]};
+	v5={20+func.tp[1][1], 5+func.tp[1][7], 23+func.tp[1][7], 20+func.tp[1][7], 21+func.tp[1][7], 15+func.tp[1][6], 16+func.tp[1][6], 17+func.tp[1][6], 18+func.tp[1][6], 19+func.tp[1][6], 20+func.tp[1][6]};
+	Volume(v1, &func);
+	Volume(v2, &func);
+	Volume(v3, &func);
+	Volume(v4, &func);		
+	Volume(v5, &func);
+	Tppush(20, 53, 34, 0, &func);
+	
+	
+	
+	
 	//Trans_Gene(trans, gene, &func);
 	Printvv(func.tp);
 
