@@ -140,7 +140,7 @@ int main(int argc, char *argv[]){
 	v4={17+func.tp[2][1], 8+func.tp[2][7], 12+func.tp[2][7], 23+func.tp[2][6], 26+func.tp[2][6], 29+func.tp[2][6]};
 	v5={12+func.tp[2][1], 10+func.tp[2][7], 11+func.tp[2][7], 36+func.tp[2][6], 39+func.tp[2][6], 41+func.tp[2][6]};
 	v6={19+func.tp[2][1], 14+func.tp[2][7], 15+func.tp[2][7], 37+func.tp[2][6], 40+func.tp[2][6], 42+func.tp[2][6]};
-	/*Surface(v1, &func);
+	Surface(v1, &func);
 	Surface(v2, &func);
 	Surface(v3, &func);
 	Surface(v4, &func);
@@ -153,7 +153,7 @@ int main(int argc, char *argv[]){
 	Volume(v1, &func);
 	Volume(v2, &func);
 	Volume(v3, &func);
-	Volume(v4, &func);*/
+	Volume(v4, &func);
 
 
 	//Trans_Gene(trans, gene, &func);
