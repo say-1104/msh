@@ -18,6 +18,17 @@ typedef struct _Function {
 	vector<vector<int> > tp = vector<vector<int> >(4, vector<int>(1,0));
 } Function;
 
+void Tppush(int v, int s, int l, int p, Function *func) {
+	int tpv = v + func->tp[0].back();
+	int tps = s + func->tp[1].back();
+	int tpl = l + func->tp[2].back();
+	int tpp = p + func->tp[3].back();
+	func->tp[0].push_back(tpv);
+	func->tp[1].push_back(tps);
+	func->tp[2].push_back(tpl);
+	func->tp[3].push_back(tpp);
+}
+
 typedef struct _Curv {
 	double R;
 	double angle;
@@ -30,17 +41,11 @@ Curv calcCurv(double Lcur, double Wcur){
 	return curv;
 }
 
-
-void Tppush(int v, int s, int l, int p, Function *func) {
-	int tpv = v + func->tp[0].back();
-	int tps = s + func->tp[1].back();
-	int tpl = l + func->tp[2].back();
-	int tpp = p + func->tp[3].back();
-	func->tp[0].push_back(tpv);
-	func->tp[1].push_back(tps);
-	func->tp[2].push_back(tpl);
-	func->tp[3].push_back(tpp);
+int Div(double x, double y){
+	return((int)(round(x*10000)/round(y*10000)));
 }
+
+
 enum Shape {
 	Poi,
 	Lin,

@@ -36,10 +36,14 @@ int main(int argc, char *argv[]){
 	double Hsio2 = 2.0;				//SiO2層の厚さ
 	double Wm = 2.0;				//導波路とPML間の距離
 	double Wpml = 1.0;				//PML幅
+	double dLc = 1.4;
+	int div = Div(Lc, dLc);
 
 	double L = 2 * Wpml + 2 * Wm + Lc;
 	double W = 2 * Wpml + 2 * Wm + Wr + g + Wh;
 	double H = 2 * Wpml + Hsio2 + Hsi + Hpcm + Wm;
+
+
 
 	//メッシュのパラメータ
 	double unstr = 0.04, trans = 0.4, gene = 0.4;
@@ -114,7 +118,7 @@ int main(int argc, char *argv[]){
 	Copy(Lin, Wpml, 0.0, 0.0, "23", &func);
 	Copy(Lin, Wm, 0.0, 0.0, "24", &func);
 	Copy(Lin, Wr, 0.0, 0.0, "27", &func);
-	Copy(Lin, g, 0.0, 0.0, "30", &func);6
+	Copy(Lin, g, 0.0, 0.0, "30", &func);
 	Copy(Lin, Wh, 0.0, 0.0, "33", &func);
 	Copy(Lin, Wm, 0.0, 0.0, "36", &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "39", &func);
@@ -122,22 +126,21 @@ int main(int argc, char *argv[]){
 	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4 22", &func);
 	
 	Copy(Lin, 0.0, 0.0, Wm, "10", &func);
-	
-	Copy(Lin, 0.0, 0.0, -(L-2*Wpml-Wm), "25", &func);
+	Copy(Lin, 0.0, 0.0, L-2*Wpml-2*Wm, "49", &func);
+	Copy(Lin, 0.0, 0.0, Wm, "52", &func);
 
-	Copy(Poi, 0.0, 0.0, Wm, "6 8", &func);
-	Copy(Poi, Wh, 0.0, 0.0, "31", &func);
-	Surface("10 46 48 47", &func);
-	Copy(Lin, 0.0, 0.0, Lc, "48", &func);
-	Rotate(Lin, Y, Wpml+Wm+Wr+g+Wh/2+Wcur-curv.R, Wpml+Hsio2, L-Wpml, curv.angle, "31", &func);
-	Rotate(Lin, Y, Wpml+Wm+Wr+g+Wh/2+curv.R, Wpml+Hsio2, Wpml+Wm+Lc, curv.angle, "49", &func);
-	
+	Copy(Poi, 0.0, 0.0, Wm, "10 12", &func);
+	Copy(Poi, Wh, 0.0, 0.0, "37", &func);
+	Surface("20 57 59 58", &func);
+	Copy(Lin, 0.0, 0.0, L-2*Wpml-2*Wm, "59", &func);
+	Copy(Lin, 0.0, 0.0, Wm, "60", &func);
 
-	Surface("7 40 22 44 43 45 28 53 55 50 46", &func);
-	Surface("13 41 34 54 56 51 47", &func);
-	Tppush(0, 21, 56, 36, &func);
+	Surface("7 46 28 53", &func);
+	Surface("13 51 54 56 34 63 61 57", &func);
+	Surface("19 58 62 64 40 47", &func);
+	Tppush(0, 25 64 40, &func);
 
-	//8
+	/*//8
 	func.tp_num = 1;
 	Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 7 8 9", &func);
 	vector<int> v1, v2, v3, v4, v5, v6;
@@ -284,7 +287,7 @@ int main(int argc, char *argv[]){
 	Unstr(Sur, unstr, v1, &func);
 	
 	Trans_Gene(trans, gene, &func);
-	Printvv(func.tp);
+	Printvv(func.tp);*/
 
 	Filename(lpsname, &func);
 
