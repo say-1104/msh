@@ -140,7 +140,7 @@ int main(int argc, char *argv[]){
 	Copy(Lin, 0.0, 0.0, L-2*Wpml-2*Wm, "59", &func);
 	Copy(Lin, 0.0, 0.0, Wm, "60", &func);
 
-	Surface("7 46 28 53", &func);
+	Surface("7 46 28 55 53 50", &func);
 	Surface("13 51 54 56 34 63 61 57", &func);
 	Surface("19 58 62 64 40 47", &func);
 	Tppush(0, 25, 64, 40, &func);
@@ -167,7 +167,7 @@ int main(int argc, char *argv[]){
 
 	//9
 	func.tp_num = 9;
-	Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
+	Line(0.0, Wpml+Hsio2+Hsi, 0.0, 0.0, Wpml+Hsio2+Hsi, Wpml, &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "1", &func);
 	Copy(Lin, Wm, 0.0, 0.0, "2", &func);
 	Copy(Lin, Wr, 0.0, 0.0, "5", &func);
@@ -176,7 +176,7 @@ int main(int argc, char *argv[]){
 	Copy(Lin, Wm, 0.0, 0.0, "14", &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "17", &func);
 	
-	Line(0.0, Wpml+Hsio2, L-Wpml, 0.0, Wpml+Hsio2, L, &func);
+	Line(0.0, Wpml+Hsio2+Hsi, L-Wpml, 0.0, Wpml+Hsio2+Hsi, L, &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "23", &func);
 	Copy(Lin, Wm, 0.0, 0.0, "24", &func);
 	Copy(Lin, Wr, 0.0, 0.0, "27", &func);
@@ -202,13 +202,13 @@ int main(int argc, char *argv[]){
 		v2={v1[0]+i*7, v1[1]+i*7, v1[2]+i*7};
 		Copy(Lin, 0.0, 0.0, dLc, v2, &func);
 	}
-	v1={37+2*div, 38+2*div};
-	/*Copy(Poi, 0.0, 0.0, Wm, "10 12", &func);
-	Copy(Lin, 0.0, 0.0, L-2*Wpml-2*Wm, "59", &func);
-	Copy(Lin, 0.0, 0.0, Wm, "60", &func);
+	v1={37+4*div, 38+4*div};
+	v3={v2[0]+7, v2[1]+7, v2[2]+7, v2[2]+8, v2[2]+9, 37};
+	Copy(Poi, 0.0, 0.0, Wm, v1, &func);
+	Surface(v3, &func);
 
-	Surface("7 46 28 53", &func);
-	Surface("13 51 54 56 34 63 61 57", &func);
+	Surface("7 46 28 55 53 50", &func);
+	/*Surface("13 51 54 56 34 63 61 57", &func);
 	Surface("19 58 62 64 40 47", &func);
 	Tppush(0, 25, 64, 40, &func);
 
@@ -294,8 +294,8 @@ int main(int argc, char *argv[]){
 	copy(v4.begin(),v4.end(), back_inserter(v1));
 	Unstr(Sur, unstr, v1, &func);
 	
-	Trans_Gene(trans, gene, &func);
-	Printvv(func.tp);*/
+	Trans_Gene(trans, gene, &func);*/
+	Printvv(func.tp);
 
 	Filename(lpsname, &func);
 
