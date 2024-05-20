@@ -111,7 +111,7 @@ int main(int argc, char *argv[]){
 	Copy(Lin, Wr, 0.0, 0.0, "5", &func);
 	Copy(Lin, g, 0.0, 0.0, "8", &func);
 	Copy(Lin, Wh, 0.0, 0.0, "11", &func);
-	Copy(Lin, Wm+, 0.0, 0.0, "14", &func);
+	Copy(Lin, Wm, 0.0, 0.0, "14", &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "17", &func);
 	
 	Line(0.0, Wpml+Hsio2, L-Wpml, 0.0, Wpml+Hsio2, L, &func);
@@ -138,7 +138,7 @@ int main(int argc, char *argv[]){
 	Surface("7 46 28 53", &func);
 	Surface("13 51 54 56 34 63 61 57", &func);
 	Surface("19 58 62 64 40 47", &func);
-	Tppush(0, 25 64 40, &func);
+	Tppush(0, 25, 64, 40, &func);
 
 	/*//8
 	func.tp_num = 1;
