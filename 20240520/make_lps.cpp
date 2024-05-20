@@ -10,10 +10,15 @@ void Printvv(vector<vector<int> > a){
 	cout << endl;
 }
 
+int Div(double x, double y){
+	return((int)(round(x*10000)/round(y*10000)));
+}
+
 int main(int argc, char *argv[]){
 	Function func;
 	func.flag = 0;
 	func.tp_num = 0;
+	int i, j, k;
 	
 	ofs.open("pcmDC.lps");
 	if(! ofs) {
@@ -99,7 +104,7 @@ int main(int argc, char *argv[]){
 	Tppush(0, 9, 24, 16, &func);
 
 	//6
-	func.tp_num = 6;
+	func.tp_num = 4;
 	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
 	Tppush(9, 24, 16, 0, &func);
 	
@@ -131,7 +136,7 @@ int main(int argc, char *argv[]){
 
 	Copy(Poi, 0.0, 0.0, Wm, "10 12", &func);
 	Copy(Poi, Wh, 0.0, 0.0, "37", &func);
-	Surface("20 57 59 58", &func);
+	Surface("16 57 59 58", &func);
 	Copy(Lin, 0.0, 0.0, L-2*Wpml-2*Wm, "59", &func);
 	Copy(Lin, 0.0, 0.0, Wm, "60", &func);
 
@@ -139,70 +144,73 @@ int main(int argc, char *argv[]){
 	Surface("13 51 54 56 34 63 61 57", &func);
 	Surface("19 58 62 64 40 47", &func);
 	Tppush(0, 25, 64, 40, &func);
-
-	/*//8
-	func.tp_num = 1;
+	
+	//8
+	func.tp_num = 2;
 	Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 7 8 9", &func);
 	vector<int> v1, v2, v3, v4, v5, v6;
-	v1={14+func.tp[2][1], 5+func.tp[2][7], 9+func.tp[2][7], 6+func.tp[2][6], 9+func.tp[2][6], 12+func.tp[2][6]};
-	v2={15+func.tp[2][1], 6+func.tp[2][7], 10+func.tp[2][7], 7+func.tp[2][6], 10+func.tp[2][6], 13+func.tp[2][6]};
-	v3={16+func.tp[2][1], 7+func.tp[2][7], 11+func.tp[2][7], 22+func.tp[2][6], 25+func.tp[2][6], 28+func.tp[2][6], 31+func.tp[2][6], 34+func.tp[2][6]};
-	v4={17+func.tp[2][1], 8+func.tp[2][7], 12+func.tp[2][7], 23+func.tp[2][6], 26+func.tp[2][6], 29+func.tp[2][6], 32+func.tp[2][6], 35+func.tp[2][6]};
+	v1={14+func.tp[2][2], 5+func.tp[2][8], 9+func.tp[2][8], 6+func.tp[2][7], 9+func.tp[2][7], 12+func.tp[2][7], 15+func.tp[2][7], 18+func.tp[2][7]};
+	v2={15+func.tp[2][2], 6+func.tp[2][8], 10+func.tp[2][8], 7+func.tp[2][7], 10+func.tp[2][7], 13+func.tp[2][7], 16+func.tp[2][7], 19+func.tp[2][7]};
+	v3={16+func.tp[2][2], 7+func.tp[2][8], 11+func.tp[2][8], 28+func.tp[2][7], 31+func.tp[2][7], 34+func.tp[2][7], 37+func.tp[2][7], 40+func.tp[2][7]};
+	v4={17+func.tp[2][2], 8+func.tp[2][8], 12+func.tp[2][8], 29+func.tp[2][7], 32+func.tp[2][7], 35+func.tp[2][7], 38+func.tp[2][7], 41+func.tp[2][7]};
 	Surface(v1, &func);
 	Surface(v2, &func);
 	Surface(v3, &func);
 	Surface(v4, &func);
-	v1={4+func.tp[1][1], 4+func.tp[1][7], 11+func.tp[1][7], 21+func.tp[1][7], 22+func.tp[1][7], 2+func.tp[1][6], 3+func.tp[1][6], 4+func.tp[1][6]};
-	v2={6+func.tp[1][1], 6+func.tp[1][7], 13+func.tp[1][7], 23+func.tp[1][7], 24+func.tp[1][7], 7+func.tp[1][6], 8+func.tp[1][6], 9+func.tp[1][6], 10+func.tp[1][6], 11+func.tp[1][6]};
-	v3={5+func.tp[1][1], 5+func.tp[1][7], 12+func.tp[1][7], 22+func.tp[1][7], 23+func.tp[1][7], 15+func.tp[1][6], 16+func.tp[1][6], 17+func.tp[1][6], 18+func.tp[1][6], 19+func.tp[1][6], 20+func.tp[1][6], 21+func.tp[1][6]};
+	v1={4+func.tp[1][2], 4+func.tp[1][8], 11+func.tp[1][8], 21+func.tp[1][8], 22+func.tp[1][8], 2+func.tp[1][7], 3+func.tp[1][7], 4+func.tp[1][7], 5+func.tp[1][7], 6+func.tp[1][7]};
+	v2={5+func.tp[1][2], 5+func.tp[1][8], 12+func.tp[1][8], 22+func.tp[1][8], 23+func.tp[1][8], 17+func.tp[1][7], 18+func.tp[1][7], 19+func.tp[1][7], 20+func.tp[1][7], 21+func.tp[1][7], 22+func.tp[1][7], 23+func.tp[1][7], 24+func.tp[1][7], 25+func.tp[1][7]};
+	v3={6+func.tp[1][2], 6+func.tp[1][8], 13+func.tp[1][8], 23+func.tp[1][8], 24+func.tp[1][8], 9+func.tp[1][7], 10+func.tp[1][7], 11+func.tp[1][7], 12+func.tp[1][7], 13+func.tp[1][7]};
 	Volume(v1, &func);
 	Volume(v2, &func);
 	Volume(v3, &func);
 	Tppush(9, 24, 16, 0, &func);
 
 	//9
-	func.tp_num = 8;
-	Line(0.0, Wpml+Hsio2+Hsi, 0.0, 0.0, Wpml+Hsio2+Hsi, Wpml, &func);
+	func.tp_num = 9;
+	Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "1", &func);
-	Copy(Lin, Wm+Wr+g, 0.0, 0.0, "2", &func);
-	Copy(Lin, Wh, 0.0, 0.0, "5", &func);
-	Copy(Lin, Wm+Wcur, 0.0, 0.0, "8", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "11", &func);
-	
-	Line(0.0, Wpml+Hsio2+Hsi, L-Wpml, 0.0, Wpml+Hsio2+Hsi, L, &func);
+	Copy(Lin, Wm, 0.0, 0.0, "2", &func);
+	Copy(Lin, Wr, 0.0, 0.0, "5", &func);
+	Copy(Lin, g, 0.0, 0.0, "8", &func);
+	Copy(Lin, Wh, 0.0, 0.0, "11", &func);
+	Copy(Lin, Wm, 0.0, 0.0, "14", &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "17", &func);
-	Copy(Lin, Wm, 0.0, 0.0, "18", &func);
-	Copy(Lin, Wr, 0.0, 0.0, "21", &func);
-	Copy(Lin, g+Wcur, 0.0, 0.0, "24", &func);
-	Copy(Lin, Wh, 0.0, 0.0, "27", &func);
-	Copy(Lin, Wm, 0.0, 0.0, "30", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "33", &func);
 	
-	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4 16", &func);
+	Line(0.0, Wpml+Hsio2, L-Wpml, 0.0, Wpml+Hsio2, L, &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "23", &func);
+	Copy(Lin, Wm, 0.0, 0.0, "24", &func);
+	Copy(Lin, Wr, 0.0, 0.0, "27", &func);
+	Copy(Lin, g, 0.0, 0.0, "30", &func);
+	Copy(Lin, Wh, 0.0, 0.0, "33", &func);
+	Copy(Lin, Wm, 0.0, 0.0, "36", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "39", &func);
 	
-	Copy(Lin, 0.0, 0.0, -(L-2*Wpml-Wm), "25", &func);
-
-	Copy(Poi, 0.0, 0.0, Wm, "6 8", &func);
-	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, "31", &func);
-	Copy(Poi, Wpcm, 0.0, 0.0, "33", &func);
-	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, "34", &func);
-	Surface("10 46 48 49 50 47", &func);
-
-	int Leff1;
-	if(Leff == 0 || Leff == Lc) Leff1 = Lc/2;
-	else Leff1 = Leff;
-
-	Copy(Lin, 0.0, 0.0, Leff1, "48 49 50", &func);
-	Copy(Lin, 0.0, 0.0, Lc-Leff1, "51 52 53", &func);
-
-	Rotate(Lin, Y, Wpml+Wm+Wr+g+Wh/2+Wcur-curv.R, Wpml+Hsio2, L-Wpml, curv.angle, "31", &func);
-	Rotate(Poi, Y, Wpml+Wm+Wr+g+Wh/2+curv.R, Wpml+Hsio2, Wpml+Wm+Lc, curv.angle, "39 40", &func);
+	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4 22", &func);
 	
-	Surface("58 59 60 69 65 68", &func);
-	Surface("7 40 22 44 43 45 28 66 68 61 54 46", &func);
-	Surface("13 41 34 67 69 62 55 47", &func);
+	Copy(Lin, 0.0, 0.0, Wm, "10", &func);
+	Copy(Lin, 0.0, 0.0, L-2*Wpml-2*Wm, "49", &func);
+	Copy(Lin, 0.0, 0.0, Wm, "52", &func);
 
-	Tppush(0, 26, 69, 44, &func);
+	Copy(Poi, 0.0, 0.0, Wm, "10 12", &func);
+	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, "37", &func);
+	Copy(Poi, Wpcm, 0.0, 0.0, "39", &func);
+	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, "40", &func);
+	Surface("16 57 59 60 61 58", &func);
+	Copy(Lin, 0.0, 0.0, dLc, "59 60 61", &func);
+	v1={62, 63, 64};
+	for (i=0; i<div-1; i++) {
+		v2={v1[0]+i*7, v1[1]+i*7, v1[2]+i*7};
+		Copy(Lin, 0.0, 0.0, dLc, v2, &func);
+	}
+	v1={37+2*div, 38+2*div};
+	/*Copy(Poi, 0.0, 0.0, Wm, "10 12", &func);
+	Copy(Lin, 0.0, 0.0, L-2*Wpml-2*Wm, "59", &func);
+	Copy(Lin, 0.0, 0.0, Wm, "60", &func);
+
+	Surface("7 46 28 53", &func);
+	Surface("13 51 54 56 34 63 61 57", &func);
+	Surface("19 58 62 64 40 47", &func);
+	Tppush(0, 25, 64, 40, &func);
 
 	//10
 	func.tp_num = 6;

@@ -41,11 +41,6 @@ Curv calcCurv(double Lcur, double Wcur){
 	return curv;
 }
 
-int Div(double x, double y){
-	return((int)(round(x*10000)/round(y*10000)));
-}
-
-
 enum Shape {
 	Poi,
 	Lin,
