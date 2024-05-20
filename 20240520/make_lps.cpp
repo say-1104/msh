@@ -37,22 +37,20 @@ int main(int argc, char *argv[]){
 	double Wm = 2.0;				//導波路とPML間の距離
 	double Wpml = 1.0;				//PML幅
 
-	double Lcur = 20;				//曲げ導波路部分の全長
-	double Wcur = 8;				//曲げ導波路部分の幅
-	Curv curv;
-	curv = calcCurv(Lcur, Wcur);
-
-	double L = 2 * Wpml + Wm + Lc + Lcur;
-	double W = 2 * Wpml + 2 * Wm + Wr + g + Wh + Wcur;
+	double L = 2 * Wpml + 2 * Wm + Lc;
+	double W = 2 * Wpml + 2 * Wm + Wr + g + Wh;
 	double H = 2 * Wpml + Hsio2 + Hsi + Hpcm + Wm;
 
 	//メッシュのパラメータ
-	double unstr = 0.04, trans = 0.5, gene = 0.5;
+	double unstr = 0.04, trans = 0.4, gene = 0.4;
 	string lpsname = "pcmDC";
 
 	cout << "writing " << lpsname << "..." << endl;
 
+	Tppush(0, 0, 0, 0, &func);
+
 	//1
+	func.tp_num = 1;
 	Line(0.0, 0.0, 0.0, 	0.0, 0.0, Wpml, &func);
 	Line(0.0, 0.0, Wpml, 	0.0, 0.0, L-Wpml, &func);
 	Line(0.0, 0.0, L-Wpml, 	0.0, 0.0, L, &func);
@@ -62,7 +60,7 @@ int main(int argc, char *argv[]){
 	Tppush(0, 9, 24, 16, &func);
 
 	//2
-	func.tp_num = 1;
+	func.tp_num = 2;
 	Line(0.0, Wpml, 0.0, 	0.0, Wpml, Wpml, &func);
 	Line(0.0, Wpml, Wpml, 	0.0, Wpml, L-Wpml, &func);
 	Line(0.0, Wpml, L-Wpml, 0.0, Wpml, L, &func);
@@ -72,12 +70,12 @@ int main(int argc, char *argv[]){
 	Tppush(0, 9, 24, 16, &func);
 
 	//3
-	func.tp_num = 0;
+	func.tp_num = 1;
 	Copy(Sur, 0.0, Wpml, 0.0, 		"1 2 3 4 5 6 7 8 9", &func);
 	Tppush(9, 24, 16, 0, &func);
 	
 	//4
-	func.tp_num = 3;
+	func.tp_num = 4;
 	Line(0.0, H-Wpml, 0.0, 		0.0, H-Wpml, Wpml, &func);
 	Line(0.0, H-Wpml, Wpml, 	0.0, H-Wpml, L-Wpml, &func);
 	Line(0.0, H-Wpml, L-Wpml, 	0.0, H-Wpml, L, &func);
@@ -87,7 +85,7 @@ int main(int argc, char *argv[]){
 	Tppush(0, 9, 24, 16, &func);
 
 	//5
-	func.tp_num = 4;
+	func.tp_num = 5;
 	Line(0.0, H, 0.0, 		0.0, H, Wpml, &func);
 	Line(0.0, H, Wpml, 		0.0, H, L-Wpml, &func);
 	Line(0.0, H, L-Wpml, 	0.0, H, L, &func);
@@ -97,29 +95,33 @@ int main(int argc, char *argv[]){
 	Tppush(0, 9, 24, 16, &func);
 
 	//6
-	func.tp_num = 3;
+	func.tp_num = 6;
 	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
 	Tppush(9, 24, 16, 0, &func);
 	
 	//7
-	func.tp_num = 6;
+	func.tp_num = 7;
 	Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "1", &func);
-	Copy(Lin, Wm+Wr+g, 0.0, 0.0, "2", &func);
-	Copy(Lin, Wh, 0.0, 0.0, "5", &func);
-	Copy(Lin, Wm+Wcur, 0.0, 0.0, "8", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "11", &func);
+	Copy(Lin, Wm, 0.0, 0.0, "2", &func);
+	Copy(Lin, Wr, 0.0, 0.0, "5", &func);
+	Copy(Lin, g, 0.0, 0.0, "8", &func);
+	Copy(Lin, Wh, 0.0, 0.0, "11", &func);
+	Copy(Lin, Wm+, 0.0, 0.0, "14", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "17", &func);
 	
 	Line(0.0, Wpml+Hsio2, L-Wpml, 0.0, Wpml+Hsio2, L, &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "17", &func);
-	Copy(Lin, Wm, 0.0, 0.0, "18", &func);
-	Copy(Lin, Wr, 0.0, 0.0, "21", &func);
-	Copy(Lin, g+Wcur, 0.0, 0.0, "24", &func);
-	Copy(Lin, Wh, 0.0, 0.0, "27", &func);
-	Copy(Lin, Wm, 0.0, 0.0, "30", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "33", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "23", &func);
+	Copy(Lin, Wm, 0.0, 0.0, "24", &func);
+	Copy(Lin, Wr, 0.0, 0.0, "27", &func);
+	Copy(Lin, g, 0.0, 0.0, "30", &func);6
+	Copy(Lin, Wh, 0.0, 0.0, "33", &func);
+	Copy(Lin, Wm, 0.0, 0.0, "36", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "39", &func);
 	
-	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4 16", &func);
+	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4 22", &func);
+	
+	Copy(Lin, 0.0, 0.0, Wm, "10", &func);
 	
 	Copy(Lin, 0.0, 0.0, -(L-2*Wpml-Wm), "25", &func);
 
