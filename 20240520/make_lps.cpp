@@ -321,7 +321,7 @@ int main(int argc, char *argv[]){
 		Mat3D(13+i, v1, &func);
 	}
 	v1={3+func.tp[1][7], 5+func.tp[1][7], 10+func.tp[1][7], 12+func.tp[1][7], 17+func.tp[1][7], 18+func.tp[1][7], 19+func.tp[1][7], 20+func.tp[1][7]};
-	for (i=0; i<3*div+4; i++) {
+	for (i=0; i<3*div+1; i++) {
 		v1.push_back(21+i+func.tp[1][7]);
 	}
 	v2={5+func.tp[1][10], 8+func.tp[1][10], 9+func.tp[1][10], 10+func.tp[1][10], 11+func.tp[1][10], 14+func.tp[1][10], 15+func.tp[1][10], 16+func.tp[1][10], 27+func.tp[1][10], 30+func.tp[1][10], 31+func.tp[1][10], 32+func.tp[1][10], 33+func.tp[1][10], 36+func.tp[1][10], 37+func.tp[1][10], 38+func.tp[1][10], 49+func.tp[1][10], 50+func.tp[1][10], 51+func.tp[1][10], 52+func.tp[1][10], 53+func.tp[1][10], 54+func.tp[1][10], 55+func.tp[1][10], 56+func.tp[1][10]};
@@ -329,7 +329,7 @@ int main(int argc, char *argv[]){
 		v3.push_back(59+i+func.tp[1][10]);
 	}
 	v3={3+func.tp[1][9], 5+func.tp[1][9], 10+func.tp[1][9], 12+func.tp[1][9], 17+func.tp[1][9], 18+func.tp[1][9], 19+func.tp[1][9], 20+func.tp[1][9]};
-	for (i=0; i<3*div+4; i++) {
+	for (i=0; i<3*div+1; i++) {
 		v3.push_back(21+i+func.tp[1][9]);
 	}
 	v4={};
