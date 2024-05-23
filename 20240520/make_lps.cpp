@@ -41,8 +41,11 @@ int main(int argc, char *argv[]){
 	double Hsio2 = 2.0;				//SiO2層の厚さ
 	double Wm = 2.0;				//導波路とPML間の距離
 	double Wpml = 1.0;				//PML幅
-	double dLc = 1.4;
-	int div = Div(Lc, dLc);
+	
+	int div = 10;
+	double dLc = Lc / div;
+	//double dLc = 13.3;
+	//Div(Lc, dLc);
 
 	double L = 2 * Wpml + 2 * Wm + Lc;
 	double W = 2 * Wpml + 2 * Wm + Wr + g + Wh;
@@ -51,7 +54,7 @@ int main(int argc, char *argv[]){
 
 
 	//メッシュのパラメータ
-	double unstr = 0.04, trans = 0.4, gene = 0.4;
+	double unstr = 0.05, trans = 0.5, gene = 0.5;
 	string lpsname = "pcmDC";
 
 	cout << "writing " << lpsname << "..." << endl;
@@ -320,18 +323,20 @@ int main(int argc, char *argv[]){
 		v1={i+1+func.tp[0][11]};
 		Mat3D(13+i, v1, &func);
 	}
-	v1={3+func.tp[1][7], 5+func.tp[1][7], 10+func.tp[1][7], 12+func.tp[1][7], 17+func.tp[1][7], 18+func.tp[1][7], 19+func.tp[1][7], 20+func.tp[1][7]};
+	v1={3+func.tp[1][7], 4+func.tp[1][7], 5+func.tp[1][7], 10+func.tp[1][7], 11+func.tp[1][7], 12+func.tp[1][7], 17+func.tp[1][7], 18+func.tp[1][7], 19+func.tp[1][7], 20+func.tp[1][7]};
 	for (i=0; i<3*div+1; i++) {
 		v1.push_back(21+i+func.tp[1][7]);
 	}
-	v2={5+func.tp[1][10], 8+func.tp[1][10], 9+func.tp[1][10], 10+func.tp[1][10], 11+func.tp[1][10], 14+func.tp[1][10], 15+func.tp[1][10], 16+func.tp[1][10], 27+func.tp[1][10], 30+func.tp[1][10], 31+func.tp[1][10], 32+func.tp[1][10], 33+func.tp[1][10], 36+func.tp[1][10], 37+func.tp[1][10], 38+func.tp[1][10], 49+func.tp[1][10], 50+func.tp[1][10], 51+func.tp[1][10], 52+func.tp[1][10], 53+func.tp[1][10], 54+func.tp[1][10], 55+func.tp[1][10], 56+func.tp[1][10]};
+	v1.push_back(23+3*div+func.tp[1][7]);
+	v2={5+func.tp[1][10], 8+func.tp[1][10], 9+func.tp[1][10], 10+func.tp[1][10], 11+func.tp[1][10], 12+func.tp[1][10], 13+func.tp[1][10], 14+func.tp[1][10], 15+func.tp[1][10], 16+func.tp[1][10], 27+func.tp[1][10], 30+func.tp[1][10], 31+func.tp[1][10], 32+func.tp[1][10], 33+func.tp[1][10], 34+func.tp[1][10], 35+func.tp[1][10], 36+func.tp[1][10], 37+func.tp[1][10], 38+func.tp[1][10], 49+func.tp[1][10], 50+func.tp[1][10], 51+func.tp[1][10], 52+func.tp[1][10], 53+func.tp[1][10], 54+func.tp[1][10], 55+func.tp[1][10], 56+func.tp[1][10], 57+func.tp[1][10], 58+func.tp[1][10]};
 	for (i=0; i<7*div+5; i++) {
-		v3.push_back(59+i+func.tp[1][10]);
+		v2.push_back(59+i+func.tp[1][10]);
 	}
-	v3={3+func.tp[1][9], 5+func.tp[1][9], 10+func.tp[1][9], 12+func.tp[1][9], 17+func.tp[1][9], 18+func.tp[1][9], 19+func.tp[1][9], 20+func.tp[1][9]};
+	v3={3+func.tp[1][9], 4+func.tp[1][9], 5+func.tp[1][9], 10+func.tp[1][9], 11+func.tp[1][9], 12+func.tp[1][9], 17+func.tp[1][9], 18+func.tp[1][9], 19+func.tp[1][9], 20+func.tp[1][9]};
 	for (i=0; i<3*div+1; i++) {
 		v3.push_back(21+i+func.tp[1][9]);
 	}
+	v3.push_back(23+3*div+func.tp[1][9]);
 	v4={};
 	for (i=0; i<3*div+1+div; i++) {
 		v4.push_back(1+i+func.tp[1][11]);
