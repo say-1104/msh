@@ -1,0 +1,10 @@
+stage = 1
+dz = 0.1
+w_bus = 1.2
+w_acc = 1.2
+Sbend_number = 0
+coupler_number = 1
+stagetype(Sbend_in=1,coupler=2,Sbend_out=3) = 2
+
+Lc = 24.7
+dw = 0.0
