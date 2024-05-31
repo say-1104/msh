@@ -39,17 +39,18 @@ int main(int argc, char* argv[]) {
     exit(1);
   }
   
-  std::string tmp;        //必要ない文字列の格納場所
+  std::string buff;        //必要ない文字列の格納場所
   std::string str_name;   //構造名
-  int str_N;              //構造の個数　
-  ifs >> tmp >> str_N;
+  ifs >> buff >> str_name;
+  if(str_name == "DC") {
+    double Lc, dz, wst;
+    ifs >> buff >> Lc >> buff >> dz >> buff >> wst;
+  }
+
   for(int _=0; _++; _<str_N){
     ifs >> str_name;
     if (str_name == "DC"){
-      double Lc, dz, wst;
-      ifs >> tmp >> Lc;
-      ifs >> tmp >> dz;
-      ifs >> tmp >> wst;
+      
 
       double n_div = Lc / dz;
 
