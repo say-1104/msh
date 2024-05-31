@@ -4,6 +4,7 @@
 // #include "Structure.hpp"
 
 int main(int argc, char* argv[]) {
+  int i, j, k;
   auto output_err = [](int step, double cur_z, std::complex<double> ab0,
                        std::complex<double> ab1) -> void { // ラムダ式
     std::cerr << std::fixed << std::setprecision(10);
@@ -13,16 +14,13 @@ int main(int argc, char* argv[]) {
     std::cerr << abs(ab1) * abs(ab1) << '\n';
   };
 
-  
-  Eigen::Vector2cd ab;
-  ab << std::complex<double>(0.0, 0.0), std::complex<double>(1.0, 0.0);
-
+  //input_[波長].pre の読み込み
+  int N;
   LI<double, double> beta_even;
   LI<double, double> beta_odd;
   LI<double, double> beta_1;
   LI<double, double> beta_2;
 
-  int N;
   std::cin >> N;
   for (int _ = 0; _ < N; _++) {
     double w;
@@ -34,6 +32,48 @@ int main(int argc, char* argv[]) {
     beta_2.append(w, b4);
   }
 
+  //structure.cfgの読み込み
+  std::ifstream ifs("structure.cfg");
+  if (!ifs) {
+    std::cerr << "Error: cannot open strcture.cfg" << std::endl;
+    exit(1);
+  }
+  
+  std::string tmp;        //必要ない文字列の格納場所
+  std::string str_name;   //構造名
+  int str_N;              //構造の個数　
+  ifs >> tmp >> str_N;
+  for(int _=0; _++; _<str_N){
+    ifs >> str_name;
+    if (str_name == "DC"){
+      double Lc, dz, wst;
+      ifs >> tmp >> Lc;
+      ifs >> tmp >> dz;
+      ifs >> tmp >> wst;
+
+      double n_div = Lc / dz;
+
+      std::vector<std::pair<double, double>> ZtoW(n_div);
+      for (int step = 0; step < n_div; step++) {
+        double cur_z = step * dz;
+        double cur_w = wst;
+        ZtoW[step] = std::make_pair(cur_z, cur_w);
+      }
+    }
+
+  }
+
+
+  
+  
+  Eigen::Vector2cd ab;
+  //ab << std::complex<double>(0.0, 0.0), std::complex<double>(1.0, 0.0);
+
+
+
+
+  
+
   double Lc = 36.90;
   double dz = 0.010;
   double n_div = Lc / dz;
@@ -44,11 +84,7 @@ int main(int argc, char* argv[]) {
 
 
   std::vector<std::pair<double, double>> ZtoW(n_div);
-  for (int step = 0; step < n_div; step++) {
-    double cur_z = step * dz;
-    double cur_w = wst + (cur_z / Lc) * (wfi - wst);
-    ZtoW[step] = std::make_pair(cur_z, cur_w);
-  }
+
 
   for (int step = 0; step < n_div; step++) {
     auto z = ZtoW[step].first;
