@@ -41,46 +41,23 @@ int main(int argc, char* argv[]) {
   
   std::string buff;        //必要ない文字列の格納場所
   std::string str_name;   //構造名
-  ifs >> buff >> str_name;
+  ifs >> str_name;
+  double Lc, dz, wst;
   if(str_name == "DC") {
-    double Lc, dz, wst;
     ifs >> buff >> Lc >> buff >> dz >> buff >> wst;
   }
-  std::cerr << "Lc: " << Lc << "\tdz: " << dz << "\nwidth_start: " << wst << endl;
+  std::cerr << "Lc: " << Lc << "\tdz: " << dz << "\tw_start: " << wst << std::endl;
+  double N_div = Lc / dz;
 
-  /*for(int _=0; _++; _<str_N){
-    ifs >> str_name;
-    if (str_name == "DC"){
-      
-
-      double n_div = Lc / dz;
-
-      std::vector<std::pair<double, double>> ZtoW(n_div);
-      for (int step = 0; step < n_div; step++) {
-        double cur_z = step * dz;
-        double cur_w = wst;
-        ZtoW[step] = std::make_pair(cur_z, cur_w);
-      }
-    }
-
+  std::vector<std::pair<double, double>> ZtoW(n_div);
+  for (int step = 0; step < N_div; step++) {
+    double cur_z = step * dz;
+    double cur_w = wst;
+    ZtoW[step] = std::make_pair(cur_z, cur_w);
   }
 
-
-  
-  
   Eigen::Vector2cd ab;
-  //ab << std::complex<double>(0.0, 0.0), std::complex<double>(1.0, 0.0);
-
-
-
-
-  
-
-  double Lc = 36.90;
-  double dz = 0.010;
-  double n_div = Lc / dz;
-  double wst = 0.794;
-  double wfi = 0.836 + 0.042;
+  ab << std::complex<double>(0.0, 0.0), std::complex<double>(1.0, 0.0);
 
   std::cerr << "step\tposition_z\tabs(a)\tabs(b)\n";
 
@@ -120,5 +97,5 @@ int main(int argc, char* argv[]) {
     output_err(step, z, ab(0), ab(1));
     calc_CMT();
   }
-  output_err(n_div, Lc, ab(0), ab(1));*/
+  output_err(n_div, Lc, ab(0), ab(1));
 }
