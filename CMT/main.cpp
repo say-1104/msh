@@ -46,8 +46,9 @@ int main(int argc, char* argv[]) {
     double Lc, dz, wst;
     ifs >> buff >> Lc >> buff >> dz >> buff >> wst;
   }
+  std::cerr << "Lc: " << Lc << "\tdz: " << dz << "\nwidth_start: " << wst << endl;
 
-  for(int _=0; _++; _<str_N){
+  /*for(int _=0; _++; _<str_N){
     ifs >> str_name;
     if (str_name == "DC"){
       
@@ -119,5 +120,5 @@ int main(int argc, char* argv[]) {
     output_err(step, z, ab(0), ab(1));
     calc_CMT();
   }
-  output_err(n_div, Lc, ab(0), ab(1));
+  output_err(n_div, Lc, ab(0), ab(1));*/
 }
