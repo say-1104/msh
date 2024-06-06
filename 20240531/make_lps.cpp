@@ -49,7 +49,7 @@ int main(int argc, char *argv[]){
 	double Wm = 2.0;				//導波路とPML間の距離
 	double Wpml = 1.0;				//PML幅
 	
-	int div = 14;
+	int div = 10;
 	double dLc = Lc / div;
 	//double dLc = 13.3;
 	//Div(Lc, dLc);
@@ -61,7 +61,7 @@ int main(int argc, char *argv[]){
 
 
 	//メッシュのパラメータ
-	double unstr = 0.04, trans = 0.4, gene = 0.3;
+	double unstr = 0.05, trans = 0.5, gene = 0.5;
 	string lpsname = "pcmDC";
 
 	cout << "div: " << div << endl;
@@ -95,15 +95,15 @@ int main(int argc, char *argv[]){
 
 	auto msh_z = [&](int tp_num, double Z) -> void {
 		func.tp_num = tp_num;
-		Copy(Sur, 0.0, 0.0, Z,  			"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15", &func);
-		Tppush(15, 46, 32, 0, &func);
+		Copy(Sur, 0.0, 0.0, Z,  			"1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54", &func);
+		Tppush(54, 123, 70, 0, &func);
 	};
 	//1-3
 	msh_xy(1, 0.0);
 	msh_xy(2, Wpml);
 	msh_z(1, Wpml);
 	//4-5
-	/*msh_xy(4, Wpml+Wm);
+	msh_xy(4, Wpml+Wm);
 	msh_z(2, Wm);
 
 	for(i=0; i<div; i++){
@@ -117,14 +117,15 @@ int main(int argc, char *argv[]){
 	msh_xy(8+2*div, L);
 	msh_z(6+2*div, Wpml);
 	
-	Mat3D(1, "1 2 5 6 9 14", &func);
-	Mat3D(2, "3 4 7 8 10 13 15", &func);
-	Mat3D(3, "11", &func);
-	Mat3D(4, "12", &func);
-	v1 = {1, 2, 5, 6, 9, 14};
-	v2 = {3, 4, 7, 8, 10, 13, 15};
-	v3 = {11};
-	v4 = {12};
+	
+	v1 = {1, 2, 3, 4 ,5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18};
+	v2 = {19, 20, 22, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54};
+	v3 = {21};
+	v4 = {23, 24, 25};
+	Mat3D(1, v1, &func);
+	Mat3D(2, v2, &func);
+	Mat3D(3, v3, &func);
+	Mat3D(4, v4, &func);
 	v1 = Plusv(v1, func.tp[0][9+2*div]);
 	v2 = Plusv(v2, func.tp[0][9+2*div]);
 	v3 = Plusv(v3, func.tp[0][9+2*div]);
@@ -137,15 +138,17 @@ int main(int argc, char *argv[]){
 	v1 = {};
 	v2 = {};
 	v3 = {};
-	v4 = {13+func.tp[0][5], 13+func.tp[0][7+2*div]};
+	v4 = {33+func.tp[0][5], 33+func.tp[0][7+2*div]};
 	for(i=0;i<div+2;i++){
 		v5 = {};
 		v6 = {};
-		v1.push_back(11+func.tp[0][5+2*i]);
-		v2.push_back(12+func.tp[0][5+2*i]);
-		v5 = Plusv({1, 2, 5, 6, 9, 14}, func.tp[0][5+2*i]);
+		v1.push_back(21+func.tp[0][5+2*i]);
+		v2.push_back(23+func.tp[0][5+2*i]);
+		v2.push_back(24+func.tp[0][5+2*i]);
+		v2.push_back(25+func.tp[0][5+2*i]);
+		v5 = Plusv({1, 2, 3, 4 ,5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}, func.tp[0][5+2*i]);
 		copy(v5.begin(),v5.end(), back_inserter(v3));
-		v6 = Plusv({3, 4, 7, 8, 10, 15}, func.tp[0][5+2*i]);
+		v6 = Plusv({19, 20, 22, 26, 27, 28, 29, 30, 31, 32, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54}, func.tp[0][5+2*i]);
 		copy(v6.begin(),v6.end(), back_inserter(v4));
 	}
 	Mat3D(9, v1, &func);
@@ -153,18 +156,18 @@ int main(int argc, char *argv[]){
 	Mat3D(11, v3, &func);
 	Mat3D(12, v4, &func);
 	for (i=0; i<div; i++){
-		v1={13+func.tp[0][7+2*i]};
+		v1={33+func.tp[0][7+2*i]};
 		Mat3D(13+i, v1, &func);
 	}
-	v1={11, 12, 13};
-	for (i=0; i<div+2; i++) {
+	v1={21, 22, 23, 24, 25, 32, 33, 34};
+	for (i=0; i<div+3; i++) {
 		v5 = {};
-		v5 = Plusv({11, 12, 13}, func.tp[1][2*(i+1)]);
+		v5 = Plusv({21, 22, 23, 24, 25, 32, 33, 34}, func.tp[1][2*(i+1)]);
 		copy(v5.begin(),v5.end(), back_inserter(v1));
 		v6 = {};
-		v6 = Plusv({32, 34, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46}, func.tp[1][2*(i+1)+1]);
+		v6 = Plusv({31, 32, 33, 34, 35, 50, 51, 52, 53, 54, 59, 60, 61, 62, 63, 64, 71, 72, 73, 80, 81, 82, 83}, func.tp[1][2*(i+1)+1]);
 		copy(v6.begin(),v6.end(), back_inserter(v1));
-	}*/
+	}
 	Unstr(Sur, unstr, v1, &func);
 	
 	Trans_Gene(trans, gene, &func);
