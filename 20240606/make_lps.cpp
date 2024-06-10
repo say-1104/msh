@@ -34,22 +34,23 @@ int main(int argc, char *argv[]){
 	double g = atof(argv[4]);		//導波路間隔
 	double Hpcm = atof(argv[5]);	//PCM層の厚さ
 	double Lc = atof(argv[6]);		//PCM層の長さ
-	double Leff = atof(argv[7]);	//cPCM層の長さ
 
 	//DCのパラメータ(固定値)
 	double Hsi = 0.22;				//Si層の厚さ
 	double Hsio2 = 2.0;				//SiO2層の厚さ
-	double Wm = 2.0;				//導波路とPML間の距離
+	double Wx = 1.5;				//導波路とPML間の距離
+	double Wy = 1.5;				//導波路とPML間の距離
+	double Wz = 0.5;				//導波路とPML間の距離
 	double Wpml = 1.0;				//PML幅
 	
 	int div = 10;
 	double dLc = Lc / div;
 	//double dLc = 13.3;
-	//Div(Lc, dLc);
+	//int div = Div(Lc, dLc);
 
-	double L = 2 * Wpml + 2 * Wm + Lc;
-	double W = 2 * Wpml + 2 * Wm + Wr + g + Wh;
-	double H = 2 * Wpml + Hsio2 + Hsi + Hpcm + Wm;
+	double L = 2 * Wpml + 2 * Wz + Lc;
+	double W = 2 * Wpml + 2 * Wx + Wr + g + Wh;
+	double H = 2 * Wpml + Hsio2 + Hsi + Hpcm + Wy;
 
 
 
@@ -63,82 +64,62 @@ int main(int argc, char *argv[]){
 
 	vector<int> v1, v2, v3, v4, v5, v6;
 
-	//1
-	func.tp_num = 1;
-	Line(0.0, 0.0, 0.0, 	0.0, 0.0, Wpml, &func);
-	Line(0.0, 0.0, Wpml, 	0.0, 0.0, L-Wpml, &func);
-	Line(0.0, 0.0, L-Wpml, 	0.0, 0.0, L, &func);
-	Copy(Lin, Wpml, 0.0, 0.0, 		"1 2 3", &func);
-	Copy(Lin, W-2*Wpml, 0.0, 0.0, 	"4 5 6", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, 		"11 12 13", &func);
-	Tppush(0, 9, 24, 16, &func);
+	auto lpsxy = [&](int tp_num, double Y) -> void {
+		func.tp_num = tp_num;
+		Line(0.0, Y, 0.0, 				0.0, Y, Wpml, &func);
+		Line(0.0, Y, Wpml, 				0.0, Y, L-Wpml, &func);
+		Line(0.0, Y, L-Wpml, 			0.0, Y, L, &func);
+		Copy(Lin, Wpml, 0.0, 0.0, 		"1 2 3", &func);
+		Copy(Lin, W-2*Wpml, 0.0, 0.0, 	"4 5 6", &func);
+		Copy(Lin, Wpml, 0.0, 0.0, 		"11 12 13", &func);
+		Tppush(0, 9, 24, 16, &func);
+	};
 
-	//2
-	func.tp_num = 2;
-	Line(0.0, Wpml, 0.0, 	0.0, Wpml, Wpml, &func);
-	Line(0.0, Wpml, Wpml, 	0.0, Wpml, L-Wpml, &func);
-	Line(0.0, Wpml, L-Wpml, 0.0, Wpml, L, &func);
-	Copy(Lin, Wpml, 0.0, 0.0, 		"1 2 3", &func);
-	Copy(Lin, W-2*Wpml, 0.0, 0.0, 	"4 5 6", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, 		"11 12 13", &func);
-	Tppush(0, 9, 24, 16, &func);
+	auto lpsz = [&](int tp_num, double Y) -> void {
+		func.tp_num = tp_num;
+		Copy(Sur, 0.0, Y, 0.0, 		"1 2 3 4 5 6 7 8 9", &func);
+		Tppush(9, 24, 16, 0, &func);
+	};
+
+	//1, 2
+	lpsxy(1, 0.0);
+	lpsxy(2, Wpml);
 
 	//3
-	func.tp_num = 1;
-	Copy(Sur, 0.0, Wpml, 0.0, 		"1 2 3 4 5 6 7 8 9", &func);
-	Tppush(9, 24, 16, 0, &func);
+	lpsz(0.0, Wpml);
 	
-	//4
-	func.tp_num = 4;
-	Line(0.0, H-Wpml, 0.0, 		0.0, H-Wpml, Wpml, &func);
-	Line(0.0, H-Wpml, Wpml, 	0.0, H-Wpml, L-Wpml, &func);
-	Line(0.0, H-Wpml, L-Wpml, 	0.0, H-Wpml, L, &func);
-	Copy(Lin, Wpml, 0.0, 0.0, 		"1 2 3", &func);
-	Copy(Lin, W-2*Wpml, 0.0, 0.0, 	"4 5 6", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, 		"11 12 13", &func);
-	Tppush(0, 9, 24, 16, &func);
-
-	//5
-	func.tp_num = 5;
-	Line(0.0, H, 0.0, 		0.0, H, Wpml, &func);
-	Line(0.0, H, Wpml, 		0.0, H, L-Wpml, &func);
-	Line(0.0, H, L-Wpml, 	0.0, H, L, &func);
-	Copy(Lin, Wpml, 0.0, 0.0, 		"1 2 3", &func);
-	Copy(Lin, W-2*Wpml, 0.0, 0.0, 	"4 5 6", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, 		"11 12 13", &func);
-	Tppush(0, 9, 24, 16, &func);
+	//4, 5
+	lpsxy(4, H-Wpml);
+	lpsxy(5, H);
 
 	//6
-	func.tp_num = 4;
-	Copy(Sur, 0.0, Wpml, 0.0, "1 2 3 4 5 6 7 8 9", &func);
-	Tppush(9, 24, 16, 0, &func);
+	lpsz(0.0, Wpml);
 	
 	//7
 	func.tp_num = 7;
 	vector <int> p1, l1, l2, l3, l4;
 	Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
 	Copy(Lin, Wpml, 0.0, 0.0, "1", &func);
-	Copy(Lin, Wm, 0.0, 0.0, "2", &func);
+	Copy(Lin, Wx, 0.0, 0.0, "2", &func);
 	Copy(Lin, Wr, 0.0, 0.0, "5", &func);
 	Copy(Lin, g, 0.0, 0.0, "8", &func);
 	Copy(Lin, Wh, 0.0, 0.0, "11", &func);
-	Copy(Lin, Wm, 0.0, 0.0, "14", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "17", &func);
+	Copy(Lin, Wx, 0.0, 0.0, "14", &func);
 	
 	Line(0.0, Wpml+Hsio2, L-Wpml, 0.0, Wpml+Hsio2, L, &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "23", &func);
-	Copy(Lin, Wm, 0.0, 0.0, "24", &func);
-	Copy(Lin, Wr, 0.0, 0.0, "27", &func);
-	Copy(Lin, g, 0.0, 0.0, "30", &func);
-	Copy(Lin, Wh, 0.0, 0.0, "33", &func);
-	Copy(Lin, Wm, 0.0, 0.0, "36", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "39", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "17", &func);
+	Copy(Lin, Wx, 0.0, 0.0, "18", &func);
+	Copy(Lin, Wr, 0.0, 0.0, "21", &func);
+	Copy(Lin, g, 0.0, 0.0, "24", &func);
+	Copy(Lin, Wh, 0.0, 0.0, "27", &func);
+	Copy(Lin, Wx, 0.0, 0.0, "30", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, "33", &func);
 	
-	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4 22", &func);
+	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4 16", &func);
 	
-	Copy(Lin, 0.0, 0.0, Wm, "10", &func);
-	Copy(Lin, 0.0, 0.0, L-2*Wpml-2*Wm, "49", &func);
-	Copy(Lin, 0.0, 0.0, Wm, "52", &func);
+	Copy(Lin, 0.0, 0.0, Wz, "10", &func);
+	Copy(Lin, 0.0, 0.0, L-2*Wpml-2*Wz, "49", &func);
+	Copy(Lin, 0.0, 0.0, Wz, "52", &func);
 
 	Copy(Poi, 0.0, 0.0, Wm, "10 12", &func);
 	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, "37", &func);
