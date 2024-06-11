@@ -326,20 +326,18 @@ int main(int argc, char *argv[]){
 		v1={i+1+func.tp[0][11]};
 		Mat3D(12+i, v1, &func);
 	}
-	/*v1={3+func.tp[1][7], 4+func.tp[1][7], 5+func.tp[1][7], 10+func.tp[1][7], 11+func.tp[1][7], 12+func.tp[1][7], 17+func.tp[1][7], 18+func.tp[1][7], 19+func.tp[1][7], 20+func.tp[1][7]};
-	for (i=0; i<3*div+1; i++) {
-		v1.push_back(21+i+func.tp[1][7]);
+	v1={3+func.tp[1][7], 8+func.tp[1][7], 9+func.tp[1][7], 10+func.tp[1][7]};
+	for (i=0; i<3*div+4; i++) {
+		v1.push_back(15+i+func.tp[1][7]);
 	}
-	v1.push_back(23+3*div+func.tp[1][7]);
-	v2={5+func.tp[1][10], 8+func.tp[1][10], 9+func.tp[1][10], 10+func.tp[1][10], 11+func.tp[1][10], 12+func.tp[1][10], 13+func.tp[1][10], 14+func.tp[1][10], 15+func.tp[1][10], 16+func.tp[1][10], 27+func.tp[1][10], 30+func.tp[1][10], 31+func.tp[1][10], 32+func.tp[1][10], 33+func.tp[1][10], 34+func.tp[1][10], 35+func.tp[1][10], 36+func.tp[1][10], 37+func.tp[1][10], 38+func.tp[1][10], 49+func.tp[1][10], 50+func.tp[1][10], 51+func.tp[1][10], 52+func.tp[1][10], 53+func.tp[1][10], 54+func.tp[1][10], 55+func.tp[1][10], 56+func.tp[1][10], 57+func.tp[1][10], 58+func.tp[1][10]};
-	for (i=0; i<7*div+5; i++) {
-		v2.push_back(59+i+func.tp[1][10]);
+	v2={5+func.tp[1][10], 8+func.tp[1][10], 9+func.tp[1][10], 10+func.tp[1][10], 21+func.tp[1][10], 24+func.tp[1][10], 25+func.tp[1][10], 26+func.tp[1][10], 27+func.tp[1][10], 28+func.tp[1][10], 29+func.tp[1][10], 30+func.tp[1][10], 31+func.tp[1][10], 32+func.tp[1][10]};
+	for (i=0; i<7*div+9; i++) {
+		v2.push_back(43+i+func.tp[1][10]);
 	}
-	v3={3+func.tp[1][9], 4+func.tp[1][9], 5+func.tp[1][9], 10+func.tp[1][9], 11+func.tp[1][9], 12+func.tp[1][9], 17+func.tp[1][9], 18+func.tp[1][9], 19+func.tp[1][9], 20+func.tp[1][9]};
-	for (i=0; i<3*div+1; i++) {
-		v3.push_back(21+i+func.tp[1][9]);
+	v3={3+func.tp[1][9], 8+func.tp[1][9], 9+func.tp[1][9], 10+func.tp[1][9]};
+	for (i=0; i<5*div+4; i++) {
+		v3.push_back(15+i+func.tp[1][9]);
 	}
-	v3.push_back(23+3*div+func.tp[1][9]);
 	v4={};
 	for (i=0; i<3*div+1+div; i++) {
 		v4.push_back(1+i+func.tp[1][11]);
@@ -349,7 +347,7 @@ int main(int argc, char *argv[]){
 	copy(v4.begin(),v4.end(), back_inserter(v1));
 	Unstr(Sur, unstr, v1, &func);
 	
-	Trans_Gene(trans, gene, &func);*/
+	Trans_Gene(trans, gene, &func);
 	Printvv(func.tp);
 
 	Filename(lpsname, &func);
