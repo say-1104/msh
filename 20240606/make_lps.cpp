@@ -77,7 +77,7 @@ int main(int argc, char *argv[]){
 
 	auto lpsz = [&](int tp_num, double Y) -> void {
 		func.tp_num = tp_num;
-		Copy(Sur, 0.0, Y, 0.0, 		"1 2 3 4 5 6 7 8 9", &func);
+		Copy(Sur, 0.0, Y, 0.0, 			"1 2 3 4 5 6 7 8 9", &func);
 		Tppush(9, 24, 16, 0, &func);
 	};
 
@@ -98,27 +98,32 @@ int main(int argc, char *argv[]){
 	//7
 	func.tp_num = 7;
 	vector <int> p1, l1, l2, l3, l4;
-	Line(0.0, Wpml+Hsio2, 0.0, 0.0, Wpml+Hsio2, Wpml, &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "1", &func);
-	Copy(Lin, Wx, 0.0, 0.0, "2", &func);
-	Copy(Lin, Wr, 0.0, 0.0, "5", &func);
-	Copy(Lin, g, 0.0, 0.0, "8", &func);
-	Copy(Lin, Wh, 0.0, 0.0, "11", &func);
-	Copy(Lin, Wx, 0.0, 0.0, "14", &func);
+	Line(0.0, Wpml+Hsio2, 0.0, 		0.0, Wpml+Hsio2, Wpml, 		&func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"1", &func);
+	Copy(Lin, Wx, 0.0, 0.0, 		"2", &func);
+	Copy(Lin, Wr, 0.0, 0.0, 		"5", &func);
+	Copy(Lin, g, 0.0, 0.0, 			"8", &func);
+	Copy(Lin, Wh, 0.0, 0.0, 		"11", &func);
+	Copy(Lin, Wx, 0.0, 0.0, 		"14", &func);
 	
-	Line(0.0, Wpml+Hsio2, L-Wpml, 0.0, Wpml+Hsio2, L, &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "17", &func);
-	Copy(Lin, Wx, 0.0, 0.0, "18", &func);
-	Copy(Lin, Wr, 0.0, 0.0, "21", &func);
-	Copy(Lin, g, 0.0, 0.0, "24", &func);
-	Copy(Lin, Wh, 0.0, 0.0, "27", &func);
-	Copy(Lin, Wx, 0.0, 0.0, "30", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "33", &func);
+	Line(0.0, Wpml+Hsio2, L-Wpml, 	0.0, Wpml+Hsio2, L, 		&func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"17", &func);
+	Copy(Lin, Wx, 0.0, 0.0, 		"18", &func);
+	Copy(Lin, Wr, 0.0, 0.0, 		"21", &func);
+	Copy(Lin, g, 0.0, 0.0, 			"24", &func);
+	Copy(Lin, Wh, 0.0, 0.0, 		"27", &func);
+	Copy(Lin, Wx, 0.0, 0.0, 		"30", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"33", &func);
 	
 	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4 16", &func);
 	
-	Copy(Lin, 0.0, 0.0, Wz, "10", &func);
-	Copy(Lin, 0.0, 0.0, L-2*Wpml-2*Wz, "49", &func);
+	Line(Wpml+Wx, Wpml+Hsio2, Wpml+Wz, 	Wpml+Wx+Wr, Wpml+Hsio2, Wpml+Wz, 		&func);
+	Copy(Poi, g, 0.0, 0.0, 				"30", &func);
+	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, 	"31", &func);
+	Copy(Poi, Wpcm, 0.0, 0.0, 			"32", &func);
+	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, 	"33", &func);
+
+	Copy(Poi, 0.0, 0.0, Wz, "6 8", &func);
 	Copy(Lin, 0.0, 0.0, Wz, "52", &func);
 
 	Copy(Poi, 0.0, 0.0, Wm, "10 12", &func);
