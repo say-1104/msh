@@ -97,7 +97,74 @@ int main(int argc, char *argv[]){
 	
 	//7
 	func.tp_num = 7;
-	vector <int> p1, l1, l2, l3, l4;
+	vector <int> l1, l2;
+	Line(0.0, Wpml+Hsio2, 0.0, 		0.0, Wpml+Hsio2, Wpml, 		&func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"1", &func);
+	Copy(Lin, Wx+Wr+g, 0.0, 0.0, 	"2", &func);
+	Copy(Lin, Wh, 0.0, 0.0, 		"5", &func);
+	Copy(Lin, Wx, 0.0, 0.0, 		"8", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"11", &func);
+	
+	Line(0.0, Wpml+Hsio2, L-Wpml, 	0.0, Wpml+Hsio2, L, 		&func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"17", &func);
+	Copy(Lin, Wx, 0.0, 0.0, 		"18", &func);
+	Copy(Lin, Wr, 0.0, 0.0, 		"21", &func);
+	Copy(Lin, g, 0.0, 0.0, 			"24", &func);
+	Copy(Lin, Wh, 0.0, 0.0, 		"27", &func);
+	Copy(Lin, Wx, 0.0, 0.0, 		"30", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"33", &func);
+	
+	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4 16", &func);
+	
+	Line(Wpml+Wx, Wpml+Hsio2, Wpml+Wz, 	Wpml+Wx+Wr, Wpml+Hsio2, Wpml+Wz, 		&func);
+	Copy(Poi, g, 0.0, 0.0, 			"30", &func);
+	Copy(Poi, Wh, 0.0, 0.0, 		"31", &func);
+
+	Copy(Poi, 0.0, 0.0, Wz, "6 8", &func);
+	Surface("10 48 45 46 47 49", &func);
+	Copy(Lin, 0.0, 0.0, dLc, "43 44 45", &func);
+	for(i=0; i<div-1; i++) {
+		v1={48+i*7, 49+i*7, 50+i*7};
+		Copy(Lin, 0.0, 0.0, dLc, v1, &func);
+	}
+	Copy(Lin, 0.0, 0.0, -Wz, "25 28 31", &func);
+
+	l1={22, 40, 7, 46, 44, 43};
+	l2={24, 41, 13, 47};
+	for(i=0; i<div; i++){
+		l1.push_back(51+i*7);
+		l2.push_back(54+i*7);
+	}
+	l1.push_back(7*div+48);
+	l2.push_back(7*div+51);
+	Surface(l1, &func);
+	Surface(l2, &func);
+	Tppush(0, 3*div+20, 7*div+51, 4*div+32, &func);
+	
+	//8
+	/*func.tp_num = 2;
+	Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 7 8 9", &func);
+	v1={14+func.tp[2][2], 5+func.tp[2][8], 9+func.tp[2][8], 6+func.tp[2][7], 9+func.tp[2][7], 12+func.tp[2][7]};
+	v2={15+func.tp[2][2], 6+func.tp[2][8], 10+func.tp[2][8], 7+func.tp[2][7], 10+func.tp[2][7], 13+func.tp[2][7]};
+	v3={16+func.tp[2][2], 7+func.tp[2][8], 11+func.tp[2][8], 22+func.tp[2][7], 25+func.tp[2][7], 28+func.tp[2][7], 31+func.tp[2][7], 34+func.tp[2][7]};
+	v4={17+func.tp[2][2], 8+func.tp[2][8], 12+func.tp[2][8], 23+func.tp[2][7], 26+func.tp[2][7], 29+func.tp[2][7], 32+func.tp[2][7], 35+func.tp[2][7]};
+	Surface(v1, &func);
+	Surface(v2, &func);
+	Surface(v3, &func);
+	Surface(v4, &func);
+	v1={4+func.tp[1][2], 4+func.tp[1][8], 11+func.tp[1][8], 21+func.tp[1][8], 22+func.tp[1][8], 2+func.tp[1][7], 3+func.tp[1][7], 4+func.tp[1][7]};
+	v2={5+func.tp[1][2], 5+func.tp[1][8], 12+func.tp[1][8], 22+func.tp[1][8], 23+func.tp[1][8], 15+func.tp[1][7]};
+	for (i=0; i<3*div+5; i++) {
+		v2.push_back(16+i+func.tp[1][7]);
+	}
+	v3={6+func.tp[1][2], 6+func.tp[1][8], 13+func.tp[1][8], 23+func.tp[1][8], 24+func.tp[1][8], 7+func.tp[1][7], 8+func.tp[1][7], 9+func.tp[1][7], 10+func.tp[1][7], 11+func.tp[1][7]};
+	Volume(v1, &func);
+	Volume(v2, &func);
+	Volume(v3, &func);
+	Tppush(9, 24, 16, 0, &func);
+
+	//9
+	func.tp_num = 9;
 	Line(0.0, Wpml+Hsio2, 0.0, 		0.0, Wpml+Hsio2, Wpml, 		&func);
 	Copy(Lin, Wpml, 0.0, 0.0, 		"1", &func);
 	Copy(Lin, Wx+Wr+g, 0.0, 0.0, 	"2", &func);
@@ -140,81 +207,6 @@ int main(int argc, char *argv[]){
 	Surface(l1, &func);
 	Surface(l2, &func);
 	Tppush(0, 3*div+20, 7*div+49, 0, &func);
-	
-	//8
-	/*func.tp_num = 2;
-	Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 7 8 9", &func);
-	v1={14+func.tp[2][2], 5+func.tp[2][8], 9+func.tp[2][8], 6+func.tp[2][7], 9+func.tp[2][7], 12+func.tp[2][7]};
-	v2={15+func.tp[2][2], 6+func.tp[2][8], 10+func.tp[2][8], 7+func.tp[2][7], 10+func.tp[2][7], 13+func.tp[2][7]};
-	v3={16+func.tp[2][2], 7+func.tp[2][8], 11+func.tp[2][8], 22+func.tp[2][7], 25+func.tp[2][7], 28+func.tp[2][7], 31+func.tp[2][7], 34+func.tp[2][7]};
-	v4={17+func.tp[2][2], 8+func.tp[2][8], 12+func.tp[2][8], 23+func.tp[2][7], 26+func.tp[2][7], 29+func.tp[2][7], 32+func.tp[2][7], 35+func.tp[2][7]};
-	Surface(v1, &func);
-	Surface(v2, &func);
-	Surface(v3, &func);
-	Surface(v4, &func);
-	v1={4+func.tp[1][2], 4+func.tp[1][8], 11+func.tp[1][8], 21+func.tp[1][8], 22+func.tp[1][8], 2+func.tp[1][7], 3+func.tp[1][7], 4+func.tp[1][7]};
-	v2={5+func.tp[1][2], 5+func.tp[1][8], 12+func.tp[1][8], 22+func.tp[1][8], 23+func.tp[1][8], 15+func.tp[1][7]};
-	for (i=0; i<3*div+5; i++) {
-		v2.push_back(16+i+func.tp[1][7]);
-	}
-	v3={6+func.tp[1][2], 6+func.tp[1][8], 13+func.tp[1][8], 23+func.tp[1][8], 24+func.tp[1][8], 7+func.tp[1][7], 8+func.tp[1][7], 9+func.tp[1][7], 10+func.tp[1][7], 11+func.tp[1][7]};
-	Volume(v1, &func);
-	Volume(v2, &func);
-	Volume(v3, &func);
-	Tppush(9, 24, 16, 0, &func);
-
-	//9
-	func.tp_num = 9;
-	Line(0.0, Wpml+Hsio2+Hsi, 0.0, 0.0, Wpml+Hsio2+Hsi, Wpml, &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "1", &func);
-	Copy(Lin, Wm, 0.0, 0.0, "2", &func);
-	Copy(Lin, Wr, 0.0, 0.0, "5", &func);
-	Copy(Lin, g, 0.0, 0.0, "8", &func);
-	Copy(Lin, Wh, 0.0, 0.0, "11", &func);
-	Copy(Lin, Wm, 0.0, 0.0, "14", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "17", &func);
-	
-	Line(0.0, Wpml+Hsio2+Hsi, L-Wpml, 0.0, Wpml+Hsio2+Hsi, L, &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "23", &func);
-	Copy(Lin, Wm, 0.0, 0.0, "24", &func);
-	Copy(Lin, Wr, 0.0, 0.0, "27", &func);
-	Copy(Lin, g, 0.0, 0.0, "30", &func);
-	Copy(Lin, Wh, 0.0, 0.0, "33", &func);
-	Copy(Lin, Wm, 0.0, 0.0, "36", &func);
-	Copy(Lin, Wpml, 0.0, 0.0, "39", &func);
-	
-	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4 22", &func);
-	
-	Copy(Lin, 0.0, 0.0, Wm, "10", &func);
-	Copy(Lin, 0.0, 0.0, L-2*Wpml-2*Wm, "49", &func);
-	Copy(Lin, 0.0, 0.0, Wm, "52", &func);
-
-	Copy(Poi, 0.0, 0.0, Wm, "10 12", &func);
-	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, "37", &func);
-	Copy(Poi, Wpcm, 0.0, 0.0, "39", &func);
-	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, "40", &func);
-	Surface("16 57 59 60 61 58", &func);
-	Copy(Lin, 0.0, 0.0, dLc, "59 60 61", &func);
-	for (i=0; i<div-1; i++) {
-		v1={62+i*7, 63+i*7, 64+i*7};
-		Copy(Lin, 0.0, 0.0, dLc, v1, &func);
-	}
-	v2={l1[0]+func.tp[2][9], l1[1]+func.tp[2][9], l1[2]+func.tp[2][9], l2[0]+func.tp[2][9], l2[1]+func.tp[2][9], 37+func.tp[2][9]};
-	Copy(Poi, 0.0, 0.0, Wm, p1, &func);
-	Surface(v2, &func);
-
-	Surface("7 46 28 55 53 50", &func);
-	v3={57+func.tp[2][9], 13+func.tp[2][9], 51+func.tp[2][9], 54+func.tp[2][9], 56+func.tp[2][9], 34+func.tp[2][9]};
-	v4={58+func.tp[2][9], 19+func.tp[2][9], 47+func.tp[2][9], 40+func.tp[2][9]};
-	for (i=0; i<div; i++) {
-		v3.push_back(65+i*7+func.tp[2][9]);
-		v4.push_back(66+i*7+func.tp[2][9]);
-	}
-	v3.push_back(65+div*7-3+func.tp[2][9]);
-	v4.push_back(66+div*7-3+func.tp[2][9]);
-	Surface(v3, &func);
-	Surface(v4, &func);
-	Tppush(0, 24+div*3, 63+div*7, 40+div*4, &func);
 
 	//10
 	func.tp_num = 7;
