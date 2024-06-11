@@ -100,11 +100,10 @@ int main(int argc, char *argv[]){
 	vector <int> p1, l1, l2, l3, l4;
 	Line(0.0, Wpml+Hsio2, 0.0, 		0.0, Wpml+Hsio2, Wpml, 		&func);
 	Copy(Lin, Wpml, 0.0, 0.0, 		"1", &func);
-	Copy(Lin, Wx, 0.0, 0.0, 		"2", &func);
-	Copy(Lin, Wr, 0.0, 0.0, 		"5", &func);
-	Copy(Lin, g, 0.0, 0.0, 			"8", &func);
-	Copy(Lin, Wh, 0.0, 0.0, 		"11", &func);
-	Copy(Lin, Wx, 0.0, 0.0, 		"14", &func);
+	Copy(Lin, Wx+Wr+g, 0.0, 0.0, 	"2", &func);
+	Copy(Lin, Wh, 0.0, 0.0, 		"5", &func);
+	Copy(Lin, Wx, 0.0, 0.0, 		"8", &func);
+	Copy(Lin, Wpml, 0.0, 0.0, 		"11", &func);
 	
 	Line(0.0, Wpml+Hsio2, L-Wpml, 	0.0, Wpml+Hsio2, L, 		&func);
 	Copy(Lin, Wpml, 0.0, 0.0, 		"17", &func);
