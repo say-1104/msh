@@ -263,7 +263,7 @@ int main(int argc, char *argv[]){
 	Tppush(div, 3*div+1+div, 3*div+1+div*2+2, div*2+2, &func);
 
 	//12
-	func.tp_num = 4;
+	/*func.tp_num = 4;
 	Copy(Sur, 0.0, -(Wy+Hpcm), 0.0, "1 2 3 7 8 9", &func);
 	v1={14+func.tp[2][4], 5+func.tp[2][12], 9+func.tp[2][12], 6+func.tp[2][9], 9+func.tp[2][9], 12+func.tp[2][9]};
 	v2={15+func.tp[2][4], 6+func.tp[2][12], 10+func.tp[2][12], 7+func.tp[2][9], 10+func.tp[2][9], 13+func.tp[2][9]};
@@ -301,7 +301,7 @@ int main(int argc, char *argv[]){
 	
 	//Material
 	/*Mat3D(1, "1 4 7 19 22 25", &func);
-	v1={10, 13, 16, 28, 29, 31, 33, 34, 1+func.tp[0][12], 4+func.tp[0][12], 7+func.tp[0][12]};
+	v1={10, 13, 16, 28, 29, 31, 32, 1+func.tp[0][12], 4+func.tp[0][12], 7+func.tp[0][12]};
 	Mat3D(2, v1, &func);
 	Mat3D(3, "30", &func);
 	Mat3D(4, "32", &func);
