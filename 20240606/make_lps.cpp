@@ -246,7 +246,7 @@ int main(int argc, char *argv[]){
 	v1={15+func.tp[1][7], 10+func.tp[1][10], 45+func.tp[1][10], 46+func.tp[1][10], 51+6*div+func.tp[1][10], 15+func.tp[1][9]};
 	Volume(v1, &func);
 	for (i=0; i<div; i++) {
-		v1={18+3*i+func.tp[1][7], 51+6*i+func.tp[1][10], 52+6*i+func.tp[1][10], 51+6*div+i+func.tp[1][10], 52+6*div+func.tp[1][10], 18+5*i+func.tp[1][9], 19+5*i+func.tp[1][9], 20+5*i+func.tp[1][9]};
+		v1={18+3*i+func.tp[1][7], 51+6*i+func.tp[1][10], 52+6*i+func.tp[1][10], 51+6*div+i+func.tp[1][10], 52+6*div+i+func.tp[1][10], 18+5*i+func.tp[1][9], 19+5*i+func.tp[1][9], 20+5*i+func.tp[1][9]};
 		Volume(v1, &func);
 	}
 	v1={3*div+18+func.tp[1][7], 7*div+51+func.tp[1][10], 49+6*div+func.tp[1][10], 50+6*div+func.tp[1][10], 31+func.tp[1][10], 18+5*div+func.tp[1][9]};
@@ -254,7 +254,7 @@ int main(int argc, char *argv[]){
 	Tppush(3*div+20, 7*div+51, 4*div+32, 0, &func);
 
 	//11
-	/*func.tp_num = 9;
+	func.tp_num = 9;
 	v1 = {};
 	for (i=0; i<div; i++) {
 		v1.push_back(19+i*3);
@@ -263,24 +263,26 @@ int main(int argc, char *argv[]){
 	Tppush(div, 3*div+1+div, 3*div+1+div*2+2, div*2+2, &func);
 
 	//12
-	/*func.tp_num = 4;
-	Copy(Sur, 0.0, -(Wm+Hpcm), 0.0, "1 2 3 7 8 9", &func);
-	v1={14+func.tp[2][4], 5+func.tp[2][12], 9+func.tp[2][12], 6+func.tp[2][9], 9+func.tp[2][9], 12+func.tp[2][9], 15+func.tp[2][9], 18+func.tp[2][9]};
-	v2={15+func.tp[2][4], 6+func.tp[2][12], 10+func.tp[2][12], 7+func.tp[2][9], 10+func.tp[2][9], 13+func.tp[2][9], 16+func.tp[2][9], 19+func.tp[2][9]};
-	v3={16+func.tp[2][4], 7+func.tp[2][12], 11+func.tp[2][12], 28+func.tp[2][9], 31+func.tp[2][9], 34+func.tp[2][9], 37+func.tp[2][9], 40+func.tp[2][9]};
-	v4={17+func.tp[2][4], 8+func.tp[2][12], 12+func.tp[2][12], 29+func.tp[2][9], 32+func.tp[2][9], 35+func.tp[2][9], 38+func.tp[2][9], 41+func.tp[2][9]};
+	func.tp_num = 4;
+	Copy(Sur, 0.0, -(Wy+Hpcm), 0.0, "1 2 3 7 8 9", &func);
+	v1={14+func.tp[2][4], 5+func.tp[2][12], 9+func.tp[2][12], 6+func.tp[2][9], 9+func.tp[2][9], 12+func.tp[2][9]};
+	v2={15+func.tp[2][4], 6+func.tp[2][12], 10+func.tp[2][12], 7+func.tp[2][9], 10+func.tp[2][9], 13+func.tp[2][9]};
+	v3={16+func.tp[2][4], 7+func.tp[2][12], 11+func.tp[2][12], 22+func.tp[2][9], 25+func.tp[2][9], 28+func.tp[2][9], 31+func.tp[2][9], 34+func.tp[2][9]};
+	v4={17+func.tp[2][4], 8+func.tp[2][12], 12+func.tp[2][12], 23+func.tp[2][9], 26+func.tp[2][9], 29+func.tp[2][9], 32+func.tp[2][9], 35+func.tp[2][9]};
 	Surface(v1, &func);
 	Surface(v2, &func);
 	Surface(v3, &func);
 	Surface(v4, &func);
-	v1={4+func.tp[1][4], 4+func.tp[1][12], 11+func.tp[1][12], 21+func.tp[1][12], 22+func.tp[1][12], 2+func.tp[1][9], 3+func.tp[1][9], 4+func.tp[1][9], 5+func.tp[1][9], 6+func.tp[1][9]};
-	v2={5+func.tp[1][4], 5+func.tp[1][12], 12+func.tp[1][12], 22+func.tp[1][12], 23+func.tp[1][12], 17+func.tp[1][9], 18+func.tp[1][9], 19+func.tp[1][9], 20+func.tp[1][9]};
+	v1={4+func.tp[1][4], 4+func.tp[1][12], 11+func.tp[1][12], 21+func.tp[1][12], 22+func.tp[1][12], 2+func.tp[1][9], 3+func.tp[1][9], 4+func.tp[1][9]};
+	v2={5+func.tp[1][4], 5+func.tp[1][12], 12+func.tp[1][12], 22+func.tp[1][12], 23+func.tp[1][12], 15+func.tp[1][9]};
 	for (i=0; i<div; i++) {
-		v2.push_back(21+i*3+func.tp[1][9]);
-		v2.push_back(23+i*3+func.tp[1][9]);
+		v2.push_back(16+i*5+func.tp[1][9]);
+		v2.push_back(17+i*5+func.tp[1][9]);
+		v2.push_back(18+i*5+func.tp[1][9]);
+		v2.push_back(20+i*5+func.tp[1][9]);
 	}
-	for (i=0; i<4; i++) {
-		v2.push_back(21+div*3+i+func.tp[1][9]);
+	for (i=0; i<5; i++) {
+		v2.push_back(16+div*5+i+func.tp[1][9]);
 	}
 	v2.push_back(1+func.tp[1][11]);
 	for (i=0; i<div; i++) {
@@ -290,14 +292,15 @@ int main(int argc, char *argv[]){
 	}
 	v2.push_back(3*div-1+func.tp[1][11]);
 	
-	v3={6+func.tp[1][4], 6+func.tp[1][12], 13+func.tp[1][12], 23+func.tp[1][12], 24+func.tp[1][12], 9+func.tp[1][9], 10+func.tp[1][9], 11+func.tp[1][9], 12+func.tp[1][9], 13+func.tp[1][9]};
+	v3={6+func.tp[1][4], 6+func.tp[1][12], 13+func.tp[1][12], 23+func.tp[1][12], 24+func.tp[1][12], 7+func.tp[1][9], 8+func.tp[1][9], 9+func.tp[1][9], 10+func.tp[1][9], 11+func.tp[1][9]};
 	
 	Volume(v1, &func);
 	Volume(v2, &func);
 	Volume(v3, &func);
 	Tppush(9, 24, 16, 0, &func);	
 	
-	Mat3D(1, "1 4 7 19 22 25", &func);
+	//Material
+	/*Mat3D(1, "1 4 7 19 22 25", &func);
 	v1={10, 13, 16, 28, 29, 31, 33, 34, 1+func.tp[0][12], 4+func.tp[0][12], 7+func.tp[0][12]};
 	Mat3D(2, v1, &func);
 	Mat3D(3, "30", &func);
