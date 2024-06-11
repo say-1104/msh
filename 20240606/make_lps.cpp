@@ -226,16 +226,35 @@ int main(int argc, char *argv[]){
 	Tppush(0, 5*div+20, 11*div+53, 6*div+34, &func);
 
 	//10
-	/*func.tp_num = 7;
-	v1={};
-	for (i=0; i<3*div+24; i++) {
-		v1.push_back(1+i);
+	func.tp_num = 7;
+	v1={1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
+	for (i=0; i<div+1; i++) {
+		v1.push_back(16+3*i);
+		v1.push_back(17+3*i);
 	}
+	v1.push_back(19+3*div);
+	v1.push_back(20+3*div);
 	Copy(Sur, 0.0, Hsi, 0.0, v1, &func);
-	Tppush(24+div*3, 63+div*7, 40+div*4, 0, &func);
+
+	v1={45+func.tp[2][7], 31+func.tp[2][10], 32+func.tp[2][10], 45+func.tp[2][9], 46+func.tp[2][9], 47+func.tp[2][9]};
+	Surface(v1, &func);
+	for (i=0; i<div; i++) {
+		v1={50+7*div+func.tp[2][7], 35+4*div+func.tp[2][10], 36+4*div+func.tp[2][10], 52+11*div+func.tp[2][9], 53+11*div+func.tp[2][9], 54+11*div+func.tp[2][9]};
+		Surface(v1, &func);
+	}
+
+	v1={15+func.tp[1][7], 10+func.tp[1][10], 45+func.tp[1][10], 46+func.tp[1][10], 51+6*div+func.tp[1][10], 15+func.tp[1][9]};
+	Volume(v1, &func);
+	for (i=0; i<div; i++) {
+		v1={18+3*i+func.tp[1][7], 51+6*i+func.tp[1][10], 52+6*i+func.tp[1][10], 51+6*div+i+func.tp[1][10], 52+6*div+func.tp[1][10], 18+5*i+func.tp[1][9], 19+5*i+func.tp[1][9], 20+5*i+func.tp[1][9]};
+		Volume(v1, &func);
+	}
+	v1={3*div+18+func.tp[1][7], 7*div+51+func.tp[1][10], 49+6*div+func.tp[1][10], 50+6*div+func.tp[1][10], 31+func.tp[1][10], 18+5*div+func.tp[1][9]};
+	Volume(v1, &func);
+	Tppush(3*div+20, 7*div+51, 4*div+32, 0, &func);
 
 	//11
-	func.tp_num = 9;
+	/*func.tp_num = 9;
 	v1 = {};
 	for (i=0; i<div; i++) {
 		v1.push_back(22+i*3);
