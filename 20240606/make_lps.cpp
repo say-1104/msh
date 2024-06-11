@@ -138,12 +138,14 @@ int main(int argc, char *argv[]){
 
 	l1={22, 40, 7, 46, 44, 43};
 	l2={24, 41, 13, 47};
+	l1=Plusv(l1, func.tp[2][7]);
+	l2=Plusv(l2, func.tp[2][7]);
 	for(i=0; i<div; i++){
-		l1.push_back(51+i*7);
-		l2.push_back(54+i*7);
+		l1.push_back(51+i*7+func.tp[2][7]);
+		l2.push_back(54+i*7+func.tp[2][7]);
 	}
-	l1.push_back(7*div+48);
-	l2.push_back(7*div+51);
+	l1.push_back(7*div+48+func.tp[2][7]);
+	l2.push_back(7*div+51+func.tp[2][7]);
 	Surface(l1, &func);
 	Surface(l2, &func);
 	Tppush(0, 3*div+20, 7*div+51, 4*div+32, &func);
