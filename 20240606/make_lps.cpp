@@ -10,6 +10,13 @@ void Printvv(vector<vector<int> > a){
 	cout << endl;
 }
 
+vector<int> Plusv(vector<int> a, int n){
+	for(int i=0; i<a.size(); i++){
+		a[i] += n;
+	}
+	return a;
+}
+
 int Div(double x, double y){
 	return((int)(round(x*10000)/round(y*10000)));
 }
