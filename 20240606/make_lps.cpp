@@ -118,48 +118,31 @@ int main(int argc, char *argv[]){
 	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4 16", &func);
 	
 	Line(Wpml+Wx, Wpml+Hsio2, Wpml+Wz, 	Wpml+Wx+Wr, Wpml+Hsio2, Wpml+Wz, 		&func);
-	Copy(Poi, g, 0.0, 0.0, 				"30", &func);
-	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, 	"31", &func);
-	Copy(Poi, Wpcm, 0.0, 0.0, 			"32", &func);
-	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, 	"33", &func);
+	Copy(Poi, g, 0.0, 0.0, 			"30", &func);
+	Copy(Poi, Wh, 0.0, 0.0, 		"31", &func);
 
 	Copy(Poi, 0.0, 0.0, Wz, "6 8", &func);
-	Copy(Lin, 0.0, 0.0, Wz, "52", &func);
-
-	Copy(Poi, 0.0, 0.0, Wm, "10 12", &func);
-	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, "37", &func);
-	Copy(Poi, Wpcm, 0.0, 0.0, "39", &func);
-	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, "40", &func);
-	Surface("16 57 59 60 61 58", &func);
-	Copy(Lin, 0.0, 0.0, dLc, "59 60 61", &func);
-	for (i=0; i<div-1; i++) {
-		v1={62+i*7, 63+i*7, 64+i*7};
+	Surface("10 48 45 46 47 49", &func);
+	Copy(Lin, 0.0, 0.0, dLc, "43 44 45", &func);
+	for(i=0; i<div-1; i++) {
+		v1={46+i*7, 47+i*7, 48+i*7};
 		Copy(Lin, 0.0, 0.0, dLc, v1, &func);
 	}
-	p1={37+4*div, 38+4*div};
-	l1={62+(div-1)*7, 63+(div-1)*7, 64+(div-1)*7};
-	l2={l1[2]+5, l1[2]+6};
-	v2={l1[0]+func.tp[2][7], l1[1]+func.tp[2][7], l1[2]+func.tp[2][7], l2[0]+func.tp[2][7], l2[1]+func.tp[2][7], 37+func.tp[2][7]};
-	Copy(Poi, 0.0, 0.0, Wm, p1, &func);
-	Surface(v2, &func);
+	Copy(Lin, 0.0, 0.0, -Wz, "25 28 31", &func);
 
-	Surface("7 46 28 55 53 50", &func);
-	v3={57+func.tp[2][7], 13+func.tp[2][7], 51+func.tp[2][7], 54+func.tp[2][7], 56+func.tp[2][7], 34+func.tp[2][7]};
-	v4={58+func.tp[2][7], 19+func.tp[2][7], 47+func.tp[2][7], 40+func.tp[2][7]};
-	for (i=0; i<div; i++) {
-		v3.push_back(65+i*7+func.tp[2][7]);
-		l3.push_back(65+i*7);
-		v4.push_back(66+i*7+func.tp[2][7]);
-		l4.push_back(66+i*7);
+	l1={22, 40, 7, 46, 44, 43};
+	l2={24, 41, 13, 47};
+	for(i=0; i<div; i++){
+		l1.push_back(49+i*7);
+		l2.push_back(52+i*7);
 	}
-	v3.push_back(65+div*7-3+func.tp[2][7]);
-	v4.push_back(66+div*7-3+func.tp[2][7]);
-	Surface(v3, &func);
-	Surface(v4, &func);
-	Tppush(0, 24+div*3, 63+div*7, 40+div*4, &func);
+	l1.push_back(7*div+46);
+	l2.push_back(7*div+49);
+	Surface(l1, &func);
+	Surface(l2, &func);
 	
 	//8
-	func.tp_num = 2;
+	/*func.tp_num = 2;
 	Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 7 8 9", &func);
 	v1={14+func.tp[2][2], 5+func.tp[2][8], 9+func.tp[2][8], 6+func.tp[2][7], 9+func.tp[2][7], 12+func.tp[2][7], 15+func.tp[2][7], 18+func.tp[2][7]};
 	v2={15+func.tp[2][2], 6+func.tp[2][8], 10+func.tp[2][8], 7+func.tp[2][7], 10+func.tp[2][7], 13+func.tp[2][7], 16+func.tp[2][7], 19+func.tp[2][7]};
@@ -332,7 +315,7 @@ int main(int argc, char *argv[]){
 	copy(v4.begin(),v4.end(), back_inserter(v1));
 	Unstr(Sur, unstr, v1, &func);
 	
-	Trans_Gene(trans, gene, &func);
+	Trans_Gene(trans, gene, &func);*/
 	Printvv(func.tp);
 
 	Filename(lpsname, &func);
