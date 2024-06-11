@@ -174,14 +174,14 @@ int main(int argc, char *argv[]){
 
 	//9
 	func.tp_num = 9;
-	Line(0.0, Wpml+Hsio2, 0.0, 		0.0, Wpml+Hsio2, Wpml, 		&func);
+	Line(0.0, Wpml+Hsio2+Hsi, 0.0, 		0.0, Wpml+Hsio2+Hsi, Wpml, 		&func);
 	Copy(Lin, Wpml, 0.0, 0.0, 		"1", &func);
 	Copy(Lin, Wx+Wr+g, 0.0, 0.0, 	"2", &func);
 	Copy(Lin, Wh, 0.0, 0.0, 		"5", &func);
 	Copy(Lin, Wx, 0.0, 0.0, 		"8", &func);
 	Copy(Lin, Wpml, 0.0, 0.0, 		"11", &func);
 	
-	Line(0.0, Wpml+Hsio2, L-Wpml, 	0.0, Wpml+Hsio2, L, 		&func);
+	Line(0.0, Wpml+Hsio2+Hsi, L-Wpml, 	0.0, Wpml+Hsio2+Hsi, L, 		&func);
 	Copy(Lin, Wpml, 0.0, 0.0, 		"17", &func);
 	Copy(Lin, Wx, 0.0, 0.0, 		"18", &func);
 	Copy(Lin, Wr, 0.0, 0.0, 		"21", &func);
@@ -192,7 +192,7 @@ int main(int argc, char *argv[]){
 	
 	Copy(Lin, 0.0, 0.0, L-2*Wpml, "4 16", &func);
 	
-	Line(Wpml+Wx, Wpml+Hsio2, Wpml+Wz, 	Wpml+Wx+Wr, Wpml+Hsio2, Wpml+Wz, 		&func);
+	Line(Wpml+Wx, Wpml+Hsio2+Hsi, Wpml+Wz, 	Wpml+Wx+Wr, Wpml+Hsio2+Hsi, Wpml+Wz, 		&func);
 	Copy(Poi, g, 0.0, 0.0, 			"30", &func);
 	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, 		"31", &func);
 	Copy(Poi, Wpcm, 0.0, 0.0, 		"32", &func);
