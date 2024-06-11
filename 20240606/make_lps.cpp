@@ -254,10 +254,10 @@ int main(int argc, char *argv[]){
 	Tppush(3*div+20, 7*div+51, 4*div+32, 0, &func);
 
 	//11
-	/*func.tp_num = 9;
+	func.tp_num = 9;
 	v1 = {};
 	for (i=0; i<div; i++) {
-		v1.push_back(19+i*3);
+		v1.push_back(19+i*5);
 	}
 	Copy(Sur, 0.0, Hpcm, 0.0, v1, &func);
 	Tppush(div, 3*div+1+div, 3*div+1+div*2+2, div*2+2, &func);
