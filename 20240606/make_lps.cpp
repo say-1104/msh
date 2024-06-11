@@ -300,30 +300,33 @@ int main(int argc, char *argv[]){
 	Tppush(9, 24, 16, 0, &func);	
 	
 	//Material
-	/*Mat3D(1, "1 4 7 19 22 25", &func);
+	Mat3D(1, "1 4 7 19 22 25", &func);
 	v1={10, 13, 16, 28, 29, 31, 32, 1+func.tp[0][12], 4+func.tp[0][12], 7+func.tp[0][12]};
 	Mat3D(2, v1, &func);
 	Mat3D(3, "30", &func);
-	Mat3D(4, "32", &func);
-	Mat3D(5, "3 6 9 21 24 27", &func);
-	v1={12, 15, 18, 35, 36, 38, 40, 41, 3+func.tp[0][12], 6+func.tp[0][12], 9+func.tp[0][12]};
-	Mat3D(6, v1, &func);
+	Mat3D(4, "3 6 9 21 24 27", &func);
+	v1={12, 15, 18, 33, 34, 36, 38, 39, 3+func.tp[0][12], 6+func.tp[0][12], 9+func.tp[0][12]};
+	Mat3D(5, v1, &func);
+	Mat3D(6, "35", &func);
 	Mat3D(7, "37", &func);
-	Mat3D(8, "39", &func);
+
 	v1={};
-	for (i=0; i<3*div+2; i++){
-		v1.push_back(20+i+func.tp[0][10]);
+	v2={42};
+	v3={11, 14, 17, 40, 41, 19+div*3+func.tp[0][10], 20+div*3+func.tp[0][10], 2+func.tp[0][12], 5+func.tp[0][12], 8+func.tp[0][12]};
+	for (i=0; i<div+1; i++){
+		v1.push_back(16+i*3+func.tp[0][10]);
+		v2.push_back(18+i*3+func.tp[0][10]);
+		v3.push_back(17+i*3+func.tp[0][10]);
 	}
-	Mat3D(9, "44 45 46", &func);
-	Mat3D(10, v1, &func);
-	Mat3D(11, "2 5 8 20 23 26", &func);
-	v1={11, 14, 17, 42, 43, 22+3*div+func.tp[0][10], 23+3*div+func.tp[0][10], 24+3*div+func.tp[0][10], 2+func.tp[0][12], 5+func.tp[0][12], 8+func.tp[0][12]};
-	Mat3D(12, v1, &func);
+	Mat3D(8, v1, &func);
+	Mat3D(9, v2, &func);
+	Mat3D(10, "2 5 8 20 23 26", &func);
+	Mat3D(11, v3, &func);
 	for (i=0; i<div; i++){
 		v1={i+1+func.tp[0][11]};
-		Mat3D(13+i, v1, &func);
+		Mat3D(12+i, v1, &func);
 	}
-	v1={3+func.tp[1][7], 4+func.tp[1][7], 5+func.tp[1][7], 10+func.tp[1][7], 11+func.tp[1][7], 12+func.tp[1][7], 17+func.tp[1][7], 18+func.tp[1][7], 19+func.tp[1][7], 20+func.tp[1][7]};
+	/*v1={3+func.tp[1][7], 4+func.tp[1][7], 5+func.tp[1][7], 10+func.tp[1][7], 11+func.tp[1][7], 12+func.tp[1][7], 17+func.tp[1][7], 18+func.tp[1][7], 19+func.tp[1][7], 20+func.tp[1][7]};
 	for (i=0; i<3*div+1; i++) {
 		v1.push_back(21+i+func.tp[1][7]);
 	}
