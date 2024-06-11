@@ -226,7 +226,7 @@ int main(int argc, char *argv[]){
 	Tppush(0, 5*div+20, 11*div+53, 6*div+34, &func);
 
 	//10
-	func.tp_num = 7;
+	/*func.tp_num = 7;
 	v1={};
 	for (i=0; i<3*div+24; i++) {
 		v1.push_back(1+i);
