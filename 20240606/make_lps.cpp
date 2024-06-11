@@ -137,7 +137,7 @@ int main(int argc, char *argv[]){
 	Copy(Lin, 0.0, 0.0, -Wz, "25 28 31", &func);
 
 	l1={22, 40, 7, 46, 44, 43};
-	l2={24, 41, 13, 47};
+	l2={34, 41, 13, 47};
 	l1=Plusv(l1, func.tp[2][7]);
 	l2=Plusv(l2, func.tp[2][7]);
 	for(i=0; i<div; i++){
