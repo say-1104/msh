@@ -128,7 +128,7 @@ int main(int argc, char *argv[]){
 	Copy(Poi, Wh, 0.0, 0.0, 		"31", &func);
 
 	Copy(Poi, 0.0, 0.0, Wz, "6 8", &func);
-	Surface("10 48 45 46 47 49", &func);
+	Surface("10 46 45 47", &func);
 	Copy(Lin, 0.0, 0.0, dLc, "43 44 45", &func);
 	for(i=0; i<div-1; i++) {
 		v1={48+i*7, 49+i*7, 50+i*7};
@@ -151,7 +151,7 @@ int main(int argc, char *argv[]){
 	Tppush(0, 3*div+20, 7*div+51, 4*div+32, &func);
 	
 	//8
-	/*func.tp_num = 2;
+	func.tp_num = 2;
 	Copy(Sur, 0.0, Hsio2, 0.0, "1 2 3 7 8 9", &func);
 	v1={14+func.tp[2][2], 5+func.tp[2][8], 9+func.tp[2][8], 6+func.tp[2][7], 9+func.tp[2][7], 12+func.tp[2][7]};
 	v2={15+func.tp[2][2], 6+func.tp[2][8], 10+func.tp[2][8], 7+func.tp[2][7], 10+func.tp[2][7], 13+func.tp[2][7]};
@@ -194,28 +194,36 @@ int main(int argc, char *argv[]){
 	
 	Line(Wpml+Wx, Wpml+Hsio2, Wpml+Wz, 	Wpml+Wx+Wr, Wpml+Hsio2, Wpml+Wz, 		&func);
 	Copy(Poi, g, 0.0, 0.0, 			"30", &func);
-	Copy(Poi, Wh, 0.0, 0.0, 		"31", &func);
+	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, 		"31", &func);
+	Copy(Poi, Wpcm, 0.0, 0.0, 		"32", &func);
+	Copy(Poi, (Wh-Wpcm)/2, 0.0, 0.0, 		"33", &func);
 
 	Copy(Poi, 0.0, 0.0, Wz, "6 8", &func);
 	Surface("10 48 45 46 47 49", &func);
-	Copy(Lin, 0.0, 0.0, dLc, "43 44 45", &func);
+	Copy(Lin, 0.0, 0.0, dLc, "43 44 45 46 47", &func);
 	for(i=0; i<div-1; i++) {
-		v1={46+i*7, 47+i*7, 48+i*7};
+		v1={50+i*11, 51+i*11, 52+i*11, 53+i*11, 54+i*11};
 		Copy(Lin, 0.0, 0.0, dLc, v1, &func);
 	}
-	Copy(Lin, 0.0, 0.0, -Wz, "25 28 31", &func);
+	Copy(Lin, 0.0, 0.0, -Wz, "25 28", &func);
+	Copy(Poi, 0.0, 0.0, -Wz, "23", &func);
+	v1={31, 11*div+52, 11*div+41, 11*div+42, 11*div+43, 11*div+53};
+	v1=Plusv(v1, func.tp[2][9]);
+	Surface(v1, &func);
 
-	l1={22, 40, 7, 46, 44, 43};
-	l2={24, 41, 13, 47};
+	l1={22, 40, 7, 48, 44, 43};
+	l2={34, 41, 13, 49};
+	l1=Plusv(l1, func.tp[2][9]);
+	l2=Plusv(l2, func.tp[2][9]);
 	for(i=0; i<div; i++){
-		l1.push_back(49+i*7);
-		l2.push_back(52+i*7);
+		l1.push_back(55+i*11+func.tp[2][9]);
+		l2.push_back(60+i*11+func.tp[2][9]);
 	}
-	l1.push_back(7*div+46);
-	l2.push_back(7*div+49);
+	l1.push_back(11*div+50+func.tp[2][9]);
+	l2.push_back(11*div+53+func.tp[2][9]);
 	Surface(l1, &func);
 	Surface(l2, &func);
-	Tppush(0, 3*div+20, 7*div+49, 0, &func);
+	Tppush(0, 5*div+20, 11*div+53, 6*div+34, &func);
 
 	//10
 	func.tp_num = 7;
