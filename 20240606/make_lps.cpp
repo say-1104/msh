@@ -140,7 +140,7 @@ int main(int argc, char *argv[]){
 	l2.push_back(7*div+49);
 	Surface(l1, &func);
 	Surface(l2, &func);
-	Tppush(0, 3*div+20, 7div+49, 0, &func);
+	Tppush(0, 3*div+20, 7*div+49, 0, &func);
 	
 	//8
 	/*func.tp_num = 2;
