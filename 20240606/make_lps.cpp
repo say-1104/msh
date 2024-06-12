@@ -62,7 +62,7 @@ int main(int argc, char *argv[]){
 
 
 	//メッシュのパラメータ
-	double unstr = 0.05, trans = 0.5, gene = 0.5;
+	double unstr = 0.05, trans = 0.5, gene = 0.3;
 	string lpsname = "pcmDC";
 
 	cout << "writing " << lpsname << "..." << endl;
