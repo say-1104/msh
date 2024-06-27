@@ -37,6 +37,7 @@ class LpsTools {
 
         void SwitchingFunc(Function func);
         std::vector<int> Atovec(const char* text);      //文字列をベクタに変換
+        const char* VectoA(std::vector<int> v);      //ベクタを文字列に変換
         void Appendstep(int p, int l, int s, int v);    //step値を更新
         void Printstep(void);
 
