@@ -44,5 +44,6 @@ int main(int argc, char *argv[]){
 
     lt->TransGene();
     lt->Fileclose();
+	//lab
     return 0;
 }
