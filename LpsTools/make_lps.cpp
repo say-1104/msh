@@ -42,6 +42,34 @@ int main(int argc, char *argv[]){
 		lt->Appendstep(9, 24, 16, 0);
 	};
 
+	auto lps3 = [&](int n, double Y) -> void {
+		lt->step_offset = n;
+		lt->y_offset = Y;
+		lt->Line(0.0, 0.0, 				0.0, Wpml);
+		lt->Copy(Shape::line, Wpml, 0.0, 0.0, 		"1");
+		lt->Copy(Shape::line, Wx, 0.0, 0.0, 		"2");
+		lt->Copy(Shape::line, Wh, 0.0, 0.0, 		"5");
+		lt->Copy(Shape::line, g, 0.0, 0.0, 			"8");
+		lt->Copy(Shape::line, Wh, 0.0, 0.0, 		"11");
+		lt->Copy(Shape::line, Wx, 0.0, 0.0, 		"14");
+		lt->Copy(Shape::line, Wpml, 0.0, 0.0, 		"17");
+
+		lt->Line(0.0, 0.0, 				H-Wpml, H);
+		lt->Copy(Shape::line, Wpml, 0.0, 0.0, 		"23");
+		lt->Copy(Shape::line, Wx, 0.0, 0.0, 		"24");
+		lt->Copy(Shape::line, Wh, 0.0, 0.0, 		"27");
+		lt->Copy(Shape::line, g, 0.0, 0.0, 			"30");
+		lt->Copy(Shape::line, Wh, 0.0, 0.0, 		"33");
+		lt->Copy(Shape::line, Wx, 0.0, 0.0, 		"36");
+		lt->Copy(Shape::line, Wpml, 0.0, 0.0, 		"39");
+		lt->Copy(Shape::line, 0.0, 0.0, W-2*Wpml, 	"4 22");
+
+		lt->Copy(Shape::line, 0.0, 0.0, Wz, 		"10 13 16");
+		for(int i=0; i<div; i++){
+			v1 = 
+		}
+
+	};
 	//step 1, 2, 3
     lps1(1, 0.0); lps1(2, Wpml); lps2(1, Wpml);
 
