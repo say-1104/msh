@@ -1,4 +1,4 @@
-#include "fem.h"
+#include "fem.hpp"
 
 extern int analysis(DataTable *data, int argc, char **argv)
 {
@@ -84,33 +84,33 @@ extern int analysis(DataTable *data, int argc, char **argv)
       flag = 0;
       for(j = 0; j < 100; j++){
 	
-	propagation(data);
+	      propagation(data);
 	
-	for(i = 0; i < data->fem.np; i++){
-	  xc_temp = abs(data->fem.field[i]);
-	  if(i == 0 || xc_max < xc_temp) xc_max = xc_temp;
-	}
-	  
-	for(i = 0; i < data->fem.np; i++){
-	  data->fem.field[i] /= xc_max;
-	}
+	      for(i = 0; i < data->fem.np; i++){
+	        xc_temp = abs(data->fem.field[i]);
+	        if(i == 0 || xc_max < xc_temp) xc_max = xc_temp;
+	      }
+
+	      for(i = 0; i < data->fem.np; i++){
+	        data->fem.field[i] /= xc_max;
+	      }
 	
-	// calculate effective index
-	calcNeff(data);
+	      // calculate effective index
+	      calcNeff(data);
 	
-	if(flag != 0){
-	  delta = fabs((data->input.c_neff-data->input.p_neff)
+	      if(flag != 0){
+	        delta = fabs((data->input.c_neff-data->input.p_neff)
 		       /data->input.c_neff);
-	  if (delta < 1.0e-9) break;
-	}
-	flag = 1;
+	        if (delta < 1.0e-9) break;
+	      }
+	      flag = 1;
       }
 
       data->par.neff[ii][0] = data->par.n0;
       data->par.beta[ii][0] = data->par.n0*data->par.k0;
 
       for(i = 0; i < data->fem.np; i++){
-	data->par.field[ii][0][i] = abs(data->fem.field[i]);
+	      data->par.field[ii][0][i] = abs(data->fem.field[i]);
       }
 
       fp = fopen("NEFF", "a+");
@@ -120,7 +120,7 @@ extern int analysis(DataTable *data, int argc, char **argv)
       fprintf(fp, "%lf %15.10lf\n", wl, data->par.beta);
       fclose(fp);
 
-    }else{
+    } else {
 #ifndef CG
       // eigenmode calculation by eigv4p
       eigenModeCalculation(data, ii);

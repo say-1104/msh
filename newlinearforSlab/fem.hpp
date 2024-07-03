@@ -39,5 +39,5 @@
                                 exit(0);\
                             }
 
-#include "struct.h"
-#include "function.h"
+#include "struct.hpp"
+#include "function.hpp"
