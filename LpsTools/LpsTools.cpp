@@ -132,8 +132,9 @@ void LpsTools::Appendstep(int p, int l, int s, int v){
 };
 
 void LpsTools::Printstep() {
-    std::cerr << "Point\tLine\tSurface\tVolume" << std::endl;
+    std::cerr << "Step[]\tPoint\tLine\tSurface\tVolume" << std::endl;
 	for(int i=2; i<step[0].size(); i++){
+        std::cerr << "[" << i-1 << "]\t" ;
 		for(int j=0; j<4; j++){
 			std::cerr << step[j][i] << "\t" ;
 		}
