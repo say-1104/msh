@@ -104,11 +104,11 @@ int main(int argc, char *argv[]){
 		lt->Surface(v3);
 		lt->Surface(v4);
 
-		v1={4+lt->step[1][n1], 4+lt->step[1][n2], 11+lt->step[1][n2], 21+lt->step[1][n2], 22+lt->step[1][n2], 2+lt->step[1][n3], 3+lt->step[1][n3], 4+lt->step[1][n3], 5+lt->step[1][n3], 6+lt->step[1][n3]};
-		v2={5+lt->step[1][n1], 5+lt->step[1][n2], 12+lt->step[1][n2], 22+lt->step[1][n2], 23+lt->step[1][n2]};
-		v3={6+lt->step[1][n1], 6+lt->step[1][n2], 13+lt->step[1][n2], 23+lt->step[1][n2], 24+lt->step[1][n2], 9+lt->step[1][n3], 10+lt->step[1][n3], 11+lt->step[1][n3], 12+lt->step[1][n3], 13+lt->step[1][n3]};
+		v1={4+lt->step[2][n1], 4+lt->step[2][n2], 11+lt->step[2][n2], 21+lt->step[2][n2], 22+lt->step[2][n2], 2+lt->step[2][n3], 3+lt->step[2][n3], 4+lt->step[2][n3], 5+lt->step[2][n3], 6+lt->step[2][n3]};
+		v2={5+lt->step[2][n1], 5+lt->step[2][n2], 12+lt->step[2][n2], 22+lt->step[2][n2], 23+lt->step[2][n2]};
+		v3={6+lt->step[2][n1], 6+lt->step[2][n2], 13+lt->step[2][n2], 23+lt->step[2][n2], 24+lt->step[2][n2], 9+lt->step[2][n3], 10+lt->step[2][n3], 11+lt->step[2][n3], 12+lt->step[2][n3], 13+lt->step[2][n3]};
 		for(int i=0; i<3*div+8; i++){
-			v2.push_back(17+i);
+			v2.push_back(17+i+lt->step[2][n3]);
 		}
 		lt->Volume(v1);
 		lt->Volume(v2);
