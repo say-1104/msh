@@ -94,7 +94,7 @@ int main(int argc, char *argv[]){
 	//step 7
 	lps3(7, Wpml+Hsio2);
 
-    lt->TransGene();
+    //lt->TransGene();
     lt->Fileclose();
 	//lab
     return 0;
