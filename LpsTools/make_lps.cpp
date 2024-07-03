@@ -92,14 +92,41 @@ int main(int argc, char *argv[]){
 		lt->Appendstep(0, 36+4*div, 59+div*7, 24+3*div);
 	};
 
+	auto lps5 = [&](int n1, int n2, int n3, double Y) -> void {
+		lt->step_offset = n1;
+		lt->Copy(Shape::surface, 0.0, Y, 0.0, 			"1 2 3 7 8 9");
+		v1={14+lt->step[1][n1], 5+lt->step[1][n2], 9+lt->step[1][n2], 6+lt->step[1][n3], 9+lt->step[1][n3], 12+lt->step[1][n3], 15+lt->step[1][n3], 18+lt->step[1][n3]};
+		v2={15+lt->step[1][n1], 6+lt->step[1][n2], 10+lt->step[1][n2], 7+lt->step[1][n3], 10+lt->step[1][n3], 13+lt->step[1][n3], 16+lt->step[1][n3], 19+lt->step[1][n3]};
+		v3={16+lt->step[1][n1], 7+lt->step[1][n2], 11+lt->step[1][n2], 28+lt->step[1][n3], 31+lt->step[1][n3], 34+lt->step[1][n3], 37+lt->step[1][n3], 40+lt->step[1][n3]};
+		v4={17+lt->step[1][n1], 8+lt->step[1][n2], 12+lt->step[1][n2], 29+lt->step[1][n3], 32+lt->step[1][n3], 35+lt->step[1][n3], 38+lt->step[1][n3], 41+lt->step[1][n3]};
+		lt->Surface(v1);
+		lt->Surface(v2);
+		lt->Surface(v3);
+		lt->Surface(v4);
+
+		v1={4+lt->step[1][n1], 4+lt->step[1][n2], 11+lt->step[1][n2], 21+lt->step[1][n2], 22+lt->step[1][n2], 2+lt->step[1][n3], 3+lt->step[1][n3], 4+lt->step[1][n3], 5+lt->step[1][n3], 6+lt->step[1][n3]};
+		v2={5+lt->step[1][n1], 5+lt->step[1][n2], 12+lt->step[1][n2], 22+lt->step[1][n2], 23+lt->step[1][n2]};
+		v3={6+lt->step[1][n1], 6+lt->step[1][n2], 13+lt->step[1][n2], 23+lt->step[1][n2], 24+lt->step[1][n2], 9+lt->step[1][n3], 10+lt->step[1][n3], 11+lt->step[1][n3], 12+lt->step[1][n3], 13+lt->step[1][n3]};
+		for(int i=0; i<3*div+8; i++){
+			v2.push_back(17+i);
+		}
+		lt->Volume(v1);
+		lt->Volume(v2);
+		lt->Volume(v3);
+		lt->Appendstep(0, 16, 24, 9);
+	};
+
 	//step 1, 2, 3
     lps1(1, 0.0); lps1(2, Wpml); lps2(1, Wpml);
 
 	//step 4, 5, 6
 	lps1(4, Ymax-Wpml); lps1(5, Ymax); lps2(4, Wpml);
 
-	//step 7, 8
+	//step 7, 8, 9
 	lps3(7, Wpml+Hsio2); lps3(8, Wpml+Hsio2+Hsi); lps4(7, Hsi);
+
+	//step 10, 11
+	lps5(2, 10, 7, Hsio2); lps5(4, 11, 8, -Wy);
 
     //lt->TransGene();
     lt->Fileclose();
