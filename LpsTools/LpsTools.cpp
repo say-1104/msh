@@ -106,8 +106,16 @@ std::vector<int> LpsTools::Atovec(const char* text){
 	return v;
 }
 
-const char* VectoA(std::vector<int> v){
-    
+const char* LpsTools::VectoA(std::vector<int> v){
+    std::stringstream ss;
+    for (auto it = v.begin(); it != v.end(); it++)    {
+        if (it != v.begin()) {
+            ss << " ";
+        }
+        ss << *it;
+    }
+    std::string s = ss.str();
+    return s.c_str();
 }
 
 void LpsTools::Appendstep(int p, int l, int s, int v){
