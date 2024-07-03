@@ -85,14 +85,21 @@ int main(int argc, char *argv[]){
 		lt->Appendstep(36+4*div, 59+div*7, 24+3*div, 0);
 
 	};
+	
+	auto lps4 = [&](int n, double Y) -> void {
+		lt->step_offset = n;
+		lt->Copy(Shape::surface, 0.0, Y, 0.0, 			1, 3*div+24);
+		lt->Appendstep(0, 16, 24, 9);
+	};
+
 	//step 1, 2, 3
     lps1(1, 0.0); lps1(2, Wpml); lps2(1, Wpml);
 
 	//step 4, 5, 6
 	lps1(4, Ymax-Wpml); lps1(5, Ymax); lps2(4, Wpml);
 
-	//step 7
-	lps3(7, Wpml+Hsio2);
+	//step 7, 8
+	lps3(7, Wpml+Hsio2); lps3(8, Wpml+Hsio2+Hsi); lps4(7, Hsi);
 
     //lt->TransGene();
     lt->Fileclose();
