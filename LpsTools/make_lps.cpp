@@ -54,7 +54,7 @@ int main(int argc, char *argv[]){
 		lt->Copy(Shape::line, Wx, 0.0, 0.0, 		"14");
 		lt->Copy(Shape::line, Wpml, 0.0, 0.0, 		"17");
 
-		lt->Line(0.0, 0.0, 				Zmax-Wpml, Zmax);
+		lt->Line(0.0, Zmax-Wpml, 		0.0, Zmax);
 		lt->Copy(Shape::line, Wpml, 0.0, 0.0, 		"23");
 		lt->Copy(Shape::line, Wx, 0.0, 0.0, 		"24");
 		lt->Copy(Shape::line, W, 0.0, 0.0, 			"27");
