@@ -70,7 +70,7 @@ int main(int argc, char *argv[]){
 			lt->Copy(Shape::line, 0.0, 0.0, dLc, 	Plusv(v1, lt->step[1][lt->step_offset]));
 		}
 		v1 = {49+7*div, 50+7*div, 51+7*div};
-		lt->Copy(Shape::line, 0.0, 0.0, dLc, 	Plusv(v1, lt->step[1][lt->step_offset]));
+		lt->Copy(Shape::line, 0.0, 0.0, Wz, 	Plusv(v1, lt->step[1][lt->step_offset]));
 
 		v1={28, 46, 7};
 		v2={40, 47, 19};
