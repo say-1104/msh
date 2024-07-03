@@ -115,7 +115,8 @@ const char* LpsTools::VectoA(std::vector<int> v){
         ss << *it;
     }
     std::string s = ss.str();
-    return s.c_str();
+    const char* c = s.c_str();
+    return c;
 }
 
 void LpsTools::Appendstep(int p, int l, int s, int v){
