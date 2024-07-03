@@ -240,7 +240,7 @@ void LpsTools::Copy(Shape shape, double x, double y, double z, int st, int end, 
 	ofs << x << "\t" << y << "\t" << z << std::endl;
 	
 	for (int i=st; i<=end; i+=inc) {
-		ofs << st + step[n_shape][step_offset] << " ";
+		ofs << i + step[n_shape][step_offset] << " ";
 	}
 	ofs << std::endl;
 }
