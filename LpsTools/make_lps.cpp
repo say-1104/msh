@@ -89,7 +89,7 @@ int main(int argc, char *argv[]){
 	auto lps4 = [&](int n, double Y) -> void {
 		lt->step_offset = n;
 		lt->Copy(Shape::surface, 0.0, Y, 0.0, 			1, 3*div+24);
-		lt->Appendstep(0, 16, 24, 9);
+		lt->Appendstep(0, 36+4*div, 59+div*7, 24+3*div);
 	};
 
 	//step 1, 2, 3
