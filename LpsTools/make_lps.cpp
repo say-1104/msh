@@ -67,10 +67,10 @@ int main(int argc, char *argv[]){
 		lt->Copy(Shape::line, 0.0, 0.0, Wz, 			"10 13 16");
 		for(int i=0; i<div; i++){
 			v1 = {49+i*7, 50+i*7, 51+i*7};
-			lt->Copy(Shape::line, 0.0, 0.0, dLc, 	lt->VectoA(v1));
+			lt->Copy(Shape::line, 0.0, 0.0, dLc, 	Plusv(v1, lt->step[1][lt->step_offset]));
 		}
 		v1 = {49+7*div, 50+7*div, 51+7*div};
-		lt->Copy(Shape::line, 0.0, 0.0, dLc, 	lt->VectoA(v1));
+		lt->Copy(Shape::line, 0.0, 0.0, dLc, 	Plusv(v1, lt->step[1][lt->step_offset]));
 
 		v1={28, 46, 7};
 		v2={40, 47, 19};
@@ -80,8 +80,8 @@ int main(int argc, char *argv[]){
 		}
 		v1.push_back(56+div*7);
 		v2.push_back(59+div*7);
-		lt->Surface(lt->VectoA(v1));
-		lt->Surface(lt->VectoA(v2));
+		lt->Surface(Plusv(v1, lt->step[1][lt->step_offset]));
+		lt->Surface(Plusv(v2, lt->step[1][lt->step_offset]));
 		lt->Appendstep(36+4*div, 59+div*7, 24+3*div, 0);
 
 	};
