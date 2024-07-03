@@ -2,7 +2,8 @@
     "files.associations": {
         "deque": "cpp",
         "string": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "fem.hpp": "c"
     },
     "C_Cpp.default.compilerPath": "C:\\msys64\\usr\\bin\\g++.exe"
 }

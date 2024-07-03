@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
-#include <complex>
+#include <complex.h>
 
 #define double_complex std::complex<double>
 

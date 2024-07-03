@@ -1,4 +1,4 @@
-#include "./iteration.h"
+#include "iteration.h"
 
 extern int makeCGmatrixTable(ELEMENT *element, int ne, int np,
                             CGtable *cg_table, int NK);
