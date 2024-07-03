@@ -3,5 +3,6 @@
         "deque": "cpp",
         "string": "cpp",
         "vector": "cpp"
-    }
+    },
+    "C_Cpp.default.compilerPath": "C:\\msys64\\usr\\bin\\g++.exe"
 }
