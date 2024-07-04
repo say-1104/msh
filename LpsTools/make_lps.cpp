@@ -128,6 +128,9 @@ int main(int argc, char *argv[]){
 	//step 10, 11
 	lps5(2, 10, 7, Hsio2); lps5(4, 11, 8, -Wy);
 
+	//Material
+	lt->Mat2D()
+
     //lt->TransGene();
     lt->Fileclose();
 	//lab
