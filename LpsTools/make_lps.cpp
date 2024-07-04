@@ -169,13 +169,13 @@ int main(int argc, char *argv[]){
 	for(int i=0; i<3*(div+2); i++){
 		v1.push_back(17+i);
 	}
-	v2=Plusv(v1, lt->step[3][7]);
-	v3=Plusv(v1, lt->step[3][8]);
+	v2=Plusv(v1, lt->step[2][7]);
+	v3=Plusv(v1, lt->step[2][8]);
 	v4={5, 8, 9, 10, 11, 12, 13, 14, 15, 16, 27, 30, 31, 32, 33, 34, 35, 36, 37, 38};
 	for(int i=0; i<7*(div+1)+4; i++){
 		v4.push_back(49+i);
 	}
-	v4=Plusv(v4, lt->step[3][9]);
+	v4=Plusv(v4, lt->step[2][9]);
 	copy(v3.begin(),v3.end(),back_inserter(v2));
 	copy(v4.begin(),v4.end(),back_inserter(v2));
 	lt->Unstr(Shape::surface, v2);
