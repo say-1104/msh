@@ -16,7 +16,7 @@ int main(int argc, char *argv[]){
 	double Wz = 0.5;				//導波路とPML間の距離
 	double Wpml = 1.0;				//PML幅
 
-    int div = 10;
+    int div = 5;
 	double dLc = Lc / div;
 	double Zmax = 2 * Wpml + 2 * Wz + Lc, Xmax = 2 * Wpml + 2 * Wx + g + 2 * W, Ymax = 2 * Wpml + Hsio2 + Hsi + Wy;
     double unstr = 0.04, trans = 0.3, gene = 0.3;
