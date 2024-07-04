@@ -280,12 +280,12 @@ void LpsTools::Mat3D(int mat, std::vector<int> v){
 }
 
 
-void LpsTools::Unstr(Shape shape, double unstr, const char* text){
+void LpsTools::Unstr(Shape shape, const char* text){
     std::vector<int> v = Atovec(text);
-    Unstr(shape, unstr, v);
+    Unstr(shape, v);
 }
 
-void LpsTools::Unstr(Shape shape, double unstr, std::vector<int> v){
+void LpsTools::Unstr(Shape shape, std::vector<int> v){
 	SwitchingFunc(Function::unstr);
 	int tmp = static_cast<int>(shape);
 	

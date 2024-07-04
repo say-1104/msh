@@ -61,8 +61,8 @@ class LpsTools {
         void Mat3D(int mat, const char* text);
         void Mat3D(int mat, std::vector<int> v);
 
-        void Unstr(Shape shape, double unstr, const char* text);
-        void Unstr(Shape shape, double unstr, std::vector<int> v);
+        void Unstr(Shape shape, const char* text);
+        void Unstr(Shape shape, std::vector<int> v);
 
         void TransGene();
         void Fileclose();
