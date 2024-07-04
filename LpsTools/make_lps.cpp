@@ -129,11 +129,41 @@ int main(int argc, char *argv[]){
 	lps5(2, 10, 7, Hsio2); lps5(4, 11, 8, -Wy);
 
 	//Material
-	v1={1, 4, 7, 10, 13, 16,
-		1+lt->step[3][10], 4+lt->step[3][10], 7+lt->step[3][10], 
-		1+lt->step[3][11], 4+lt->step[3][11], 7+lt->step[3][11], 
+	v1={1, 4, 7, 1+lt->step[3][10], 4+lt->step[3][10], 7+lt->step[3][10]};
+	v2={10, 13, 16, 1+lt->step[3][11], 4+lt->step[3][11], 7+lt->step[3][11], 
 		1+lt->step[3][9], 2+lt->step[3][9], 4+lt->step[3][9], 6+lt->step[3][9], 7+lt->step[3][9]};
-	lt->Mat2D(1, v1);
+	v3={3+lt->step[3][9]};
+	v4={5+lt->step[3][9]};
+	lt->Mat3D(1, v1);
+	lt->Mat3D(2, v2);
+	lt->Mat3D(3, v3);
+	lt->Mat3D(4, v4);
+
+	v1={3, 6, 9, 3+lt->step[3][10], 6+lt->step[3][10], 9+lt->step[3][10]};
+	v2={12, 15, 18, 3+lt->step[3][11], 6+lt->step[3][11], 9+lt->step[3][11], 
+		8+lt->step[3][9], 9+lt->step[3][9], 11+lt->step[3][9], 13+lt->step[3][9], 14+lt->step[3][9]};
+	v3={10+lt->step[3][9]};
+	v4={12+lt->step[3][9]};
+	lt->Mat3D(5, v1);
+	lt->Mat3D(6, v2);
+	lt->Mat3D(7, v3);
+	lt->Mat3D(8, v4);
+	
+	v1={}; v2={};
+	for(int i=0; i<div+2; i++){
+		v1.push_back(17+3*i+lt->step[3][9]);
+		v2.push_back(19+3*i+lt->step[3][9]);
+	}
+	v3={2, 5, 8, 2+lt->step[3][10], 5+lt->step[3][10], 8+lt->step[3][10]};
+	v4={11, 14, 17, 2+lt->step[3][11], 5+lt->step[3][11], 8+lt->step[3][11], 
+		15+lt->step[3][9], 16+lt->step[3][9], 23+3*div+lt->step[3][9], 24+3*div+lt->step[3][9]};
+	for(int i=0; i<div+2; i++){
+		v4.push_back(18+3*i+lt->step[3][9]);
+	}
+	lt->Mat3D(9, v1);
+	lt->Mat3D(10, v2);
+	lt->Mat3D(11, v3);
+	lt->Mat3D(12, v4);
 
     //lt->TransGene();
     lt->Fileclose();
