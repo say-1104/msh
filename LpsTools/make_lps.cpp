@@ -129,7 +129,11 @@ int main(int argc, char *argv[]){
 	lps5(2, 10, 7, Hsio2); lps5(4, 11, 8, -Wy);
 
 	//Material
-	lt->Mat2D()
+	v1={1, 4, 7, 10, 13, 16,
+		1+lt->step[3][10], 4+lt->step[3][10], 7+lt->step[3][10], 
+		1+lt->step[3][11], 4+lt->step[3][11], 7+lt->step[3][11], 
+		1+lt->step[3][9], 2+lt->step[3][9], 4+lt->step[3][9], 6+lt->step[3][9], 7+lt->step[3][9]};
+	lt->Mat2D(1, v1);
 
     //lt->TransGene();
     lt->Fileclose();
