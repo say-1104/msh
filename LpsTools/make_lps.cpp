@@ -148,7 +148,7 @@ int main(int argc, char *argv[]){
 	lt->Mat3D(6, v2);
 	lt->Mat3D(7, v3);
 	lt->Mat3D(8, v4);
-	
+
 	v1={}; v2={};
 	for(int i=0; i<div+2; i++){
 		v1.push_back(17+3*i+lt->step[3][9]);
@@ -164,6 +164,14 @@ int main(int argc, char *argv[]){
 	lt->Mat3D(10, v2);
 	lt->Mat3D(11, v3);
 	lt->Mat3D(12, v4);
+
+	v1={3, 4, 5, 10, 11, 12};
+	for(int i=0; i<3*(div+2); i++){
+		v1.push_back(17+i);
+	}
+	v2=Plusv(v1, lt->step[3][7]);
+	v3=Plusv(v1, lt->step[3][8]);
+
 
     //lt->TransGene();
     lt->Fileclose();
