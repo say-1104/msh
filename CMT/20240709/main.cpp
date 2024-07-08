@@ -1,9 +1,30 @@
-#include "main.hpp"
 #include "LI.hpp"
-#include "function.hpp"
-#include "struct.hpp"
+#include "main.hpp"
 
-int checkArgument(DataTable *data, int argc, char* argv[]){
+void checkArgument(DataTable *data, int argc, char* argv[]);
+void checkConfig(DataTable *data);
+void inputData(DataTable *data);
+void makeZtoW(DataTable *data);
+
+//calcCMT.cpp
+void calcCMT(DataTable *data);
+
+int main(int argc, char* argv[]){
+    DataTable data;
+    //引数の確認
+    checkArgument(&data, argc, argv);
+    checkConfig(&data);
+
+    inputData(&data);
+
+    makeZtoW(&data);
+
+    calcCMT(&data);
+    
+    return 0;
+}
+
+void checkArgument(DataTable *data, int argc, char* argv[]){
     Param *par = &(data->par);
     Flag *flag = &(data->flag);
 
@@ -51,12 +72,10 @@ int checkArgument(DataTable *data, int argc, char* argv[]){
 
         }
 	}
-    return 0;
 };
 
-int checkConfig(DataTable *data) {
+void checkConfig(DataTable *data) {
     Param *par = &(data->par);
-    Flag *flag = &(data->flag);
 
     std::ifstream ifs("structure.cfg", std::ios::out);
     if(! ifs) {
@@ -85,12 +104,11 @@ int checkConfig(DataTable *data) {
         exit(1);
     }
     ifs.close();
-    return 0;
 };
 
-int inputData(DataTable *data){
+void inputData(DataTable *data){
     Param *par = &(data->par);
-    Flag *flag = &(data->flag);
+    
     std::ostringstream oss;
     oss << std::fixed << std::setprecision(3) << data->par.wl;
     std::ifstream ifs(("input_" + oss.str() + ".pre").c_str(), std::ios::out);
@@ -113,7 +131,6 @@ int inputData(DataTable *data){
         }
         data->dset++;
     }
-    return 0;
 };
 
 void makeZtoW(DataTable *data){
@@ -131,4 +148,58 @@ void makeZtoW(DataTable *data){
             count++;
         }
     }
+};
+
+void calcCMT(DataTable *data){
+    Param *par = &(data->par);
+    std::ofstream ofs;
+
+    ofs.open("output", std::ios::out);
+	if(! ofs) {
+		std::cerr << "File(output) open error !" << std::endl;
+		exit(1);
+    }
+    ofs << "step\tposition_z\tabs(a)\tabs(b)\n";
+    ofs << std::fixed << std::setprecision(10);
+
+    Eigen::Vector2cd ab;
+    ab << std::complex<double>(0.0, 0.0), std::complex<double>(1.0, 0.0);
+    int n_div = par->taper[par->N_taper].second / par->dz;
+
+    for (int step = 0; step < n_div; step++) {
+        auto z = std::get<0>(par->ZtoW[step]);
+        auto w = std::get<1>(par->ZtoW[step]);
+        auto flag = std::get<2>(par->ZtoW[step]);
+        if(flag == 1 && std::get<2>(par->ZtoW[step-1]) == 0) data->dset++;
+
+        double be = data->dset->beta_even[w];
+        double bo = data->dset->beta_odd[w];
+        double b1 = data->dset->beta_1[w];
+        double b2 = data->dset->beta_2[w];
+
+        auto calc_CMT = [&]() -> void { // ラムダ式
+            double beta_ave = (b1 + b2) / 2.0;
+            double delta = (b1 - b2) / 2.0;
+            double q = (be - bo) / 2.0;
+            double kappa = ((q * q - delta * delta >= 0.0) ? sqrt(q * q - delta * delta) : 0.0);
+
+            Eigen::Matrix2d P;
+            P << delta + q, kappa, kappa, -(delta + q);
+            P *= 1.0 / (sqrt(kappa * kappa + (delta + q) * (delta + q)));
+
+            Eigen::Matrix2cd mid;
+            mid << exp(-cj * (beta_ave + q) * par->dz), std::complex<double>(0.0, 0.0),
+                std::complex<double>(0.0, 0.0), exp(-cj * (beta_ave - q) * par->dz);
+
+            ab = P * ab;
+            ab = mid * ab;
+            ab = P * ab;
+        };
+
+        ofs << step << '\t' << z << '\t' << abs(ab(0)) * abs(ab(0)) << '\t' << abs(ab(1)) * abs(ab(1)) << std::endl;
+        calc_CMT();
+    }
+
+    ofs << n_div << '\t' << par->taper[par->N_taper].second << '\t' << abs(ab(0)) * abs(ab(0)) << '\t' << abs(ab(1)) * abs(ab(1)) << std::endl;
+    ofs.close();
 };

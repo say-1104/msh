@@ -3,7 +3,7 @@
 #include "function.hpp"
 #include "struct.hpp"
 
-void calcCMT(DataTable *data){
+int calcCMT(DataTable *data){
     Param *par = &(data->par);
     std::ofstream ofs;
 
@@ -54,4 +54,6 @@ void calcCMT(DataTable *data){
 
     ofs << n_div << '\t' << par->taper[par->N_taper].second << '\t' << abs(ab(0)) * abs(ab(0)) << '\t' << abs(ab(1)) * abs(ab(1)) << std::endl;
     ofs.close();
+
+    return 0;
 };
