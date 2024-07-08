@@ -13,13 +13,15 @@ int main(int argc, char* argv[]){
     DataTable data;
     //引数の確認
     checkArgument(&data, argc, argv);
+    std::cerr << "finish checkarg" << std::endl;
     checkConfig(&data);
-
+    std::cerr << "finish checkcfg" << std::endl;
     inputData(&data);
-
+    std::cerr << "finish checkinput" << std::endl;
     makeZtoW(&data);
-
+    std::cerr << "finish makeztow" << std::endl;
     calcCMT(&data);
+    std::cerr << "finish calc" << std::endl;
     
     return 0;
 }
@@ -54,13 +56,13 @@ void checkArgument(DataTable *data, int argc, char* argv[]){
 			}
 			else if (argv[i][1] == 'w' && argv[i][2] == 'l') {
                 i++;
-                data->par.wl = atoi(argv[i]);
+                data->par.wl = atof(argv[i]);
                 std::cerr << std::fixed << std::setprecision(3);
                 std::cerr << "Wavelength is " << data->par.wl << std::endl;
 			}
 			else if (argv[i][1] == 'l' && argv[i][2] == 'e' && argv[i][3] == 'f' && argv[i][4] == 'f') {
                 i++;
-                data->par.Leff = atoi(argv[i]);
+                data->par.Leff = atof(argv[i]);
                 std::cerr << std::fixed << std::setprecision(3);
                 std::cerr << "Leff is " << data->par.Leff << std::endl;
 			}
@@ -91,7 +93,7 @@ void checkConfig(DataTable *data) {
     //bool b_tmp = true;
     for(int i=0; i<par->N_taper+1; i++){
         double w, z;
-        ifs >> w >> z;
+        ifs >> z >> w;
         /*if(z > par->Leff && b_tmp) {
             double wleff = (par->Leff - par->taper[i-1].second) * (w - par->taper[i-1].first) / (z - par->taper[i-1].second) + par->taper[i-1].first;
             par->taper.push_back(std::make_pair(wleff, par->Leff));
@@ -100,7 +102,8 @@ void checkConfig(DataTable *data) {
     }
     par->wst = par->taper[0].first;
     if(par->taper[par->N_taper].second < par->Leff) {
-        std::cerr << "Leff is incorect" << std::endl;
+        std::cerr << "Leff is incorrect" << std::endl;
+        std::cerr <<  par->taper[par->N_taper].second << par->Leff << std::endl;
         exit(1);
     }
     ifs.close();
@@ -116,7 +119,7 @@ void inputData(DataTable *data){
 		std::cerr << "input.pre open error !" << std::endl;
 		exit(1);
 	}
-    ALLOCATION(data->dset, Dataset, par->N_dset);
+    //ALLOCATION(data->dset, Dataset, par->N_dset);
 
     for(int i=0; i<par->N_dset; i++){
         ifs >> data->dset->N;
@@ -124,10 +127,10 @@ void inputData(DataTable *data){
             double w;
             double b1, b2, b3, b4;
             ifs >> w >> b1 >> b2 >> b3 >> b4;
-            data->dset->beta_even.append(w, b1);
-            data->dset->beta_odd.append(w, b2);
-            data->dset->beta_1.append(w, b3);
-            data->dset->beta_2.append(w, b4);
+            data->dset[_]->beta_even.append(w, b1);
+            data->dset[_]->beta_odd.append(w, b2);
+            data->dset[_]->beta_1.append(w, b3);
+            data->dset[_]->beta_2.append(w, b4);
         }
         data->dset++;
     }
@@ -165,7 +168,7 @@ void calcCMT(DataTable *data){
     Eigen::Vector2cd ab;
     ab << std::complex<double>(0.0, 0.0), std::complex<double>(1.0, 0.0);
     int n_div = par->taper[par->N_taper].second / par->dz;
-
+    
     for (int step = 0; step < n_div; step++) {
         auto z = std::get<0>(par->ZtoW[step]);
         auto w = std::get<1>(par->ZtoW[step]);
