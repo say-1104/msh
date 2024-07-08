@@ -40,7 +40,7 @@ void checkArgument(DataTable *data, int argc, char* argv[]){
 			if (argv[i][1] == 'p' && argv[i][2] == 'c' && argv[i][3] == 'm') {
                 char c = argv[i][4];
                 flag->pcm = int(c - '0');
-				std::cerr << "Phase Change Material is deposited" << std::endl;
+				std::cerr << "Phase Change Material(" << flag->pcm <<") is deposited" << std::endl;
                 switch(flag->pcm){
                     case 1:
                         par->N_dset = 2;
@@ -91,13 +91,9 @@ void checkConfig(DataTable *data) {
     ifs >> buff >> par->N_taper;
     ifs >> buff >> buff;
     //bool b_tmp = true;
-    for(int i=0; i<par->N_taper+1; i++){
+    for(int i=0; i<(par->N_taper)+1; i++){
         double w, z;
         ifs >> z >> w;
-        /*if(z > par->Leff && b_tmp) {
-            double wleff = (par->Leff - par->taper[i-1].second) * (w - par->taper[i-1].first) / (z - par->taper[i-1].second) + par->taper[i-1].first;
-            par->taper.push_back(std::make_pair(wleff, par->Leff));
-        } */
         par->taper.push_back(std::make_pair(w, z));
     }
     par->wst = par->taper[0].first;
@@ -118,7 +114,7 @@ void inputData(DataTable *data){
     if(! ifs) {
 		std::cerr << "input.pre open error !" << std::endl;
 		exit(1);
-	}
+	} else std::cerr << "input.pre open" << std::endl;
     //ALLOCATION(data->dset, Dataset, par->N_dset);
 
     for(int i=0; i<par->N_dset; i++){
