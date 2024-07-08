@@ -1,6 +1,6 @@
 #!/bin/sh
 
-for wl in `seq 1.530 0.010 1.570`
+for wl in `seq 1.530 0.010 1.530`
 do
     echo -n > T_${wl}.dat
     for Leff in `seq 0.0 0.2 26.6`

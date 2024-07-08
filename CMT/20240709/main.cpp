@@ -20,7 +20,7 @@ int main(int argc, char* argv[]){
     std::cerr << "finish checkinput" << std::endl;
     makeZtoW(&data);
     std::cerr << "finish makeztow" << std::endl;
-    calcCMT(&data);
+    //calcCMT(&data);
     std::cerr << "finish calc" << std::endl;
     
     return 0;
