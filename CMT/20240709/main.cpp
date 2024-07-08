@@ -20,7 +20,7 @@ int main(int argc, char* argv[]){
     std::cerr << "finish checkinput" << std::endl;
     makeZtoW(&data);
     std::cerr << "finish makeztow" << std::endl;
-    //calcCMT(&data);
+    calcCMT(&data);
     std::cerr << "finish calc" << std::endl;
     
     return 0;
@@ -123,10 +123,10 @@ void inputData(DataTable *data){
             double w;
             double b1, b2, b3, b4;
             ifs >> w >> b1 >> b2 >> b3 >> b4;
-            data->dset[j].beta_even.append(w, b1);
-            data->dset[j].beta_odd.append(w, b2);
-            data->dset[j].beta_1.append(w, b3);
-            data->dset[j].beta_2.append(w, b4);
+            data->dset[i].beta_even.append(w, b1);
+            data->dset[i].beta_odd.append(w, b2);
+            data->dset[i].beta_1.append(w, b3);
+            data->dset[i].beta_2.append(w, b4);
         }
     }
 };
@@ -137,12 +137,12 @@ void makeZtoW(DataTable *data){
     for (int i=0; i<par->N_taper; i++){
         double l = par->taper[i+1].second - par->taper[i].second;
         int n_div = l / par->dz;
-        double wst = par->taper[i].first, wfi = par->taper[i].first;
+        double wst = par->taper[i].first; double wfi = par->taper[i+1].first;
         for (int step = 0; step < n_div; step++) {
             double cur_z = step * par->dz;
             double cur_w = wst + (cur_z / l) * (wfi - wst);
-            if(count*par->dz < par->Leff) par->ZtoW[step] = std::make_tuple(cur_z, cur_w, CPCM);
-            else par->ZtoW[step] = std::make_tuple(cur_z, cur_w, APCM);
+            if(double(count)*(par->dz) < par->Leff) par->ZtoW.push_back(std::make_tuple(cur_z, cur_w, CPCM));
+            else par->ZtoW.push_back(std::make_tuple(cur_z, cur_w, APCM));
             count++;
         }
     }

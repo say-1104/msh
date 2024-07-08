@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <array>
 #include <vector>
 #include <string>
 #include <tuple>
@@ -50,7 +51,7 @@ typedef struct _Flag {
 typedef struct _DataTable {
     Flag flag;
     Param par;
-    std::vector<Dataset> dset;
+	std::array<Dataset, 4> dset;
 } DataTable;
 
 
