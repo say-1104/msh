@@ -1,6 +1,6 @@
 #include "main.hpp"
 
-extern void calcCMT(DataTable *data){
+void calcCMT(DataTable *data){
     Param *par = &(data->par);
     std::ofstream ofs;
 
