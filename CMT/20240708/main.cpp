@@ -1,6 +1,6 @@
 #include "main.hpp"
 
-int main(int argc, char* argv[]){
+extern int main(int argc, char* argv[]){
     DataTable data;
     //引数の確認
     checkArgument(&data, argc, argv);

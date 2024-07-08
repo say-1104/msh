@@ -1,6 +1,6 @@
 #include "main.hpp"
 
-void checkArgument(DataTable *data, int argc, char* argv[]){
+extern int checkArgument(DataTable *data, int argc, char* argv[]){
     Param *par = &(data->par);
     Flag *flag = &(data->flag);
 
@@ -48,9 +48,10 @@ void checkArgument(DataTable *data, int argc, char* argv[]){
 
         }
 	}
+    return 0;
 };
 
-void checkConfig(DataTable *data) {
+extern int checkConfig(DataTable *data) {
     Param *par = &(data->par);
     Flag *flag = &(data->flag);
 
@@ -81,9 +82,11 @@ void checkConfig(DataTable *data) {
         exit(1);
     }
     ifs.close();
+
+    return 0;
 };
 
-void inputData(DataTable *data){
+extern int inputData(DataTable *data){
     Param *par = &(data->par);
     Flag *flag = &(data->flag);
     std::ostringstream oss;
@@ -108,9 +111,11 @@ void inputData(DataTable *data){
         }
         data->dset++;
     }
+
+    return 0;
 };
 
-void makeZtoW(DataTable *data){
+extern int makeZtoW(DataTable *data){
     Param *par = &(data->par);
     int count = 0;
     for (int i=0; i<par->N_taper; i++){
@@ -125,4 +130,6 @@ void makeZtoW(DataTable *data){
             count++;
         }
     }
+
+    return 0;
 };

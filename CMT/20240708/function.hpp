@@ -1,8 +1,8 @@
 //inputdata.cpp
-void checkArgument(DataTable *data, int argc, char* argv[]);
-void checkConfig(DataTable *data);
-void inputData(DataTable *data);
-void makeZtoW(DataTable *data);
+extern int checkArgument(DataTable *data, int argc, char* argv[]);
+extern int checkConfig(DataTable *data);
+extern int inputData(DataTable *data);
+extern int makeZtoW(DataTable *data);
 
 //calcCMT.cpp
-void calcCMT(DataTable *data);
+extern int calcCMT(DataTable *data);
