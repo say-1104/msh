@@ -122,17 +122,16 @@ void inputData(DataTable *data){
     //ALLOCATION(data->dset, Dataset, par->N_dset);
 
     for(int i=0; i<par->N_dset; i++){
-        ifs >> data->dset->N;
-        for (int _ = 0; _ < data->dset->N; _++) {
+        ifs >> data->dset[i].N;
+        for (int j = 0; j < data->dset[i].N; j++) {
             double w;
             double b1, b2, b3, b4;
             ifs >> w >> b1 >> b2 >> b3 >> b4;
-            data->dset[_]->beta_even.append(w, b1);
-            data->dset[_]->beta_odd.append(w, b2);
-            data->dset[_]->beta_1.append(w, b3);
-            data->dset[_]->beta_2.append(w, b4);
+            data->dset[j].beta_even.append(w, b1);
+            data->dset[j].beta_odd.append(w, b2);
+            data->dset[j].beta_1.append(w, b3);
+            data->dset[j].beta_2.append(w, b4);
         }
-        data->dset++;
     }
 };
 
@@ -169,16 +168,17 @@ void calcCMT(DataTable *data){
     ab << std::complex<double>(0.0, 0.0), std::complex<double>(1.0, 0.0);
     int n_div = par->taper[par->N_taper].second / par->dz;
     
+    int tmp = 0;
     for (int step = 0; step < n_div; step++) {
         auto z = std::get<0>(par->ZtoW[step]);
         auto w = std::get<1>(par->ZtoW[step]);
         auto flag = std::get<2>(par->ZtoW[step]);
-        if(flag == 1 && std::get<2>(par->ZtoW[step-1]) == 0) data->dset++;
+        if(flag == 1 && std::get<2>(par->ZtoW[step-1]) == 0) tmp++;
 
-        double be = data->dset->beta_even[w];
-        double bo = data->dset->beta_odd[w];
-        double b1 = data->dset->beta_1[w];
-        double b2 = data->dset->beta_2[w];
+        double be = data->dset[tmp].beta_even[w];
+        double bo = data->dset[tmp].beta_odd[w];
+        double b1 = data->dset[tmp].beta_1[w];
+        double b2 = data->dset[tmp].beta_2[w];
 
         auto calc_CMT = [&]() -> void { // ラムダ式
             double beta_ave = (b1 + b2) / 2.0;
