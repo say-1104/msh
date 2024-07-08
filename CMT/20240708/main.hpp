@@ -10,9 +10,6 @@
 #include <iostream>
 #include <string>
 #include <tuple>
-#include "LI.hpp"
-#include "function.hpp"
-#include "struct.hpp"
 
 constexpr std::complex<double> cj(0.0, 1.0);
 
