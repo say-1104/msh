@@ -9,19 +9,22 @@ fi
 make all
 for wl in `seq 1.550 0.010 1.550`
 do
-    echo -n > Leff0.dat
+    echo -n > Leff0_${wl}.dat
+    count=1
     for g in `seq 0.100 0.002 0.200`
     do
         echo -n > g${g}.dat
-        z1=
+        z1=`head -n${count} Lc_${wl}.dat | tail -n1 | cut -f4 `
         ./make_cfg ${dz} ${z0} ${g} ${z1} ${g}
-        for Leff in `seq 0.0 0.2 26.6`
+        Leff_fi=
+        for Leff in `seq 0.0 0.2 ${Leff_fi=}`
         do
-            ./cmt -pcm1 -wl ${wl} -leff ${Leff} #2>output_err
+            ./cmt -pcm1 -wl ${wl} -leff ${Leff} 
 
             echo -e -n "${Leff}\t`tail -n1 output | head -n1 | cut -f3 `" >> ./g${g}.dat
             echo -e "\t`tail -n1 output | head -n1 | cut -f4 `" >> ./g${g}.dat
         done
-
+        echo -e -n "${g}\t`head -n1 g${g}.dat | cut -f2 `" >> Leff0_${wl}.dat
+        count=`expr $count + 1`
     done
 done
