@@ -3,7 +3,7 @@ dz=0.1
 z0=0.0
 g++ -o  make_cfg make_cfg.cpp -std=c++11
 if [ ! -e ./make_cfg ]; then
-	echo "ƒRƒ“ƒpƒCƒ‹ƒGƒ‰[‚ªo‚½‚Ì‚ÅI—¹‚µ‚Ü‚·B"
+	echo "ï¿½Rï¿½ï¿½ï¿½pï¿½Cï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½Ì‚ÅIï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B"
 	exit
 fi
 make all
@@ -11,7 +11,7 @@ for wl in `seq 1.550 0.010 1.550`
 do
     echo -n > Leff0_${wl}.dat
     count=1
-    for g in `seq 0.100 0.002 0.100`
+    for g in `seq 0.100 0.002 0.200`
     do
         echo -n > g${g}.dat
         z1=`head -n${count} Lc_${wl}.dat | tail -n1 | cut -f4 `
@@ -25,6 +25,7 @@ do
             echo -e "\t`tail -n1 output | head -n1 | cut -f4 `" >> ./g${g}.dat
         done
         echo -e -n "${g}\t`head -n1 g${g}.dat | cut -f2 `" >> Leff0_${wl}.dat
+        echo -e "$\t`head -n1 g${g}.dat | cut -f2 `" >> Leff0_${wl}.dat
         count=`expr $count + 1`
     done
 done
