@@ -7,7 +7,7 @@ if [ ! -e ./make_cfg ]; then
 	exit
 fi
 #make all
-for wl in `seq 1.550 0.010 1.570`
+for wl in `seq 1.540 0.010 1.570`
 do
     echo -n > PSR_${wl}.dat
     count=1
