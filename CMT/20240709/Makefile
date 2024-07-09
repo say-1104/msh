@@ -5,7 +5,7 @@ CFLAGS    = -O2 -Wall -std=c++11
 # (3)実行ファイル名
 TARGET  = cmt
 # (4)コンパイル対象のソースコード
-SRCS    = $(wildcard *.cpp) #cmt.cpp
+SRCS    = main.cpp #$(wildcard *.cpp) #cmt.cpp
 # (5)オブジェクトファイル名
 OBJS    = $(SRCS:.cpp=.o)
  

@@ -26,8 +26,13 @@ int main(int argc, char* argv[]){
     ofs << "dz\t" << dz << endl;
     ofs << "N_taper\t" << N_taper << endl;
     ofs << "z\twidth" << endl;
+    
     for (int i=0; i<N_taper+1; i++){
-        ofs << z[i] << "\t" << w[i] << endl;
+        ofs << fixed << setprecision(1);
+        ofs << z[i] ;
+        ofs << "\t" ;
+        ofs << fixed << setprecision(3);
+        ofs << w[i] << endl;
     }
     ofs.close();
     return 0;

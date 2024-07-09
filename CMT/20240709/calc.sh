@@ -6,7 +6,7 @@ if [ ! -e ./make_cfg ]; then
 	echo "�R���p�C���G���[���o���̂ŏI�����܂��B"
 	exit
 fi
-make all
+#make all
 for wl in `seq 1.550 0.010 1.550`
 do
     echo -n > Leff0_${wl}.dat
@@ -25,7 +25,7 @@ do
             echo -e "\t`tail -n1 output | head -n1 | cut -f4 `" >> ./g${g}.dat
         done
         echo -e -n "${g}\t`head -n1 g${g}.dat | cut -f2 `" >> Leff0_${wl}.dat
-        echo -e "$\t`head -n1 g${g}.dat | cut -f2 `" >> Leff0_${wl}.dat
+        echo -e "\t`head -n1 g${g}.dat | cut -f3 `" >> Leff0_${wl}.dat
         count=`expr $count + 1`
     done
 done
