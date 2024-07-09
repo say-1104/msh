@@ -1,8 +1,8 @@
 #ifndef MAIN_HPP
 #define MAIN_HPP
 
-#include </usr/include/eigen3/Eigen/Dense>
-//#include </home/okazaki/Solver/Eigen/Dense>
+//#include </usr/include/eigen3/Eigen/Dense>
+#include </home/okazaki/Solver/Eigen/Dense>
 #include <cmath>
 #include <complex>
 #include <fstream>

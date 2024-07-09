@@ -166,16 +166,17 @@ void calcCMT(DataTable *data){
     int n_div = par->taper[par->N_taper].second / par->dz;
     
     int tmp = 0;
+    int pcmflag = 0;
     for (int step = 0; step < n_div; step++) {
         auto z = std::get<0>(par->ZtoW[step]);
         auto w = std::get<1>(par->ZtoW[step]);
         auto flag = std::get<2>(par->ZtoW[step]);
-        if(flag == 1 && std::get<2>(par->ZtoW[step-1]) == 0) tmp++;
+        if(flag == 1 && pcmflag == 0) pcmflag++;
 
-        double be = data->dset[tmp].beta_even[w];
-        double bo = data->dset[tmp].beta_odd[w];
-        double b1 = data->dset[tmp].beta_1[w];
-        double b2 = data->dset[tmp].beta_2[w];
+        double be = data->dset[pcmflag].beta_even[w];
+        double bo = data->dset[pcmflag].beta_odd[w];
+        double b1 = data->dset[pcmflag].beta_1[w];
+        double b2 = data->dset[pcmflag].beta_2[w];
 
         auto calc_CMT = [&]() -> void { // ラムダ式
             double beta_ave = (b1 + b2) / 2.0;
