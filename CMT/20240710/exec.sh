@@ -4,6 +4,8 @@ if [ ! -e ./make_cfg ]; then
 	echo "コンパイルエラーが出たので終了します。"
 	exit
 fi
+make all
+
 for wl in `seq 1.530 0.010 1.530`
 do
     echo -n > T_${wl}.dat

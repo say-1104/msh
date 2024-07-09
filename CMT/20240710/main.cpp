@@ -13,15 +13,14 @@ int main(int argc, char* argv[]){
     DataTable data;
     //引数の確認
     checkArgument(&data, argc, argv);
-    std::cerr << "finish checkarg" << std::endl;
+
     checkConfig(&data);
-    std::cerr << "finish checkcfg" << std::endl;
+
     inputData(&data);
-    std::cerr << "finish checkinput" << std::endl;
+
     makeZtoW(&data);
-    std::cerr << "finish makeztow" << std::endl;
+
     calcCMT(&data);
-    std::cerr << "finish calc" << std::endl;
     
     return 0;
 }
