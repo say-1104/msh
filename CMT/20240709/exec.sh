@@ -1,9 +1,9 @@
 #!/bin/sh
-
-for wl in `seq 1.530 0.010 1.530`
+make all
+for wl in `seq 1.550 0.010 1.550`
 do
     echo -n > T_${wl}.dat
-    for Leff in `seq 26.6 0.2 26.6`
+    for Leff in `seq 0.0 0.2 26.6`
     do
         ./cmt -pcm1 -wl ${wl} -leff ${Leff} #2>output_err
 

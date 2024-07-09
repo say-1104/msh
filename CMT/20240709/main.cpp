@@ -1,6 +1,7 @@
 #include "LI.hpp"
 #include "main.hpp"
 
+
 void checkArgument(DataTable *data, int argc, char* argv[]);
 void checkConfig(DataTable *data);
 void inputData(DataTable *data);
@@ -13,6 +14,7 @@ int main(int argc, char* argv[]){
     DataTable data;
     //引数の確認
     checkArgument(&data, argc, argv);
+    std::cerr << "check argument finish" << std::endl;
 
     checkConfig(&data);
 
