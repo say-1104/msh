@@ -7,7 +7,7 @@ if [ ! -e ./make_cfg ]; then
 	exit
 fi
 #make all
-for wl in `seq 1.530 0.010 1.570`
+for wl in `seq 1.550 0.010 1.550`
 do
     echo -n > PSR_${wl}.dat
     count=1
@@ -16,7 +16,7 @@ do
         z1=37.6
         ./make_cfg ${dz} ${z0} ${g} ${z1} ${g}
         Leff_fi=`tail -n1 structure.cfg | head -n1 | cut -f1 `
-        for Leff in `seq 0.0 0.2 ${Leff_fi}`
+        for Leff in 0.0 #${Leff_fi}
         do
             ./cmt -pcm1 -wl ${wl} -leff ${Leff} 
 
