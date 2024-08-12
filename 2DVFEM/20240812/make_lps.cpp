@@ -38,7 +38,7 @@ int main(int argc, char *argv[]){
 
 	lt->Mat2D(1, "1");
 	lt->Mat2D(2, "2");
-	lt->Mat2D(2, "3");
+	lt->Mat2D(3, "3");
 
 	lt->Unstr(Shape::surface, "1");
 
