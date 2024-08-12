@@ -14,5 +14,5 @@ for wide in 0.400
 do
     ./a.out ${wide}
     sh shell_mesh2D_LTQN.sh wire
-    #sh exec2D_VFEM.sh
+    sh exec2D_VFEM.sh
 done

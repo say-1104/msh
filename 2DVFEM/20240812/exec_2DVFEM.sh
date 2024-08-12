@@ -39,14 +39,13 @@ C1=1.2388
 C2=0.3387
 
 rm _results.dat
-for wavelength in `seq $1 $2 $3`
-#for wavelength in 1.550
+#for wavelength in `seq $1 $2 $3`
+for wavelength in 1.550
 do
     #wavelengthは計算する波長[um]
     rm -R wave_$wavelength
     mkdir wave_$wavelength
-    rm -r b1/${wavelength}/${4}
-    mkdir b1/${wavelength}/${4}
+
     sed -i -e "2d" wire.v2.msh
     sed -i -e "2i $wavelength" wire.v2.msh
     #50行まででシリコンシリカの屈折率計算
@@ -77,7 +76,6 @@ do
 
     /home/okazaki/Solver/2D_VFEM/edge `ls *v2.msh | sed -e "s/\.msh//g"` -o 0 -w $wavelength -d 1.0 -F 70
     mv `ls *.slv | sed -e "s/\.msh//g"` wave_$wavelength/
-    cp _results.dat b1/${wavelength}/${4}/
     mv _results.dat wave_$wavelength/
     mv loss wave_$wavelength/
     cd wave_$wavelength/
