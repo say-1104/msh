@@ -19,7 +19,7 @@ if [ ! -e ./a.out ]; then
 	exit
 fi
 
-./a.out
+./a.out 0.400
 
 /home/okazaki/Solver/for3dmesh/lps2bch-3d_aug/lps2bch-3d -kakihara $1
 /home/share/Gid10.2.1/gid -n -b $1.bch
