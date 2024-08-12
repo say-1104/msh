@@ -18,20 +18,27 @@ int main(int argc, char *argv[]){
     LpsTools* lt = new LpsTools("wire", unstr, trans, gene);
 
 	lt->Line(0.0, 0.0, 0.0,				Xmax, 0.0, 0.0);
-	lt->Line(Xmax, 0.0, 0.0,			Xmax, Ymax, 0.0);
-	lt->Line(Xmax, Ymax, 0.0,			0.0, Ymax, 0.0);
-	lt->Line(0.0, Ymax, 0.0,			0.0, 0.0, 0.0);
+	lt->Line(Xmax, 0.0, 0.0,			Xmax, hsio2, 0.0);
+	lt->Line(Xmax, hsio2, 0.0,			Xmax-wm, hsio2, 0.0);
+	lt->Line(Xmax-wm, hsio2, 0.0,		wm, hsio2, 0.0);
+	lt->Line(wm, hsio2, 0.0,			0.0, hsio2, 0.0);
+	lt->Line(0.0, hsio2, 0.0,			0.0, 0.0, 0.0);
 
-	lt->Line(wm, hsio2, 0.0,			wm+w, hsio2, 0.0);
 	lt->Line(wm+w, hsio2, 0.0,			wm+w, hsio2+h, 0.0);
 	lt->Line(wm+w, hsio2+h, 0.0,		wm, hsio2+h, 0.0);
 	lt->Line(wm, hsio2+h, 0.0,			wm, hsio2, 0.0);
 
-	lt->Surface("5 6 7 8");
-	lt->Surface("1 2 3 4 5 6 7 8");
+	lt->Line(Xmax, hsio2, 0.0,			Xmax, Ymax, 0.0);
+	lt->Line(Xmax, Ymax, 0.0,			0.0, Ymax, 0.0);
+	lt->Line(0.0, Ymax, 0.0,			0.0, hsio2, 0.0);
+
+	lt->Surface("4 7 8 9");
+	lt->Surface("1 2 3 4 5 6");
+	lt->Surface("3 4 5 12 11 10");
 
 	lt->Mat2D(1, "1");
 	lt->Mat2D(2, "2");
+	lt->Mat2D(2, "3");
 
 	lt->Unstr(Shape::surface, "1");
 
