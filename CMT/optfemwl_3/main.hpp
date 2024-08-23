@@ -26,13 +26,13 @@ constexpr std::complex<double> cj(0.0, 1.0);
 #define APCM 1
 
 typedef struct _Param {
-    double wl;  //波長
-    int N_dset; //データセットの個数
-    double dz;  //伝搬方向の分割数
+    double wl;      //波長
+    int N_dset;     //データセットの個数
+    double dz;      //伝搬方向の分割数
     double Leff;    //cPCMの長さ
     double wst;     //始点のwidth
     int N_taper;    //テーパの接続個数
-    std::vector<std::pair<double, double>> taper;   //テーパの構造パラメータ
+    std::vector<std::pair<double, double>> taper;       //テーパの構造パラメータ
     std::vector<std::tuple<double, double, int>> ZtoW;
 } Param;
 

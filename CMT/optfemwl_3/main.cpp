@@ -1,8 +1,7 @@
 #include "LI.hpp"
 #include "main.hpp"
 
-int Div(double x, double y){
-	return((int)(round(x*1000000)/round(y*1000000)));
+int Div(double x, double y){ return((int)(round(x*1000000)/round(y*1000000)));
 }
 void checkArgument(DataTable *data, int argc, char* argv[]);
 void checkConfig(DataTable *data);
