@@ -186,19 +186,20 @@ void calcCMT(DataTable *data){
 
     Eigen::Vector2cd ab;
     ab << std::complex<double>(0.0, 0.0), std::complex<double>(1.0, 0.0);
-    int n_div = Div(par->taper[par->N_taper].second, par->dz);
+    int n_div = Div(par->taper[par->N_taper].first, par->dz);
 
-    int pcmflag = 0;
     for (int step = 0; step < n_div; step++) {
         auto z = std::get<0>(par->ZtoW[step]);
         auto w = std::get<1>(par->ZtoW[step]);
-        auto flag = std::get<2>(par->ZtoW[step]);
-        if(flag == 1 && pcmflag == 0) pcmflag++;
+        auto p = std::get<2>(par->ZtoW[step]);
+        int flag;
+        if(p == 1) flag = 0;
+        else flag = 1;
 
-        double be = data->dset[pcmflag].beta_even[w];
-        double bo = data->dset[pcmflag].beta_odd[w];
-        double b1 = data->dset[pcmflag].beta_1[w];
-        double b2 = data->dset[pcmflag].beta_2[w];
+        double be = data->dset[flag].beta_even[w];
+        double bo = data->dset[flag].beta_odd[w];
+        double b1 = data->dset[flag].beta_1[w];
+        double b2 = data->dset[flag].beta_2[w];
 
         auto calc_CMT = [&]() -> void { // ラムダ式
             double beta_ave = (b1 + b2) / 2.0;
