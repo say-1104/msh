@@ -21,23 +21,24 @@ constexpr std::complex<double> cj(0.0, 1.0);
 				exit(EXIT_FAILURE);\
 		}
 
-#define SI -1
-#define CPCM 0
-#define APCM 1
+#define SI 0
+#define CPCM 1
+#define APCM 2
 
 typedef struct _Param {
-    double wl;      //波長
-    int N_dset;     //データセットの個数
-    double dz;      //伝搬方向の分割数
-    double Leff;    //cPCMの長さ
-    double wst;     //始点のwidth
-    int N_taper;    //テーパの接続個数
-    std::vector<std::pair<double, double>> taper;       //テーパの構造パラメータ
+    double wl;      // 波長
+    double dz;      // 伝搬方向の分割数
+    int N_dset;     // データセットの個数
+    double wst;     // テーパの先端幅
+    int N_taper;    // テーパの接続個数
+    int N_pcm;      // PCMの接続個数
+    std::vector<std::pair<double, double>> taper;       // テーパの構造パラメータ
+    std::vector<std::pair<double, int>> pcm;            // PCM層の結晶情報
     std::vector<std::tuple<double, double, int>> ZtoW;
 } Param;
 
 typedef struct _Dataset {
-    int N;  //widthの個数
+    int N;  // widthの個数
     LI<double, double> beta_even;
     LI<double, double> beta_odd;
     LI<double, double> beta_1;
@@ -45,7 +46,7 @@ typedef struct _Dataset {
 } Dataset;
 
 typedef struct _Flag {
-    int pcm;    //0なら堆積無し、1なら片側堆積、2なら両側堆積
+    int pcm;    // 0なら堆積無し、1なら片側堆積、2なら両側堆積
 } Flag;
 
 typedef struct _DataTable {

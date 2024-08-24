@@ -18,8 +18,10 @@ int main(int argc, char* argv[]){
     std::cerr << "check argument finish" << std::endl;
 
     checkConfig(&data);
+    std::cerr << "check config finish" << std::endl;
 
     inputData(&data);
+    std::cerr << "check inputdata finish" << std::endl;
 
     makeZtoW(&data);
     std::cerr << "makeZtoW finish" << std::endl;
@@ -33,9 +35,9 @@ void checkArgument(DataTable *data, int argc, char* argv[]){
     Flag *flag = &(data->flag);
 
     flag->pcm = 0;
+
     par->N_dset = 1;
     par->wl = 1.550;
-    par->Leff = 0.0;
 
     for (int i = 0; i < argc; i++) {
 		if (argv[i][0] == '-') {
@@ -62,12 +64,6 @@ void checkArgument(DataTable *data, int argc, char* argv[]){
                 std::cerr << std::fixed << std::setprecision(3);
                 std::cerr << "Wavelength is " << data->par.wl << std::endl;
 			}
-			else if (argv[i][1] == 'l' && argv[i][2] == 'e' && argv[i][3] == 'f' && argv[i][4] == 'f') {
-                i++;
-                data->par.Leff = atof(argv[i]);
-                std::cerr << std::fixed << std::setprecision(3);
-                std::cerr << "Leff is " << data->par.Leff << std::endl;
-			}
             else {
                 std::cerr << "Argument is incorrect" << std::endl;
                 exit(1);
@@ -80,6 +76,7 @@ void checkArgument(DataTable *data, int argc, char* argv[]){
 
 void checkConfig(DataTable *data) {
     Param *par = &(data->par);
+    Flag *flag = &(data->flag);
 
     std::ifstream ifs("structure.cfg", std::ios::out);
     if(! ifs) {
@@ -91,18 +88,24 @@ void checkConfig(DataTable *data) {
 
     ifs >> buff >> par->dz;
     ifs >> buff >> par->N_taper;
+    ifs >> buff >> par->wst;
     ifs >> buff >> buff;
-    //bool b_tmp = true;
-    for(int i=0; i<(par->N_taper)+1; i++){
+    
+    for(int i=0; i<(par->N_taper); i++){
         double w, z;
         ifs >> z >> w;
-        par->taper.push_back(std::make_pair(w, z));
+        par->taper.push_back(std::make_pair(z, w));
     }
-    par->wst = par->taper[0].first;
-    if(par->taper[par->N_taper].second < par->Leff) {
-        std::cerr << "Leff is incorrect" << std::endl;
-        std::cerr <<  par->taper[par->N_taper].second << par->Leff << std::endl;
-        exit(1);
+    if(flag->pcm != 0) {
+        ifs >> buff >> par->N_pcm;
+        ifs >> buff >> buff;
+
+        for(int i=0; i<(par->N_pcm); i++){
+            int flag;
+            double z;
+            ifs >> z >> flag;
+            par->pcm.push_back(std::make_pair(z, flag));
+        }
     }
     ifs.close();
 };
