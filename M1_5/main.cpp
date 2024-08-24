@@ -25,7 +25,7 @@ int main(int argc, char* argv[]){
 
     makeZtoW(&data);
     std::cerr << "makeZtoW finish" << std::endl;
-    //calcCMT(&data);
+    calcCMT(&data);
     std::cerr << "CMT finish" << std::endl;
     return 0;
 }
@@ -87,8 +87,9 @@ void checkConfig(DataTable *data) {
     std::string buff;
 
     ifs >> buff >> par->dz;
-    ifs >> buff >> par->N_taper;
     ifs >> buff >> par->wst;
+
+    ifs >> buff >> par->N_taper;
     ifs >> buff >> buff;
     
     par->taper.push_back(std::make_pair(0.0, par->wst));
@@ -224,6 +225,6 @@ void calcCMT(DataTable *data){
         calc_CMT();
     }
 
-    ofs << n_div << '\t' << par->taper[par->N_taper].second << '\t' << abs(ab(0)) * abs(ab(0)) << '\t' << abs(ab(1)) * abs(ab(1)) << std::endl;
+    ofs << n_div << '\t' << par->taper[par->N_taper].first << '\t' << abs(ab(0)) * abs(ab(0)) << '\t' << abs(ab(1)) * abs(ab(1)) << std::endl;
     ofs.close();
 };
