@@ -12,9 +12,9 @@ fi
 dz=0.1
 wcent=0.450
 echo -n > heatmap.dat
-for L in `seq 100 0.1 160`
+for L in `seq 20 0.1 320`
 do
-    for dw in `seq 0.000 0.001 0.050`
+    for dw in `seq 0.000 0.001 0.030`
     do
         echo "L: ${L}\tdw: ${dw}"
         echo -n > forMD.dat
