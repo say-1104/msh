@@ -11,14 +11,17 @@ if [ ! -e ./calc_MD ]; then
 fi
 dz=0.1
 echo -n > heatmap.dat
-for L in `seq 20 0.1 180`
+for L in `seq 20 0.1 160`
 do
-    for g in `seq 0.200 0.001 0.300`
+    for dw in `seq 0.000 0.001 0.500`
     do
-        echo "L: ${L}\tdw: ${g}"
+        echo "L: ${L}\tdw: ${dw}"
         echo -n > forMD.dat
 
-        ./make_cfg ${dz} ${g} 1 ${L} ${g} 1 ${L} 1
+        wst=`echo "scale=3;${wcent} - ${dw}" | bc`
+        wfi=`echo "scale=3;${wcent} + ${dw}" | bc`
+
+        ./make_cfg ${dz} ${wst} 1 ${L} ${wfi} 1 ${L} 2
 
         for wl in `seq 1.530 0.010 1.570`
         do
@@ -27,7 +30,7 @@ do
         done
         
         ./calc_MD <forMD.dat
-        echo "${L}\t${g}\t`head -n1 MDlambda`" >> heatmap.dat
+        echo "${L}\t${dw}\t`head -n1 MDlambda`" >> heatmap.dat
     done
 
 done
