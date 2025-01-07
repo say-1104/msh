@@ -17,21 +17,20 @@ fi
 dz=0.1
 g=0.300
 echo -n > forMD.dat
-
+echo "\t1.530\t1.540\t1.550\t1.560\t1.570" >> forMD.dat
 
 for Ldel in `seq 0.0 0.1 42.0`
 do
-    echo -n > forMD50.dat
+    echo -n "${Ldel}" >> forMD.dat
 
-    Lhalf=`echo "scale=3;84.0 - ${Ldel}" | bc`
+    l1=`echo "scale=3;84.0 - ${Ldel}" | bc`
 
-    ./make_cfg ${dz} ${g} 1 84.0 ${g} 3 ${Ldel} 3 ${Lhalf} 4 84.0 3
+    ./make_cfg ${dz} ${g} 1 84.0 ${g} 2 ${l1} 4 84.0 3
 
     for wl in `seq 1.530 0.010 1.570`
     do
         ./cmt -pcm2 -wl ${wl}
-        echo "${wl}\t`tail -n1 output | head -n1 | cut -f3 `" >> forMD50.dat
+        echo -n "\t`tail -n1 output | head -n1 | cut -f3 `" >> forMD.dat
     done
-    ./calc_MD50 <forMD50.dat
-    echo "${Ldel}\t`tail -n1 MDlambda50 | head -n1 | cut -f1 `" >> forMD.dat
+    echo >> forMD.dat
 done
